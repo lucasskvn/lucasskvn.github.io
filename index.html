@@ -111,20 +111,14 @@
         </ul>
         <!-- Contenu de "blog" -->
     </div>
-    <div class="tab-pane fade text-center" id="nav-indisponible" role="tabpanel" aria-labelledby="nav-indisponible-tab">
-      <h1 class="display-4">Indisponible</h1>
-      <p>Désolé, ce site n'est pas disponible sur mobile.</p>
-    </div>
   </div>
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script>
-    window.onload = function() {
-      if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-        document.getElementById("nav-indisponible-tab").click();
-      }
+  <script>window.onload = function() {
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
+      alert("Désolé, ce site n'est pas disponible sur mobile.");
     }
-  </script>
+  }</script>
 </body>
 </html>
