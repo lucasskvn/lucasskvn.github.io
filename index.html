@@ -1,1 +1,118 @@
-Hello World.
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <title>Portfolio</title>
+  <style>
+    body {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-color:#292e36;
+    }
+    .nav {
+      background-color: #700a38;
+      height: 60px; /* Ajustez cette valeur selon vos préférences */
+      border: none;
+      display: flex;
+      justify-content: space-between;
+    }
+    .nav-item.nav-link {
+      color: white;
+    }
+    .nav-item.nav-link.active {
+      background-color: transparent;
+      border: none;
+      font-weight: bold;
+      color: white
+    }
+    .nav-links {
+      display: flex;
+      justify-content: flex-start;
+      padding-left: 25%; /* Ajustez cette valeur selon vos préférences */
+      align-items: center;
+    }
+    .nav-buttons {
+      padding-right: 25%; /* Ajustez cette valeur selon vos préférences */
+      display: flex;
+      align-items: flex-start;
+      margin-top: -50px; /* Ajustez cette valeur selon vos préférences */
+    }
+    .nav-buttons img {
+      width: 50px; /* Ajustez cette valeur selon vos préférences */
+   }
+    #nav-tab {
+      display: flex;
+      justify-content: flex-start;
+      padding-left: 25%; /* Ajustez cette valeur selon vos préférences */
+      align-items: center;
+    }
+    h1 {
+      color: white;
+    }
+    #nav-home p {
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <!-- Barre de navigation -->
+  <nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Accueil</a>
+      <a class="nav-item nav-link" id="nav-portfolio-tab" data-toggle="tab" href="#nav-portfolio" role="tab" aria-controls="nav-portfolio" aria-selected="false">CV</a>
+      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
+      <a class="nav-item nav-link" id="nav-blog-tab" data-toggle="tab" href="#nav-blog" role="tab" aria-controls="nav-blog" aria-selected="false">Blog</a>
+    </div>
+  </nav>
+  <nav class="nav">
+    <div class="nav-links" id="nav-tab" role="tablist">
+      <!-- Vos onglets ici -->
+    </div>
+    <div class="nav-buttons">
+      <a href="https://github.com/Lucasskvn" target="_blank">
+        <img src="includes/github.png" alt="GitHub" />
+      </a>
+      <a href="https://www.linkedin.com/in/lucas-sangkhavongs/" target="_blank">
+        <img src="includes/linkedin.png" alt="LinkedIn" />
+      </a>
+    </div>
+  </nav>
+
+  <!-- Contenu des onglets -->
+  <div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active text-center" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+      <h1 class="display-4">Accueil</h1>
+      <p class="lead">Bienvenue sur mon portfolio !</p>
+      <p>Bonjour, je suis Lucas, j'ai 18 ans et je suis étudiant à EPITECH LYON. J'apprécie apprendre de nouveaux languages et les ordinateurs en général </p>
+      <p>Je possède des compétences en C et Python et je maitrise Linux et ses différentes distributions</p>
+      <!-- Contenu de l'accueil -->
+    </div>
+    <div class="tab-pane fade text-center" id="nav-portfolio" role="tabpanel" aria-labelledby="nav-portfolio-tab">
+      <h1 class="display-4">CV</h1>
+      <img src="includes/CV.jpg" alt="CV Image" style="max-width: 50%; height: auto;">
+      <!-- Contenu du portfolio -->
+    </div>
+    <div class="tab-pane fade text-center" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+      <h1 class="display-4">Contact</h1>
+      <p style="color: white;">Vous pouvez me contacter à cette adresse: <span style="color: red;">lucassangkha444@gmail.com</span></p>
+      <!-- Contenu du contact -->
+    </div>
+    <div class="tab-pane fade text-center" id="nav-blog" role="tabpanel" aria-labelledby="nav-blog-tab">
+      <h1 class="display-4" style="color: white;">Blog</h1>
+      <p style="color: white;">Voici l'onglet blog</p>
+      <p style="color: white;">Ici je metterais une preview de mes travaux</p>
+      <ul>
+        <ul style="margin-left: -5%;">
+          <li><a href="blogs/blog-post1.html">Blog Post 1</a></li>
+          <li><a href="blogs/blog-post2.html">Blog Post 2</a></li>
+          <li><a href="blogs/blog-post3.html">Blog Post 3</a></li>
+        </ul>
+    </div>
+  </div>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
