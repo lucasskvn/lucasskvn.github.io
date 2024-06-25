@@ -377,71 +377,86 @@ blockquote {
 
 </head>
 <body>
-<pre class="hljs"><code><div><span class="hljs-section"># MARKDOWNENT</span>
+<h1 id="markdownent">MARKDOWNENT</h1>
+<p>Markdown est un langage de balisage simple à lire et écrire, il peut être utilisé afin de créer des pages internet simple type blog par le fait qu'il peut être converti en HTML, écrire des emails mais surtout utilisé afin de créer des documentations type README sur des plateforme type Github. Markdown à bien évidemment pleins d'autres utilités car simple à apprendre et surtout simple à créer car n'importe quel editeur de texte vous permettra de créer un fichier Markdown.</p>
+<h2 id="le-fichier-markdown">Le fichier Markdown</h2>
+<p>Le fichier Markdown afin d'être reconnu doit être terminé par :</p>
+<blockquote>
+<p>.md, .markdown, .mkd, .mdown, .mdtext, .mdtxt</p>
+</blockquote>
+<hr>
+<pre class="hljs"><code><div>ligne 1
+pas d'espaces après &quot;ligne 1&quot;.
 
-Markdown est un langage de balisage simple à lire et écrire, il peut être utilisé afin de crée des pages internet simple type blog par le fait qu'il peut être converti en HTML, écrire des emails mais surtout utilisé afin de crée des documentations type README sur des plateforme type Github. Markdown à bien évidemment pleins d'autres utilités car simple à apprendre et surtout simple à crée car n'importe quel editeur de texte vous permettra de crée un fichier Markdown.
-
-<span class="hljs-section">## Le fichier Markdown</span>
-
-Le fichier Markdown afin d'être reconnu doit être terminé par :
-
-<span class="hljs-quote">&gt; .md, .markdown, .mkd, .mdown, .mdtext, .mdtxt</span>
-
-<span class="hljs-emphasis">***</span>
-
-ligne 1
-pas d'espaces après "ligne 1".
-
-ligne 2  
-deux espaces après "<span class="hljs-strong">**ligne 2**</span>".
-
-<span class="hljs-section">## Les titres</span>
-
-<span class="hljs-section"># "Titre Principal"</span>
+ligne 2**
+deux espaces après &quot;ligne 2 ici représenté par des *&quot;.
+</div></code></pre>
+<p><img src="i1.png" alt="i1"></p>
+<h2 id="les-titres">Les titres</h2>
+<pre class="hljs"><code><div><span class="hljs-section"># "Titre Principal"</span>
 <span class="hljs-section">## "Titre Secondaire" (ne contient plus de séparation en format HTML)</span>
 <span class="hljs-section">### Texte avec une plus grand police (ne contient pas de séparation)</span>
-
-<span class="hljs-section">## Les Textes spéciaux</span>
-
-Texte en <span class="hljs-strong">**GRAS**</span>.
-
-Texte en <span class="hljs-emphasis">*ITALIQUE*</span>.
-
-Texte en <span class="hljs-strong">***GRAS ET ITALIQUE**</span>*.
-
-Texte ~~BARRE~~.
-
-Texte ==SURLIGNE== (marche pas tout le temps.)
+</div></code></pre>
+<p><img src="i2.png" alt="i2"></p>
+<h2 id="les-textes-sp%C3%A9ciaux">Les Textes spéciaux</h2>
+<pre class="hljs"><code><div>Texte en <span class="hljs-strong">**GRAS**</span>.
+</div></code></pre>
+<p><img src="i3.png" alt="i3"></p>
+<hr>
+<pre class="hljs"><code><div>Texte en <span class="hljs-emphasis">*ITALIQUE*</span>.
+</div></code></pre>
+<p><img src="i4.png" alt="i4"></p>
+<hr>
+<pre class="hljs"><code><div>Texte en <span class="hljs-strong">***GRAS ET ITALIQUE**</span>*.
+</div></code></pre>
+<p><img src="i5.png" alt="i5"></p>
+<hr>
+<pre class="hljs"><code><div>Texte ~~BARRE~~.
+</div></code></pre>
+<p><img src="i6.png" alt="i6"></p>
+<hr>
+<pre class="hljs"><code><div>Texte ==SURLIGNE== (marche pas tout le temps.)
 
 Texte <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">mark</span>&gt;</span></span>SURLIGNE<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">mark</span>&gt;</span></span>.
-
-Texte <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">mark</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background:pink"</span>&gt;</span></span>SURLIGNE mais rose<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">mark</span>&gt;</span></span>. 
-
-<span class="hljs-section">### Notez que si la couleur du surlignage ne fonctionne pas vous devrez ajouter "!important" juste devant la couleur donc ici écrire : **"background:pink!important"**</span>
-
-Texte~en dessous~ (marche pas tout le temps.)
+</div></code></pre>
+<p><img src="i15.png" alt="i15"></p>
+<hr>
+<pre class="hljs"><code><div>Texte <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">mark</span> <span class="hljs-attr">style</span>=<span class="hljs-string">"background:pink"</span>&gt;</span></span>SURLIGNE mais rose<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">mark</span>&gt;</span></span>. 
+</div></code></pre>
+<p><img src="i8.png" alt="i8"></p>
+<h3 id="notez-que-si-la-couleur-du-surlignage-ne-fonctionne-pas-vous-devrez-ajouter-important-juste-devant-la-couleur-donc-ici-%C3%A9crire-backgroundpinkimportant">Notez que si la couleur du surlignage ne fonctionne pas vous devrez ajouter &quot;!important&quot; juste devant la couleur donc ici écrire : <strong>&quot;background:pink!important&quot;</strong></h3>
+<hr>
+<pre class="hljs"><code><div>Texte ~en dessous~ (marche pas tout le temps.)
 
 Texte <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">sub</span>&gt;</span></span>en dessous<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">sub</span>&gt;</span></span>.
-
-Texte^au dessus^ (marche pas tout le temps.)
+</div></code></pre>
+<p><img src="i9.png" alt="i9"></p>
+<hr>
+<pre class="hljs"><code><div>Texte ^au dessus^ (marche pas tout le temps.)
 
 Texte <span class="xml"><span class="hljs-tag">&lt;<span class="hljs-name">sup</span>&gt;</span></span>au dessus<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">sup</span>&gt;</span></span>.
-
-Emoji = :smile: (marche pas tout le temps.)
-
-Texte pour montrer du code = <span class="hljs-code">``i = 0`</span>`.
-
-<span class="hljs-quote">&gt; Texte en "quote".</span>
+</div></code></pre>
+<p><img src="i10.png" alt="i10"></p>
+<hr>
+<pre class="hljs"><code><div>Emoji = :smile: (marche pas tout le temps.)
+</div></code></pre>
+<p><img src="i12.png" alt="i12"></p>
+<hr>
+<pre class="hljs"><code><div>Texte pour montrer du code = <span class="hljs-code">``i = 0`</span>`.
+</div></code></pre>
+<p><img src="i13.png" alt="i13"></p>
+<hr>
+<pre class="hljs"><code><div><span class="hljs-quote">&gt; Texte en "quote".</span>
 <span class="hljs-quote">&gt;
 &gt;&gt; Commentaire de la quote.</span>
-
-<span class="hljs-section">### Separateur/Filet (Notez que les titres et sous titre crée d'office un séparateur.)</span>
-<span class="hljs-emphasis">***</span>
-
-<span class="hljs-section">## Les Intégrations</span>
-
-<span class="hljs-code">    Bloc de Code (Préciser le langage, ici du C)</span>
-<span class="hljs-code">    ```C </span>
+</div></code></pre>
+<p><img src="i14.png" alt="i14"></p>
+<h3 id="separateurfilet-notez-que-les-titres-et-sous-titre-cr%C3%A9e-doffice-un-s%C3%A9parateur">Separateur/Filet (Notez que les titres et sous titre crée d'office un séparateur.)</h3>
+<hr>
+<hr>
+<h2 id="les-int%C3%A9grations">Les Intégrations</h2>
+<p>Bloc de Code (Préciser le langage, ici du C)</p>
+<pre class="hljs"><code><div><span class="hljs-code">    ```C </span>
 <span class="hljs-code">    char *salut = "Coucou";</span>
 <span class="hljs-code">    i = 369;</span>
 
@@ -451,22 +466,26 @@ Texte pour montrer du code = <span class="hljs-code">``i = 0`</span>`.
 <span class="hljs-code">    return 0;</span>
 <span class="hljs-code">    //Salut je suis un commentaire.</span>
 <span class="hljs-code">    ```</span>
+</div></code></pre>
+<p><img src="i16.png" alt="i16"></p>
+<h3 id="hyperlink">Hyperlink</h3>
+<pre class="hljs"><code><div>[<span class="hljs-string">Voici un lien internet.</span>](<span class="hljs-link">https://www.youtube.com/watch?v=2tda_TCjz8w</span>)
 
-[<span class="hljs-string">Voici un lien internet.</span>](<span class="hljs-link">https://www.youtube.com/watch?v=2tda_TCjz8w</span>)
-
-[<span class="hljs-string">Voici un lien vers un autre fichier.</span>](<span class="hljs-link">/fichier2</span>)
-
-<span class="hljs-section">### Voici une image , vous notterez que le nom de le texte mis entre crochet sera "l'alt text" de l'image. Ici "tripleS".</span>
-
-![<span class="hljs-string">tripleS</span>](<span class="hljs-link">/GRLSNVRDIE.jfif</span>)
-
-<span class="hljs-section">### Une image animée type gif peut être aussi implémentée. </span>
-
-![<span class="hljs-string">mcdo</span>](<span class="hljs-link">/macdoes.gif</span>)
-
-<span class="hljs-section">## Les Liste (Notez que cette liste n'est qu'un exemple, modulez la comme vous le souhaitez !!!)</span>
-
-<span class="hljs-bullet">* </span>Premier objet d'une liste
+[<span class="hljs-string">Voici un lien vers un autre fichier.</span>](<span class="hljs-link">fichier2</span>)
+</div></code></pre>
+<p><a href="https://www.youtube.com/watch?v=2tda_TCjz8w">Voici un lien internet.</a></p>
+<p><a href="fichier2">Voici un lien vers un autre fichier.</a></p>
+<h3 id="image-et-gif">Image et Gif</h3>
+<h3 id="voici-une-image-vous-noterez-que-le-texte-mis-entres-crochets-sera-lalt-text-de-limage-ici-triples-et-le-texte-mis-entre-parenth%C3%A8ses-est-le-nom-du-fichier">Voici une image , vous noterez que le texte mis entres crochets sera &quot;l'alt text&quot; de l'image. Ici &quot;tripleS&quot; et le texte mis entre parenthèses est le nom du fichier.</h3>
+<pre class="hljs"><code><div>![<span class="hljs-string">tripleS</span>](<span class="hljs-link">GRLSNVRDIE.jfif</span>)
+</div></code></pre>
+<p><img src="GRLSNVRDIE.jfif" alt="tripleS"></p>
+<h3 id="une-image-anim%C3%A9e-type-gif-peut-%C3%AAtre-aussi-impl%C3%A9ment%C3%A9e">Une image animée type gif peut être aussi implémentée.</h3>
+<pre class="hljs"><code><div>![<span class="hljs-string">mcdo</span>](<span class="hljs-link">macdoes.gif</span>)
+</div></code></pre>
+<p><img src="macdoes.gif" alt="mcdo"></p>
+<h2 id="les-liste-notez-que-cette-liste-nest-quun-exemple-modulez-la-comme-vous-le-souhaitez">Les Liste (Notez que cette liste n'est qu'un exemple, modulez la comme vous le souhaitez !!!)</h2>
+<pre class="hljs"><code><div><span class="hljs-bullet">* </span>Premier objet d'une liste
 <span class="hljs-bullet">* </span>Deuxieme objet d'une liste
 <span class="hljs-bullet">+ </span>Troisieme objet d'une liste mais celui-ci est un arbre
 <span class="hljs-code">    * Premier objet de l'arbre</span>
@@ -474,148 +493,26 @@ Texte pour montrer du code = <span class="hljs-code">``i = 0`</span>`.
 <span class="hljs-code">        2. Deuxieme note pour le premier objet de l'arbre</span>
 <span class="hljs-code">    * Deuxieme objet de l'arbre</span>
 <span class="hljs-bullet">- </span>Quatrième objet d'une liste
-
-<span class="hljs-section">### Autre types de listes les "checkboxes" ou "To Do Lists"</span>
-
-<span class="hljs-bullet">- </span>[ ] Mission 1
+</div></code></pre>
+<p><img src="i17.png" alt="i17"></p>
+<h3 id="autre-types-de-listes-les-checkboxes-ou-to-do-lists">Autre types de listes les &quot;checkboxes&quot; ou &quot;To Do Lists&quot;</h3>
+<pre class="hljs"><code><div><span class="hljs-bullet">- </span>[ ] Mission 1
 <span class="hljs-bullet">- </span>[ ] Mission 2
    - [ ] Mission 2.1 (ça peut être une étapes afin de faire la mission 1 ou ce que vous voulez faites parler votre imaginaire.)
 <span class="hljs-bullet">- </span>[X] Mission accomplie
-
-<span class="hljs-section">## Les Tables</span>
-
-| Droite | Centre | Gauche |
+</div></code></pre>
+<p><img src="i18.png" alt="i18"></p>
+<h2 id="les-tables">Les Tables</h2>
+<pre class="hljs"><code><div>| Droite | Centre | Gauche |
 |-------:|:------:|:-------|
 | T1     | T2     | T3     |
-
-<span class="hljs-section">### Notez que les barres ne sont pas obligées d'être alignées, elles peuvent être totalement non droite c'est juste que c'est plus simple à lire.</span>
-
-| Droite     | Centre | Gauche      |
+</div></code></pre>
+<h3 id="notez-que-les-barres-ne-sont-pas-oblig%C3%A9es-d%C3%AAtre-align%C3%A9es-elles-peuvent-%C3%AAtre-totalement-non-droite-cest-juste-que-cest-plus-simple-%C3%A0-lire">Notez que les barres ne sont pas obligées d'être alignées, elles peuvent être totalement non droite c'est juste que c'est plus simple à lire.</h3>
+<pre class="hljs"><code><div>| Droite     | Centre | Gauche      |
 |-------:|:------:      |:-------    |
 | T1   | T2 | T3                   |
 </div></code></pre>
-<h1 id="voici-le-r%C3%A9sultat-du-markdown-dau-dessus au format HTML">Voici le résultat du Markdown d'au dessus au format HTML</h1>
-<p>Markdown est un langage de balisage simple à lire et écrire, il peut être utilisé afin de crée des pages internet simple type blog par le fait qu'il peut être converti en HTML, écrire des emails mais surtout utilisé afin de crée des documentations type README sur des plateforme type Github. Markdown à bien évidemment pleins d'autres utilités car simple à apprendre et surtout simple à crée car n'importe quel editeur de texte vous permettra de crée un fichier Markdown.</p>
-<h2 id="le-fichier-markdown">Le fichier Markdown</h2>
-<p>Le fichier Markdown afin d'être reconnu doit être terminé par :</p>
-<blockquote>
-<p>.md, .markdown, .mkd, .mdown, .mdtext, .mdtxt</p>
-</blockquote>
-<hr>
-<p>ligne 1
-pas d'espaces après &quot;ligne 1&quot;.</p>
-<p>ligne 2<br>
-deux espaces après &quot;<strong>ligne 2</strong>&quot;.</p>
-<h2 id="les-titres">Les titres</h2>
-<h1 id="titre-principal">&quot;Titre Principal&quot;</h1>
-<h2 id="titre-secondaire-ne-contient-plus-de-s%C3%A9paration-en-format-html">&quot;Titre Secondaire&quot; (ne contient plus de séparation en format HTML)</h2>
-<h3 id="texte-avec-une-plus-grand-police-ne-contient-pas-de-s%C3%A9paration">Texte avec une plus grand police (ne contient pas de séparation)</h3>
-<h2 id="les-textes-sp%C3%A9ciaux">Les Textes spéciaux</h2>
-<p>Texte en <strong>GRAS</strong>.</p>
-<p>Texte en <em>ITALIQUE</em>.</p>
-<p>Texte en <strong><em>GRAS ET ITALIQUE</em></strong>.</p>
-<p>Texte <s>BARRE</s>.</p>
-<p>Texte ==SURLIGNE== (marche pas tout le temps.)</p>
-<p>Texte <mark>SURLIGNE</mark>.</p>
-<p>Texte <mark style="background:pink">SURLIGNE mais rose</mark>.</p>
-<h3 id="notez-que-si-la-couleur-du-surlignage-ne-fonctionne-pas-vous-devrez-ajouter-important-juste-devant-la-couleur-donc-ici-%C3%A9crire-backgroundpinkimportant">Notez que si la couleur du surlignage ne fonctionne pas vous devrez ajouter &quot;!important&quot; juste devant la couleur donc ici écrire : <strong>&quot;background:pink!important&quot;</strong></h3>
-<p>Texte~en dessous~ (marche pas tout le temps.)</p>
-<p>Texte <sub>en dessous</sub>.</p>
-<p>Texte^au dessus^ (marche pas tout le temps.)</p>
-<p>Texte <sup>au dessus</sup>.</p>
-<p>Emoji = <img class="emoji" alt="smile" src="data:image/png;base64,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" /> (marche pas tout le temps.)</p>
-<p>Texte pour montrer du code = <code>i = 0</code>.</p>
-<blockquote>
-<p>Texte en &quot;quote&quot;.</p>
-<blockquote>
-<p>Commentaire de la quote.</p>
-</blockquote>
-</blockquote>
-<h3 id="separateurfilet-notez-que-les-titres-et-sous-titre-cr%C3%A9e-doffice-un-s%C3%A9parateur">Separateur/Filet (Notez que les titres et sous titre crée d'office un séparateur.)</h3>
-<hr>
-<hr>
-<h2 id="les-int%C3%A9grations">Les Intégrations</h2>
-<p>Bloc de Code (Préciser le langage, ici du C)</p>
-<pre class="hljs"><code><div><span class="hljs-keyword">char</span> *salut = <span class="hljs-string">"Coucou"</span>;
-i = <span class="hljs-number">369</span>;
-
-<span class="hljs-keyword">while</span> (i != <span class="hljs-number">2</span>) {
-    i = i - <span class="hljs-number">1</span>;
-}
-<span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;
-<span class="hljs-comment">//Salut je suis un commentaire.</span>
-</div></code></pre>
-<p><a href="https://www.youtube.com/watch?v=2tda_TCjz8w">Voici un lien internet.</a></p>
-<p><a href="/fichier2">Voici un lien vers un autre fichier.</a></p>
-<h3 id="voici-une-image-vous-notterez-que-le-nom-de-le-texte-mis-entre-crochet-sera-lalt-text-de-limage-ici-triples">Voici une image , vous notterez que le nom de le texte mis entre crochet sera &quot;l'alt text&quot; de l'image. Ici &quot;tripleS&quot;.</h3>
-<p><img src="GRLSNVRDIE.jfif" alt="tripleS"></p>
-<h3 id="une-image-anim%C3%A9e-type-gif-peut-%C3%AAtre-aussi-impl%C3%A9ment%C3%A9e">Une image animée type gif peut être aussi implémentée.</h3>
-<p><img src="macdoes.gif" alt="mcdo"></p>
-<h2 id="les-liste-notez-que-cette-liste-nest-quun-exemple-modulez-la-comme-vous-le-souhaitez">Les Liste (Notez que cette liste n'est qu'un exemple, modulez la comme vous le souhaitez !!!)</h2>
-<ul>
-<li>Premier objet d'une liste</li>
-<li>Deuxieme objet d'une liste</li>
-</ul>
-<ul>
-<li>Troisieme objet d'une liste mais celui-ci est un arbre
-<ul>
-<li>Premier objet de l'arbre
-<ol>
-<li>Première note pour le premier objet de l'arbre</li>
-<li>Deuxieme note pour le premier objet de l'arbre</li>
-</ol>
-</li>
-<li>Deuxieme objet de l'arbre</li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>Quatrième objet d'une liste</li>
-</ul>
-<h3 id="autre-types-de-listes-les-checkboxes-ou-to-do-lists">Autre types de listes les &quot;checkboxes&quot; ou &quot;To Do Lists&quot;</h3>
-<ul>
-<li><input type="checkbox" id="checkbox0"><label for="checkbox0">Mission 1</label></li>
-<li><input type="checkbox" id="checkbox1"><label for="checkbox1">Mission 2</label>
-<ul>
-<li><input type="checkbox" id="checkbox2"><label for="checkbox2">Mission 2.1 (ça peut être une étapes afin de faire la mission 1 ou ce que vous voulez faites parler votre imaginaire.)</label></li>
-</ul>
-</li>
-<li><input type="checkbox" id="checkbox3" checked="true"><label for="checkbox3">Mission accomplie</label></li>
-</ul>
-<h2 id="les-tables">Les Tables</h2>
-<table>
-<thead>
-<tr>
-<th style="text-align:right">Droite</th>
-<th style="text-align:center">Centre</th>
-<th style="text-align:left">Gauche</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right">T1</td>
-<td style="text-align:center">T2</td>
-<td style="text-align:left">T3</td>
-</tr>
-</tbody>
-</table>
-<h3 id="notez-que-les-barres-ne-sont-pas-oblig%C3%A9es-d%C3%AAtre-align%C3%A9es-elles-peuvent-%C3%AAtre-totalement-non-droite-cest-juste-que-cest-plus-simple-%C3%A0-lire">Notez que les barres ne sont pas obligées d'être alignées, elles peuvent être totalement non droite c'est juste que c'est plus simple à lire.</h3>
-<table>
-<thead>
-<tr>
-<th style="text-align:right">Droite</th>
-<th style="text-align:center">Centre</th>
-<th style="text-align:left">Gauche</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:right">T1</td>
-<td style="text-align:center">T2</td>
-<td style="text-align:left">T3</td>
-</tr>
-</tbody>
-</table>
+<p><img src="i19.png" alt="i19"></p>
 
 </body>
 </html>
