@@ -8,8 +8,6 @@
     src: url('font/Raleway-Italic-VariableFont_wght.ttf') format('truetype');
 }
 
-
-
 .title2 {
     margin-top: -1em;
     font-weight: normal;
@@ -236,31 +234,30 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 2px solid lightgray; /* Ajout de la bordure noire */
-    margin-right: 0.5em; /* Espace entre le cercle et le texte */
+    border: 2px solid lightgray;
+    margin-right: 0.5em;
 }
 
 .info-circle i {
-    color: rgb(0, 60, 255); /* Rendre l'icône bleue */
-    font-size: 16px; /* Ajuster la taille de l'icône */
+    color: rgb(0, 60, 255);
+    font-size: 16px;
 }
 
 .info-text {
-    font-size: 1em; /* Taille du texte */
-    color: #333; /* Couleur du texte */
+    font-size: 1em;
+    color: #333;
 }
 
-/* Ajoutez un conteneur parent pour les deux rectangles */
 .rectangles-container {
     display: flex;
-    justify-content: space-around; /* Espace autour des rectangles */
-    flex-wrap: wrap; /* Permet aux rectangles de se placer en ligne ou en colonne selon la taille de l'écran */
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 
 .gray-rectangle, .gray-rectangle2 {
     position: relative;
-    width: 90vw; /* La largeur sera de 90% de la largeur de la fenêtre par défaut */
-    height: 40em; /* Hauteur fixe */
+    width: 90vw;
+    height: 40em;
     background-color: lightgray;
     display: flex;
     justify-content: center;
@@ -269,7 +266,7 @@
     font-weight: bold;
     font-size: 1em;
     border-radius: 10px;
-    margin: 2em auto; /* Centrer les rectangles */
+    margin: 2em auto;
 }
 
 .gray-rectangle .cat2, .gray-rectangle2 .cat1 {
@@ -284,7 +281,6 @@
 @media (max-width: 1199px) {
     .gray-rectangle, .gray-rectangle2 {
         width: 120vw;
-        /* margin: 2em 0em 5em; */
         margin-right: -15em;
         margin-left: -15em;
     }
@@ -299,13 +295,13 @@
 
 @media (min-width: 1200px) {
     .gray-rectangle {
-        width: 60vw; /* La largeur sera de 60% de la largeur de la fenêtre en plein écran */
-        margin: 2em 1em; /* Ajuster les marges pour espacer les rectangles */
+        width: 60vw;
+        margin: 2em 1em;
     }
 
     .gray-rectangle2 {
-        width: 35vw; /* La largeur sera de 35% de la largeur de la fenêtre en plein écran */
-        margin: 2em 1em; /* Ajuster les marges pour espacer les rectangles */
+        width: 35vw;
+        margin: 2em 1em;
     }
 }
 
@@ -374,10 +370,41 @@
 
 .white-rectangle2 {
     flex: 1;
-    height: 13em;
+    height: 15em;
     background-color: white;
     margin: 0.5em;
     border: 1px solid #ccc;
     border-radius: 30px;
     box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    position: relative;
+    padding: 0;
+}
+
+.rectangle-image {
+    width: 95%;
+    height: 95%;
+    object-fit: cover;
+    border-radius: 30px;
+}
+
+.half-white-overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 35%;
+    background-color: white;
+    border-bottom-left-radius: 30px;
+    border-bottom-right-radius: 30px;
+}
+
+.Hotelname {
+    margin-left: 1em;
+    font-family: 'Raleway', sans-serif;
+    position: relative;
+    top: 0.5em;
 }
