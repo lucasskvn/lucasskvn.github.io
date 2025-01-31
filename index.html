@@ -1,123 +1,106 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-  <title>Portfolio</title>
-  <style>
-    body {
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-color:#292e36;
-    }
-    .nav {
-      background-color: #700a38;
-      height: 60px;
-      border: none;
-      display: flex;
-      justify-content: space-between;
-    }
-    .nav-item.nav-link {
-      color: white;
-    }
-    .nav-item.nav-link.active {
-      background-color: transparent;
-      border: none;
-      font-weight: bold;
-      color: white
-    }
-    .nav-links {
-      display: flex;
-      justify-content: flex-start;
-      padding-left: 25%;
-      align-items: center;
-    }
-    .nav-buttons {
-      padding-right: 25%;
-      display: flex;
-      align-items: flex-start;
-      margin-top: -50px;
-    }
-    .nav-buttons img {
-      width: 50px;
-   }
-    #nav-tab {
-      display: flex;
-      justify-content: flex-start;
-      padding-left: 25%;
-      align-items: center;
-    }
-    h1 {
-      color: white;
-    }
-    #nav-home p {
-      color: white;
-    }
-  </style>
-</head>
-<body>
-  <!-- Barre de navigation -->
-  <nav>
-    <div class="nav nav-tabs" id="nav-tab" role="tablist">
-      <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Accueil</a>
-      <a class="nav-item nav-link" id="nav-portfolio-tab" data-toggle="tab" href="#nav-portfolio" role="tab" aria-controls="nav-portfolio" aria-selected="false">CV</a>
-      <a class="nav-item nav-link" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Contact</a>
-      <a class="nav-item nav-link" id="nav-blog-tab" data-toggle="tab" href="#nav-blog" role="tab" aria-controls="nav-blog" aria-selected="false">Blog</a>
-    </div>
-  </nav>
-  <nav class="nav">
-    <div class="nav-links" id="nav-tab" role="tablist">
-      <!-- onglets -->
-    </div>
-    <div class="nav-buttons">
-      <a href="https://github.com/Lucasskvn" target="_blank">
-        <img src="includes/github.png" alt="GitHub" />
-      </a>
-      <a href="https://www.linkedin.com/in/lucas-sangkhavongs/" target="_blank">
-        <img src="includes/linkedin.png" alt="LinkedIn" />
-      </a>
-    </div>
-  </nav>
 
-  <!-- Contenu des onglets -->
-  <div class="tab-content" id="nav-tabContent">
-    <div class="tab-pane fade show active text-center" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-      <h1 class="display-4">Accueil</h1>
-      <p class="lead">Bienvenue sur mon portfolio !</p>
-      <p>Bonjour, je suis Lucas, j'ai 18 ans et je suis étudiant à EPITECH LYON. J'apprécie apprendre de nouveaux languages et les ordinateurs en général </p>
-      <p>Je possède des compétences en C et Python et je maitrise Linux et ses différentes distributions</p>
-      <!-- Contenu de l'accueil -->
+<head>
+    <meta charset="utf-8">
+    <title>Junior Conseil Triper</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+
+<body>
+    <h1 class="main-title">Junior Conseil Triper</h1>
+    <p>
+        <a href="index.html">
+            <img src="assets/logos/JCT.png" alt="websitelogo" id="logo"/>
+        </a>
+    </p>
+    <div class="title-container">
+        <h2 class="title1">Trouvez votre hébergement pour des vacances de rêve</h2>
+        <h3 class="title2">En plein centre ville ou en pleine nature</h3>
     </div>
-    <div class="tab-pane fade text-center" id="nav-portfolio" role="tabpanel" aria-labelledby="nav-portfolio-tab">
-      <h1 class="display-4">CV</h1>
-      <!-- Contenu de "portfolio" -->
+    <div class="container">
+        <div class="square">
+            <i class="fa-solid fa-location-dot"></i>
+        </div>
+        <div class="search-bar"></div>
+        <div class="research-button">
+            <span>Rechercher</span>
+        </div>
     </div>
-    <div class="tab-pane fade text-center" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
-      <h1 class="display-4">Contact</h1>
-      <p style="color: white;">Vous pouvez me contacter à cette adresse: <span style="color: red;">lucassangkha444@gmail.com</span></p>
-      <!-- Contenu de "contact" -->
+    <div class="buttons">
+        <div class="blue-rectangle"></div>
+        <div class="heberg">
+            <span>Hébergements</span>
+        </div>
+        <div class="act">
+            <span>Activités</span>
+        </div>
+        <div class="inscript">
+            <span>S'inscrire</span>
+        </div>
     </div>
-    <div class="tab-pane fade text-center" id="nav-blog" role="tabpanel" aria-labelledby="nav-blog-tab">
-      <h1 class="display-4" style="color: white;">Blog</h1>
-      <p style="color: white;">Voici l'onglet blog</p>
-      <p style="color: white;">Ici je metterais une preview de mes travaux</p>
-      <ul>
-        <ul style="margin-left: -5%;">
-          <li><a href="blogs/MarkdownCheatsheet/markdownent.html">Markdown Cheatsheet</a></li>
-          <li><a href="blogs/blog-post2.html">Blog Post 2</a></li>
-          <li><a href="blogs/blog-post3.html">Blog Post 3</a></li>
-        </ul>
-        <!-- Contenu de "blog" -->
+    <div class="filters">
+        <div class="filtres">Filtres</div>
+        <div class="rounded-rectangle">
+            <div class="circle"><i class="fa-solid fa-money-bill-wave"></i></div>
+            <div class="eco">
+                <span>Économique</span>
+            </div>
+        </div>
+        <div class="rounded-rectangle">
+            <div class="circle"><i class="fa-solid fa-person"></i></div>
+            <div class="fam">
+                <span>Familial</span>
+            </div>
+        </div>
+        <div class="rounded-rectangle">
+            <div class="circle"><i class="fa-solid fa-heart"></i></div>
+            <div class="rom">
+                <span>Romantique</span>
+            </div>
+        </div>
+        <div class="rounded-rectangle large">
+            <div class="circle"><i class="fa-solid fa-dog"></i></div>
+            <div class="animals">
+                <span>Animaux autorisés</span>
+            </div>
+        </div>
     </div>
-  </div>
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
-  <script>window.onload = function() {
-    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) {
-      alert("Désolé, ce site n'est pas disponible sur mobile.");
-    }
-  }</script>
+    <div class="info-container">
+        <div class="info-circle">
+            <i class="fa-solid fa-info"></i>
+        </div>
+        <span class="info-text">Plus de 500 logements sont disponibles dans cette villes</span>
+    </div>
+    <div class="rectangles-container">
+        <div class="gray-rectangle">
+            <div class="cat2">Hébergements à Marseille</div>
+            <div class="white-rectangle-row">
+                <div class="white-rectangle"></div>
+                <div class="white-rectangle"></div>
+                <div class="white-rectangle"></div>
+            </div>
+            <div class="white-rectangle-row">
+                <div class="white-rectangle"></div>
+                <div class="white-rectangle"></div>
+                <div class="white-rectangle"></div>
+            </div>
+            <div class="r1more">Afficher plus</div>
+        </div>
+        <div class="gray-rectangle2">
+            <div class="cat1">Les plus populaires</div>
+            <div class="white-rectangle-row">
+                <div class="white-rectangle2"></div>
+                <div class="white-rectangle2"></div>
+                <div class="white-rectangle2"></div>
+            </div>
+            <div class="r1more">Afficher plus</div>
+        </div>
+    </div>
+    <div class="categories">
+        <div class="cat3">Activités à Marseille</div>
+    </div>
 </body>
+
 </html>
