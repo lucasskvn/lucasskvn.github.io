@@ -1,0 +1,225 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0;
+  text-align: center;
+  padding-top: 64px;
+}
+
+.Title {
+  font-size: 2.5rem;
+  color: #ffffff;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1rem;
+  padding-top: 0;
+}
+
+.Profile {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 1rem auto;
+}
+
+.Socials {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 1rem;
+}
+
+.SocialLogo {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  transition: filter 0.2s;
+}
+
+.SocialLogo:hover {
+  filter: brightness(1.3);
+}
+
+.Navbar {
+  width: 100vw;
+  background: #111;
+  color: #fff;
+  padding: 1rem 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.Navbar-title {
+  margin-left: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.Navbar-center {
+  display: flex;
+  gap: 39px;
+  margin: 0 auto;
+}
+
+.Navbar-About, .Navbar-Projects, .Navbar-Contact {
+  color: #8f8e8e;
+  font-size: 1.2rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.Navbar-About:hover, .Navbar-Projects:hover, .Navbar-Contact:hover {
+  color: #fff;
+}
+
+.Navbar-socials {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  margin-right: 2rem;
+}
+
+.Navbar-divider {
+  width: 100vw;
+  height: 1px;
+  background: #272525;
+  position: fixed;
+  top: 67px;
+  left: 0;
+  z-index: 99;
+}
+
+.Rounded-rectangle {
+  position: relative;
+  width: 80vw;
+  max-width: 1400px;
+  min-width: 280px;
+  height: 500px;
+  background: #001527;
+  border-radius: 24px;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-size: 1.1rem;
+  z-index: 10;
+  margin: 0 auto;
+}
+
+.Profile-rectangle {
+  position: absolute;
+  top: 32px;
+  left: 32px;
+  width: 200px;
+  height: 200px;
+  border-radius: 16px;
+  object-fit: cover;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.18);
+  border: 2px solid #fff;
+  background: #001527;
+}
+
+.Profile-vertical-divider {
+  position: absolute;
+  top: 0;
+  left: 300px;
+  width: 2px;
+  height: 100%;
+  background: #1d1b1b;
+  border-radius: 2px;
+  z-index: 11;
+}
+
+.Profile-content {
+  position: absolute;
+  top: 0;
+  left: 320px;
+  text-align: left;
+  max-width: 1280px;
+  width: calc(100% - 340px);
+}
+
+.Profile-content p {
+  margin-top: 2rem;
+}
+
+.Profile-subtitle {
+  color: #b0b0b0;
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 0rem;
+  margin-top: -1em;
+}
+
+.Rectangles-container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 60px;
+  width: 100%;
+  max-width: 1280px;
+}
+
+.CV-download-btn {
+  display: inline-block;
+  padding: 10px 0;
+  background: #00213d;
+  color: #fff;
+  font-weight: bold;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.10);
+  transition: background 0.2s, color 0.2s;
+  margin-top: 12px;
+  font-size: 1rem;
+  cursor: pointer;
+  position: absolute;
+  top: 244px;
+  left: 32px;
+  width: 200px;
+  text-align: center;
+  text-decoration: none;
+  overflow: hidden;
+}
+
+.DownloadArrow {
+  display: inline-block;
+  margin-left: 3px;
+  margin-top: 6px;
+  vertical-align: middle;
+  transition: transform 0.3s cubic-bezier(.4,2,.6,1);
+}
+
+.CV-download-btn:hover .DownloadArrow {
+  transform: translateY(6px) scale(1.15);
+}
+
+@media (max-width: 900px) {
+  .Rectangles-container {
+    margin-top: 120px;
+  }
+
+  .Rounded-rectangle {
+    width: 95vw;
+    max-width: 98vw;
+    min-width: 0;
+    height: 320px;
+  }
+
+  .Profile-content {
+    margin-left: 0;
+    margin-top: 240px;
+    text-align: center;
+    max-width: 100%;
+  }
+}
