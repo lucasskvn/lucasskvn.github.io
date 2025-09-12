@@ -6,6 +6,7 @@ import DownloadIcon from './assets/download.png'
 import mailLogo from './assets/mail.png'
 import Projects from './Projects'
 import Contact from './Contact'
+import RadioPlayer from './RadioPlayer'
 import './App.css'
 
 const email = "lucas.sangkhavongs@epitech.eu";
@@ -65,6 +66,7 @@ function App() {
         <Route path="/" element={<About />} />
         <Route path="/projects" element={<Projects />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/radio" element={<RadioPlayer />} />
       </Routes>
     </>
   )
