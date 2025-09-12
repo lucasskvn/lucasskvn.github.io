@@ -28,7 +28,7 @@ function About() {
         <div className="Profile-content">
           <h2>Lucas Sangkhavongs</h2>
           <div className="Profile-subtitle">{status}</div>
-          <p>I'm Lucas Sangkhavongs, I'm 19 years old and a second-year EPITECH student based in Lyon, France. I'm passionate about programming and computers.<br />
+          <p>I'm Lucas SaNgkhavongs, I'm 19 years old and a second-year EPITECH student based in Lyon, France. I'm passionate about programming and computers.<br />
           </p>
           <p>I build apps in C and Python</p>
         </div>
