@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import './Project.css';
 import githubImg from './assets/github.png';
 import placeholder from './assets/placeholder.jpg';
@@ -138,7 +139,20 @@ export default function Projects({ lang }: ProjectsProps) {
       <p>{lang === 'fr' ? 'Voici quelques-uns de mes projets réalisés à EPITECH et en dehors.' : 'Here are some of my projects made at EPITECH and beyond.'}</p>
       <div className="projects-grid">
         {projects.map((project, idx) => (
-          <div key={idx} className="project-card">
+          <motion.div
+            key={idx}
+            className="project-card"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{
+              type: "spring",
+              stiffness: 60,
+              damping: 18,
+              mass: 0.7,
+              delay: idx * 0.12
+            }}
+          >
             {project.image && (
               <img src={project.image} alt={typeof project.title === 'string' ? project.title : project.title[lang]} className="project-image" />
             )}
@@ -155,7 +169,7 @@ export default function Projects({ lang }: ProjectsProps) {
                 {lang === 'fr' ? 'Voir le projet' : 'See project'}
               </span>
             )}
-          </div>
+          </motion.div>
         ))}
       </div>
       {selectedProject && (
