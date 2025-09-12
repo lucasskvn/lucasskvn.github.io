@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 
-export default function RadioPlayer() {
+interface RadioPlayerProps { lang: 'fr' | 'en' }
+
+export default function RadioPlayer({ lang }: RadioPlayerProps) {
   const [track, setTrack] = useState<string>("");
 
   useEffect(() => {
@@ -27,13 +29,17 @@ export default function RadioPlayer() {
 
   return (
     <div style={{ padding: "2rem", color: "#fff", textAlign: "center" }}>
-      <h1>Webradio Player</h1>
+      <h1>{lang === 'fr' ? 'Lecteur Webradio' : 'Webradio Player'}</h1>
       <div style={{ marginBottom: 16, fontWeight: "bold" }}>
-        {track ? `En cours : ${track}` : "Titre inconnu"}
+        {track
+          ? (lang === 'fr' ? `En cours : ${track}` : `Now playing: ${track}`)
+          : (lang === 'fr' ? 'Titre inconnu' : 'Unknown title')}
       </div>
       <audio controls style={{ width: "100%", maxWidth: 400 }}>
         <source src="https://webradio.lucasskvn.duckdns.org/stream.mp3" type="audio/mpeg" />
-        Votre navigateur ne supporte pas l'élément audio.
+        {lang === 'fr'
+          ? "Votre navigateur ne supporte pas l'élément audio."
+          : "Your browser does not support the audio element."}
       </audio>
     </div>
   );

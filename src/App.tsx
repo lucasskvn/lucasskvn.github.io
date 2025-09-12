@@ -1,4 +1,5 @@
 import { Routes, Route, useNavigate } from 'react-router-dom'
+import { useState } from 'react';
 import Profile from './assets/profile.jpg'
 import linkedinLogo from './assets/linkedin.svg'
 import githubLogo from './assets/github.png'
@@ -14,13 +15,13 @@ const status = "EPITECH Lyon Student";
 const linkedin = "https://www.linkedin.com/in/lucas-sangkhavongs/";
 const github = "https://github.com/lucaskvn";
 
-function About() {
+function About({ lang }: { lang: 'fr' | 'en' }) {
   return (
     <div className="Rectangles-container">
       <div className="Rounded-rectangle">
         <img src={Profile} alt="Profile" className="Profile-rectangle" />
         <a href="/src/assets/CV_LucasSangkhavongs.pdf" download className="CV-download-btn">
-          Download CV
+          {lang === 'fr' ? 'Télécharger le CV' : 'Download CV'}
           <span className="DownloadArrow">
             <img src={DownloadIcon} alt="Download" width={22} height={22} />
           </span>
@@ -29,9 +30,13 @@ function About() {
         <div className="Profile-content">
           <h2>Lucas Sangkhavongs</h2>
           <div className="Profile-subtitle">{status}</div>
-          <p>I'm Lucas Sangkhavongs, I'm 19 years old and a second-year EPITECH student based in Lyon, France. I'm passionate about programming and computers.<br />
+          <p>
+            {lang === 'fr'
+              ? "Je m'appelle Lucas Sangkhavongs, j'ai 19 ans et je suis étudiant en deuxième année à EPITECH Lyon. Passionné d'informatique et de programmation."
+              : "I'm Lucas Sangkhavongs, I'm 19 years old and a second-year EPITECH student based in Lyon, France. I'm passionate about programming and computers."}
+            <br />
           </p>
-          <p>I build apps in C and Python</p>
+          <p>{lang === 'fr' ? "Je développe des applications en C et Python" : "I build apps in C and Python"}</p>
         </div>
       </div>
     </div>
@@ -40,15 +45,30 @@ function About() {
 
 function App() {
   const navigate = useNavigate();
+  const [lang, setLang] = useState<'fr' | 'en'>("fr");
+  const t = {
+    fr: {
+      home: "Accueil",
+      projects: "Projets",
+      contact: "Contact",
+      switch: "EN",
+    },
+    en: {
+      home: "Home",
+      projects: "Projects",
+      contact: "Contact",
+      switch: "FR",
+    }
+  };
   return (
     <>
       <nav className="Navbar">
         <div className="Navbar-divider"></div>
         <span className="Navbar-title">lucasskvn</span>
         <div className="Navbar-center">
-          <span className="Navbar-About" onClick={() => navigate('/')}>Home</span>
-          <span className="Navbar-Projects" onClick={() => navigate('/projects')}>Projects</span>
-          <span className="Navbar-Contact" onClick={() => navigate('/contact')}>Contact</span>
+          <span className="Navbar-About" onClick={() => navigate('/')}>{t[lang].home}</span>
+          <span className="Navbar-Projects" onClick={() => navigate('/projects')}>{t[lang].projects}</span>
+          <span className="Navbar-Contact" onClick={() => navigate('/contact')}>{t[lang].contact}</span>
         </div>
         <div className="Navbar-socials">
           <a href={linkedin} target="_blank" rel="noopener noreferrer">
@@ -60,13 +80,20 @@ function App() {
           <a href={`mailto:${email}`}>
             <img src={mailLogo} alt="Email" className="SocialLogo" />
           </a>
+          <button
+            style={{ marginLeft: 10, background: '#222', color: '#fff', border: '1px solid #444', borderRadius: 6, padding: '0.3rem 0.7rem', cursor: 'pointer', fontWeight: 'bold' }}
+            onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
+            aria-label="Switch language"
+          >
+            {t[lang].switch}
+          </button>
         </div>
       </nav>
       <Routes>
-        <Route path="/" element={<About />} />
-        <Route path="/projects" element={<Projects />} />
-        <Route path="/contact" element={<Contact />} />
-        <Route path="/radio" element={<RadioPlayer />} />
+        <Route path="/" element={<About lang={lang} />} />
+        <Route path="/projects" element={<Projects lang={lang} />} />
+        <Route path="/contact" element={<Contact lang={lang} />} />
+        <Route path="/radio" element={<RadioPlayer lang={lang} />} />
       </Routes>
     </>
   )
