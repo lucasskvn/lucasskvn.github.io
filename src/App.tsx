@@ -1,72 +1,49 @@
-import { Routes, Route, useNavigate } from 'react-router-dom'
+import { Routes, Route, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
-import Profile from './assets/profile.jpg'
-import linkedinLogo from './assets/linkedin.svg'
-import githubLogo from './assets/github.png'
-import DownloadIcon from './assets/download.png'
-import mailLogo from './assets/mail.png'
-import Projects from './Projects'
-import Contact from './Contact'
-import RadioPlayer from './RadioPlayer'
-import './App.css'
+import linkedinLogo from './assets/linkedin.svg';
+import githubLogo from './assets/github.png';
+import mailLogo from './assets/mail.png';
+import Projects from './Projects';
+import Contact from './Contact';
+import RadioPlayer from './RadioPlayer';
+import PP from './assets/ppgithub.png';
+import './App.css';
+import About from './About';
+import Home from './Home';
 
 const email = "lucas.sangkhavongs@epitech.eu";
-const status = "EPITECH Lyon Student";
 const linkedin = "https://www.linkedin.com/in/lucas-sangkhavongs/";
 const github = "https://github.com/lucaskvn";
 
-function About({ lang }: { lang: 'fr' | 'en' }) {
-  return (
-    <div className="Rectangles-container">
-      <div className="Rounded-rectangle">
-        <img src={Profile} alt="Profile" className="Profile-rectangle" />
-        <a href="/src/assets/CV_LucasSangkhavongs.pdf" download className="CV-download-btn">
-          {lang === 'fr' ? 'Télécharger le CV' : 'Download CV'}
-          <span className="DownloadArrow">
-            <img src={DownloadIcon} alt="Download" width={22} height={22} />
-          </span>
-        </a>
-        <div className="Profile-vertical-divider"></div>
-        <div className="Profile-content">
-          <h2>Lucas Sangkhavongs</h2>
-          <div className="Profile-subtitle">{status}</div>
-          <p>
-            {lang === 'fr'
-              ? "Je m'appelle Lucas Sangkhavongs, j'ai 19 ans et je suis étudiant en deuxième année à EPITECH Lyon. Passionné d'informatique et de programmation."
-              : "I'm Lucas Sangkhavongs, I'm 19 years old and a second-year EPITECH student based in Lyon, France. I'm passionate about programming and computers."}
-            <br />
-          </p>
-          <p>{lang === 'fr' ? "Je développe des applications en C et Python" : "I build apps in C and Python"}</p>
-        </div>
-      </div>
-    </div>
-  );
-}
 
 function App() {
   const navigate = useNavigate();
-  const [lang, setLang] = useState<'fr' | 'en'>("fr");
+  const [lang, setLang] = useState<'fr' | 'en'>('en');
   const t = {
     fr: {
       home: "Accueil",
+      about: "À propos",
       projects: "Projets",
       contact: "Contact",
-      switch: "EN",
+      switch: "FR",
     },
     en: {
       home: "Home",
+      about: "About",
       projects: "Projects",
       contact: "Contact",
-      switch: "FR",
-    }
+      switch: "EN",
+    },
   };
   return (
     <>
       <nav className="Navbar">
+        <img src={PP} alt="PP GitHub" className="Navbar-ppgithub" style={{ height: 40, width: 40, borderRadius: '50%', marginRight: 0, marginLeft: 29 }} />
         <div className="Navbar-divider"></div>
         <span className="Navbar-title">lucasskvn</span>
         <div className="Navbar-center">
-          <span className="Navbar-About" onClick={() => navigate('/')}>{t[lang].home}</span>
+          <span className="Navbar-Home" onClick={() => navigate('/')}>{t[lang].home}</span>
+          <span className="Navbar-About" onClick={() => navigate('/about')}>{t[lang].about}</span>
           <span className="Navbar-Projects" onClick={() => navigate('/projects')}>{t[lang].projects}</span>
           <span className="Navbar-Contact" onClick={() => navigate('/contact')}>{t[lang].contact}</span>
         </div>
@@ -90,13 +67,14 @@ function App() {
         </div>
       </nav>
       <Routes>
-        <Route path="/" element={<About lang={lang} />} />
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About lang={lang} />} />
         <Route path="/projects" element={<Projects lang={lang} />} />
         <Route path="/contact" element={<Contact lang={lang} />} />
         <Route path="/radio" element={<RadioPlayer lang={lang} />} />
       </Routes>
     </>
-  )
+  );
 }
 
 export default App

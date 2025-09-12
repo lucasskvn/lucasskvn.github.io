@@ -1,3 +1,18 @@
+/* Animation d'apparition pour la page d'accueil */
+.fade-in-home {
+  animation: fadeInUp 1.1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 #root {
   max-width: 1280px;
   margin: 0 auto;
@@ -68,7 +83,7 @@
   margin: 0 auto;
 }
 
-.Navbar-About, .Navbar-Projects, .Navbar-Contact {
+.Navbar-Home, .Navbar-About, .Navbar-Projects, .Navbar-Contact {
   color: #8f8e8e;
   font-size: 1.2rem;
   font-weight: bold;
@@ -76,7 +91,7 @@
   transition: color 0.2s;
 }
 
-.Navbar-About:hover, .Navbar-Projects:hover, .Navbar-Contact:hover {
+.Navbar-Home:hover, .Navbar-About:hover, .Navbar-Projects:hover, .Navbar-Contact:hover {
   color: #fff;
 }
 

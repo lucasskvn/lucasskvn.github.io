@@ -31,8 +31,8 @@ const projects: Project[] = [
   {
     title: { fr: "Webradio", en: "Webradio" },
     description: {
-      fr: "Écoutez la webradio en direct (Liquidsoap, Icecast).",
-      en: "Listen to the webradio live (Liquidsoap, Icecast)."
+      fr: "Écoutez la webradio en direct (Liquidsoap, Icecast). Host sur ce site",
+      en: "Listen to the webradio live (Liquidsoap, Icecast). Hosted on this site"
     },
     details: {
       fr: "Player audio en ligne développé avec React, utilisant Liquidsoap et Icecast pour la diffusion. Permet d'écouter la radio en direct et d'afficher le titre du morceau en cours.",
