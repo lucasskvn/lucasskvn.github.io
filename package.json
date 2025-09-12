@@ -2,7 +2,7 @@
   "name": "mon-portfolio",
   "private": true,
   "version": "0.0.0",
-  "homepage": "git@github.com:lucasskvn/lucasskvn.github.io.git",
+  "homepage": "https://lucasskvn.github.io",
   "type": "module",
   "scripts": {
     "predeploy": "npm run build",
