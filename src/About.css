@@ -373,4 +373,42 @@
     font-size: 1rem;
     padding: 0 0.2rem;
   }
+  .Rectangles-container {
+    padding: 0 8px;
+  }
+  .Rounded-rectangle {
+    flex-direction: column;
+    align-items: center;
+    padding: 16px 8px;
+    width: 100%;
+    min-width: unset;
+    box-sizing: border-box;
+  }
+  .Profile-rectangle {
+    width: 120px;
+    height: 120px;
+    margin: 0 auto 12px auto;
+    display: block;
+  }
+  .Profile-vertical-divider {
+    display: none;
+  }
+  .Profile-content {
+    width: 100%;
+    text-align: center;
+    padding: 0;
+  }
+  .Profile-title {
+    font-size: 1.4rem;
+  }
+  .Profile-subtitle {
+    font-size: 1rem;
+    margin-bottom: 8px;
+  }
+  .CV-download-btn {
+    width: 100%;
+    justify-content: center;
+    font-size: 1rem;
+    margin-bottom: 12px;
+  }
 }

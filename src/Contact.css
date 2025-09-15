@@ -4,3 +4,14 @@
   margin-bottom: 0.5rem;
   color: #a259ff;
 }
+
+@media (max-width: 600px) {
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  body, .Contact-container {
+    padding: 0 0.5rem !important;
+    text-align: center;
+  }
+}
