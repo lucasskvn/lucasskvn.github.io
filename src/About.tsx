@@ -8,7 +8,7 @@ const About = ({ lang }: { lang: 'fr' | 'en' }) => (
   <div className="Rectangles-container fade-in-home">
     <div className="Rounded-rectangle">
       <img src={Profile} alt="Profile" className="Profile-rectangle" />
-      <a href="/src/assets/CV_LucasSangkhavongs.pdf" download className="CV-download-btn">
+      <a href="/CV_LucasSangkhavongs.pdf" download className="CV-download-btn">
         {lang === 'fr' ? 'Télécharger le CV' : 'Download CV'}
         <span className="DownloadArrow">
           <img src={DownloadIcon} alt="Download" width={22} height={22} />
