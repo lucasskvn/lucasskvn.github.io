@@ -11,7 +11,10 @@
     margin-bottom: 0.5rem;
   }
   body, .Contact-container {
-    padding: 0 0.5rem !important;
+    padding: 0 1rem !important;
     text-align: center;
+    max-width: 100%;
+    box-sizing: border-box;
+    overflow-x: hidden;
   }
 }

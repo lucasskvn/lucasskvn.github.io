@@ -27,6 +27,15 @@ body {
   display: block;
   min-width: 320px;
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+html {
+  overflow-x: hidden;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 @media (prefers-color-scheme: light) {

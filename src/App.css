@@ -17,7 +17,7 @@
 }
 
 .Navbar {
-	width: 100vw;
+	width: 100%;
 	background: #111;
 	color: #fff;
 	padding: 1rem 0;
@@ -28,6 +28,7 @@
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
+	box-sizing: border-box;
 }
 
 .Navbar-title {
@@ -97,13 +98,35 @@
 }
 
 .Navbar-divider {
-	width: 100vw;
+	width: 100%;
 	height: 1px;
 	background: #272525;
 	position: fixed;
 	top: 67px;
 	left: 0;
 	z-index: 99;
+}
+
+/* Media queries pour empêcher le scroll horizontal sur mobile */
+@media (max-width: 600px) {
+  body, html {
+    overflow-x: hidden !important;
+    max-width: 100vw;
+  }
+  
+  .Navbar {
+    max-width: 100vw;
+    padding: 0.5rem 0.5rem;
+  }
+  
+  .Navbar-title {
+    margin-left: 1rem;
+  }
+  
+  .Navbar-socials {
+    margin-right: 1rem;
+    gap: 10px;
+  }
 }
 
 @media (max-width: 900px) {
@@ -116,7 +139,8 @@
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
+    box-sizing: border-box;
   }
   .Navbar-title {
     margin: 0 auto;
@@ -145,7 +169,7 @@
   }
   .Navbar-center {
     position: static;
-    width: 100vw;
+    width: 100%;
     left: 0;
     right: 0;
     background: #111;
@@ -156,6 +180,7 @@
     z-index: 150;
     display: flex;
     margin: 0;
+    box-sizing: border-box;
   }
   .Navbar-center span, .Navbar-center a {
     width: 100vw;

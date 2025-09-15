@@ -129,17 +129,19 @@
 @media (max-width: 900px) {
   .Rectangles-container {
     margin-top: 40px;
+    padding: 0 1rem;
   }
 
   .Rounded-rectangle {
-    width: 98vw;
-    max-width: 100vw;
+    width: 100%;
+    max-width: none;
     min-width: 0;
     height: auto;
     min-height: 340px;
     flex-direction: column;
     padding: 1.2rem 0.5rem 1.2rem 0.5rem;
     font-size: 1.08rem;
+    box-sizing: border-box;
   }
 
   .Profile-rectangle {
@@ -183,20 +185,22 @@
 @media (max-width: 600px) {
   .Rectangles-container {
     margin-top: 20px;
+    padding: 0 1.5rem;
   }
 
   .Rounded-rectangle {
-    width: 100vw;
+    width: 100%;
     min-width: 0;
     padding: 0.7rem 0.2rem 1rem 0.2rem;
     font-size: 1rem;
+    box-sizing: border-box;
   }
   .Profile-content {
     font-size: 1rem;
     padding: 0 0.2rem;
   }
   .Rectangles-container {
-    padding: 0 8px;
+    padding: 0 1rem;
   }
   .Rounded-rectangle {
     flex-direction: column;
@@ -205,6 +209,7 @@
     width: 100%;
     min-width: unset;
     box-sizing: border-box;
+    margin: 0;
   }
   .Profile-rectangle {
     width: 120px;
