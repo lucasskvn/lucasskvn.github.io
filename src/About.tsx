@@ -1,6 +1,6 @@
 import Profile from './assets/profile.jpg';
 import DownloadIcon from './assets/download.png';
-import './App.css';
+import './About.css';
 
 const status = "EPITECH Lyon Student";
 
@@ -16,7 +16,7 @@ const About = ({ lang }: { lang: 'fr' | 'en' }) => (
       </a>
       <div className="Profile-vertical-divider"></div>
       <div className="Profile-content">
-        <h2>Lucas Sangkhavongs</h2>
+        <h2 className='Profile-title'>Lucas Sangkhavongs</h2>
         <div className="Profile-subtitle">{status}</div>
         <p>
           {lang === 'fr'
@@ -24,7 +24,7 @@ const About = ({ lang }: { lang: 'fr' | 'en' }) => (
             : "I'm Lucas Sangkhavongs, I'm 19 years old and a second-year EPITECH student based in Lyon, France. I'm passionate about programming and computers."}
           <br />
         </p>
-        <p>{lang === 'fr' ? "Je développe des applications en C et Python" : "I build apps in C and Python"}</p>
+        <p>{lang === 'fr' ? "Je développe des applications en C et Python" : "I build apps in C and Python. bla bla bla bla placeholder bla bla bla "}</p>
       </div>
     </div>
   </div>

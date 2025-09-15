@@ -1,0 +1,34 @@
+.fade-in-home {
+  animation: fadeInUp 1.1s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.Home-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 60vh;
+  padding-top: 120px;
+}
+
+.Home-container h1 {
+  font-size: 2.5rem;
+  color: #a259ff;
+  margin-bottom: 1rem;
+}
+
+.Home-container p {
+  font-size: 1.2rem;
+  color: #fff;
+}

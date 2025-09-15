@@ -35,8 +35,8 @@ const projects: Project[] = [
       en: "Listen to the webradio live (Liquidsoap, Icecast). Hosted on this site"
     },
     details: {
-      fr: "Player audio en ligne développé avec React, utilisant Liquidsoap et Icecast pour la diffusion. Permet d'écouter la radio en direct et d'afficher le titre du morceau en cours.",
-      en: "Online audio player built with React, using Liquidsoap and Icecast for streaming. Lets you listen live and shows the current track title."
+      fr: "Player audio en ligne, utilisant Liquidsoap et Icecast pour la diffusion. Permet d'écouter la radio en direct et d'afficher le titre du morceau en cours. J'écoute souvent (toujours) des chansons de Loona.",
+      en: "Online audio player, using Liquidsoap and Icecast for streaming. Lets you listen live and shows the current track title. I casually (always) blast some Loona songs."
     },
     link: "/radio",
     image: placeholder,
@@ -135,22 +135,23 @@ export default function Projects({ lang }: ProjectsProps) {
 
   return (
     <div style={{ padding: "2rem", color: "#fff" }}>
-      <h1>{lang === 'fr' ? 'Projets' : 'Projects'}</h1>
-      <p>{lang === 'fr' ? 'Voici quelques-uns de mes projets réalisés à EPITECH et en dehors.' : 'Here are some of my projects made at EPITECH and beyond.'}</p>
+      <h1 className="title">{lang === 'fr' ? 'Projets' : 'Projects'}</h1>
+      <p className="subtitle">{lang === 'fr' ? 'Voici quelques-uns de mes projets réalisés à EPITECH et en dehors.' : 'Here are some of my projects made at EPITECH and beyond.'}</p>
       <div className="projects-grid">
         {projects.map((project, idx) => (
           <motion.div
             key={idx}
             className="project-card"
-            initial={{ opacity: 0, y: 60 }}
-            whileInView={{ opacity: 1, y: 0 }}
+            initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }}
+            whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
             viewport={{ once: true, amount: 0.2 }}
             transition={{
               type: "spring",
               stiffness: 60,
               damping: 18,
               mass: 0.7,
-              delay: idx * 0.12
+              delay: idx * 0.12,
+              filter: { duration: 0.5, ease: [0.4, 0, 0.2, 1] }
             }}
           >
             {project.image && (
@@ -160,8 +161,8 @@ export default function Projects({ lang }: ProjectsProps) {
             <p>{typeof project.description === 'string' ? project.description : project.description[lang]}</p>
             {project.link && (
               <span
+                className="project-see-btn"
                 onClick={() => setSelectedProject(project)}
-                style={{ color: "#61dafb", display: "block", marginTop: 8, cursor: "pointer", textDecoration: "underline" }}
                 tabIndex={0}
                 role="button"
                 onKeyPress={e => { if (e.key === 'Enter' || e.key === ' ') setSelectedProject(project); }}

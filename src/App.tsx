@@ -1,4 +1,4 @@
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import linkedinLogo from './assets/linkedin.svg';
 import githubLogo from './assets/github.png';
@@ -7,6 +7,7 @@ import Projects from './Projects';
 import Contact from './Contact';
 import RadioPlayer from './RadioPlayer';
 import PP from './assets/ppgithub.png';
+import './About.css';
 import './App.css';
 import About from './About';
 import Home from './Home';
@@ -18,6 +19,7 @@ const github = "https://github.com/lucaskvn";
 
 function App() {
   const navigate = useNavigate();
+  const location = useLocation();
   const [lang, setLang] = useState<'fr' | 'en'>('en');
   const t = {
     fr: {
@@ -42,10 +44,30 @@ function App() {
         <div className="Navbar-divider"></div>
         <span className="Navbar-title">lucasskvn</span>
         <div className="Navbar-center">
-          <span className="Navbar-Home" onClick={() => navigate('/')}>{t[lang].home}</span>
-          <span className="Navbar-About" onClick={() => navigate('/about')}>{t[lang].about}</span>
-          <span className="Navbar-Projects" onClick={() => navigate('/projects')}>{t[lang].projects}</span>
-          <span className="Navbar-Contact" onClick={() => navigate('/contact')}>{t[lang].contact}</span>
+          <span
+            className={`Navbar-Home${location.pathname === '/' ? ' active' : ''}`}
+            onClick={() => navigate('/')}
+          >
+            {t[lang].home}
+          </span>
+          <span
+            className={`Navbar-About${location.pathname === '/about' ? ' active' : ''}`}
+            onClick={() => navigate('/about')}
+          >
+            {t[lang].about}
+          </span>
+          <span
+            className={`Navbar-Projects${location.pathname === '/projects' ? ' active' : ''}`}
+            onClick={() => navigate('/projects')}
+          >
+            {t[lang].projects}
+          </span>
+          <span
+            className={`Navbar-Contact${location.pathname === '/contact' ? ' active' : ''}`}
+            onClick={() => navigate('/contact')}
+          >
+            {t[lang].contact}
+          </span>
         </div>
         <div className="Navbar-socials">
           <a href={linkedin} target="_blank" rel="noopener noreferrer">
@@ -67,7 +89,7 @@ function App() {
         </div>
       </nav>
       <Routes>
-        <Route path="/" element={<Home />} />
+  <Route path="/" element={<Home lang={lang} />} />
         <Route path="/about" element={<About lang={lang} />} />
         <Route path="/projects" element={<Projects lang={lang} />} />
         <Route path="/contact" element={<Contact lang={lang} />} />
