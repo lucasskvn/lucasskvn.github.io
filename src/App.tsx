@@ -21,6 +21,7 @@ function App() {
   const navigate = useNavigate();
   const location = useLocation();
   const [lang, setLang] = useState<'fr' | 'en'>('en');
+  const [navOpen, setNavOpen] = useState(false); // Ajout état menu mobile
   const t = {
     fr: {
       home: "Accueil",
@@ -43,28 +44,38 @@ function App() {
         <img src={PP} alt="PP GitHub" className="Navbar-ppgithub" style={{ height: 40, width: 40, borderRadius: '50%', marginRight: 0, marginLeft: 29 }} />
         <div className="Navbar-divider"></div>
         <span className="Navbar-title">lucasskvn</span>
-        <div className="Navbar-center">
+        {/* Hamburger menu visible sur mobile */}
+        <button
+          className="Navbar-burger"
+          aria-label="Ouvrir le menu"
+          onClick={() => setNavOpen(!navOpen)}
+        >
+          <span />
+          <span />
+          <span />
+        </button>
+        <div className={`Navbar-center${navOpen ? ' open' : ''}`}>
           <span
             className={`Navbar-Home${location.pathname === '/' ? ' active' : ''}`}
-            onClick={() => navigate('/')}
+            onClick={() => { navigate('/'); setNavOpen(false); }}
           >
             {t[lang].home}
           </span>
           <span
             className={`Navbar-About${location.pathname === '/about' ? ' active' : ''}`}
-            onClick={() => navigate('/about')}
+            onClick={() => { navigate('/about'); setNavOpen(false); }}
           >
             {t[lang].about}
           </span>
           <span
             className={`Navbar-Projects${location.pathname === '/projects' ? ' active' : ''}`}
-            onClick={() => navigate('/projects')}
+            onClick={() => { navigate('/projects'); setNavOpen(false); }}
           >
             {t[lang].projects}
           </span>
           <span
             className={`Navbar-Contact${location.pathname === '/contact' ? ' active' : ''}`}
-            onClick={() => navigate('/contact')}
+            onClick={() => { navigate('/contact'); setNavOpen(false); }}
           >
             {t[lang].contact}
           </span>
@@ -89,7 +100,7 @@ function App() {
         </div>
       </nav>
       <Routes>
-  <Route path="/" element={<Home lang={lang} />} />
+        <Route path="/" element={<Home lang={lang} />} />
         <Route path="/about" element={<About lang={lang} />} />
         <Route path="/projects" element={<Projects lang={lang} />} />
         <Route path="/contact" element={<Contact lang={lang} />} />
