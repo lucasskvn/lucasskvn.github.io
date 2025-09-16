@@ -14,7 +14,7 @@ import Home from './Home';
 
 const email = "lucas.sangkhavongs@epitech.eu";
 const linkedin = "https://www.linkedin.com/in/lucas-sangkhavongs/";
-const github = "https://github.com/lucaskvn";
+const github = "https://github.com/lucasskvn";
 
 
 function App() {
