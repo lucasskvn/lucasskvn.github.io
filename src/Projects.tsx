@@ -11,6 +11,7 @@ type Project = {
   link?: string;
   image?: string;
   detailImage?: string;
+  isPrivate?: boolean;
 };
 
 const projects: Project[] = [
@@ -126,6 +127,62 @@ const projects: Project[] = [
     image: githubImg,
     detailImage: placeholder,
   },
+  {
+    title: { fr: "my_world", en: "my_world" },
+    description: {
+      fr: "Projet de création d'un éditeur de carte 3D vue isométrique en C avec CSFML.",
+      en: "3D isometric map editor project in C with CSFML."
+    },
+    details: {
+      fr: "Ce projet consiste à créer un éditeur de carte 3D avec une vue isométrique, en utilisant le langage C et la bibliothèque CSFML.",
+      en: "This project is about creating a 3D map editor with an isometric view, using the C language and the CSFML library."
+    },
+    image: githubImg,
+    detailImage: placeholder,
+    isPrivate: true,
+  },
+  {
+    title: { fr: "Cuddle", en: "Cuddle" },
+    description: {
+      fr: "Projet de recréation de la librairie Python Panda en C.",
+      en: "Recreation of the Python Panda library in C."
+    },
+    details: {
+      fr: "Ce projet consiste à réimplémenter la librairie Python Panda en C, en se concentrant sur les fonctionnalités de manipulation de données.",
+      en: "This project is about reimplementing the Python Panda library in C, focusing on data manipulation features."
+    },
+    image: githubImg,
+    detailImage: placeholder,
+    isPrivate: true,
+  },
+  {
+    title: { fr: "my_world", en: "my_world" },
+    description: {
+      fr: "Projet de création d'un éditeur de carte 3D vue isométrique en C avec CSFML.",
+      en: "3D isometric map editor project in C with CSFML."
+    },
+    details: {
+      fr: "Ce projet consiste à créer un éditeur de carte 3D avec une vue isométrique, en utilisant le langage C et la bibliothèque CSFML.",
+      en: "This project is about creating a 3D map editor with an isometric view, using the C language and the CSFML library."
+    },
+    image: githubImg,
+    detailImage: placeholder,
+    isPrivate: true,
+  },
+  {
+    title: { fr: "my_radar", en: "my_radar" },
+    description: {
+      fr: "Projet de création d'un simulateur de trajectoire et de collision d'avions en C avec CSFML.",
+      en: "Airplane trajectory and collision simulator project in C with CSFML"
+    },
+    details: {
+      fr: "Ce projet consiste à créer un simulateur de trajectoire et collision d'avions en C avec CSFML.",
+      en: "This project is about creating an airplane trajectory and collision simulator in C with CSFML."
+    },
+    image: githubImg,
+    detailImage: placeholder,
+    isPrivate: true,
+  },
 ];
 
 interface ProjectsProps { lang: 'fr' | 'en' }
@@ -159,17 +216,15 @@ export default function Projects({ lang }: ProjectsProps) {
             )}
             <h2 className="project-title">{typeof project.title === 'string' ? project.title : project.title[lang]}</h2>
             <p>{typeof project.description === 'string' ? project.description : project.description[lang]}</p>
-            {project.link && (
-              <span
-                className="project-see-btn"
-                onClick={() => setSelectedProject(project)}
-                tabIndex={0}
-                role="button"
-                onKeyPress={e => { if (e.key === 'Enter' || e.key === ' ') setSelectedProject(project); }}
-              >
-                {lang === 'fr' ? 'Voir le projet' : 'See project'}
-              </span>
-            )}
+            <span
+              className="project-see-btn"
+              onClick={() => setSelectedProject(project)}
+              tabIndex={0}
+              role="button"
+              onKeyPress={e => { if (e.key === 'Enter' || e.key === ' ') setSelectedProject(project); }}
+            >
+              {lang === 'fr' ? 'Voir le projet' : 'See project'}
+            </span>
           </motion.div>
         ))}
       </div>
@@ -181,7 +236,11 @@ export default function Projects({ lang }: ProjectsProps) {
             )}
             <h2>{typeof selectedProject.title === 'string' ? selectedProject.title : selectedProject.title[lang]}</h2>
             <p style={{ marginBottom: 16 }}>{typeof selectedProject.details === 'string' ? selectedProject.details : (selectedProject.details ? selectedProject.details[lang] : (typeof selectedProject.description === 'string' ? selectedProject.description : selectedProject.description[lang]))}</p>
-            {selectedProject.link && (
+            {selectedProject.isPrivate ? (
+              <span style={{ color: "#888", display: "block", marginBottom: 16, fontStyle: "italic" }}>
+                {lang === 'fr' ? 'Projet Privé' : 'Private Project'}
+              </span>
+            ) : selectedProject.link && (
               <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" style={{ color: "#61dafb", display: "block", marginBottom: 16 }}>
                 {lang === 'fr' ? 'Lien du projet' : 'Project link'}
               </a>
