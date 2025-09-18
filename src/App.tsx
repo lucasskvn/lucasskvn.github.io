@@ -16,7 +16,6 @@ const email = "lucas.sangkhavongs@epitech.eu";
 const linkedin = "https://www.linkedin.com/in/lucas-sangkhavongs/";
 const github = "https://github.com/lucasskvn";
 
-
 function App() {
   const navigate = useNavigate();
   const location = useLocation();
@@ -41,7 +40,7 @@ function App() {
   return (
     <>
       <nav className="Navbar">
-        <img src={PP} alt="PP GitHub" className="Navbar-ppgithub" style={{ height: 40, width: 40, borderRadius: '50%', marginRight: 0, marginLeft: 29 }} />
+        <img src={PP} alt="PP GitHub" className="Navbar-ppgithub" />
         <div className="Navbar-divider"></div>
         <span className="Navbar-title">lucasskvn</span>
         {/* Hamburger menu visible sur mobile */}
@@ -91,7 +90,7 @@ function App() {
               <img src={mailLogo} alt="Email" className="SocialLogo" />
             </a>
             <button
-              style={{ marginLeft: 10, background: '#222', color: '#fff', border: '1px solid #444', borderRadius: 6, padding: '0.3rem 0.7rem', cursor: 'pointer', fontWeight: 'bold' }}
+              className="language-switch-btn"
               onClick={e => { e.stopPropagation(); setLang(lang === 'fr' ? 'en' : 'fr'); }}
               aria-label="Switch language"
             >
@@ -111,7 +110,7 @@ function App() {
             <img src={mailLogo} alt="Email" className="SocialLogo" />
           </a>
           <button
-            style={{ marginLeft: 10, background: '#222', color: '#fff', border: '1px solid #444', borderRadius: 6, padding: '0.3rem 0.7rem', cursor: 'pointer', fontWeight: 'bold' }}
+            className="language-switch-btn"
             onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
             aria-label="Switch language"
           >

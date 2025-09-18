@@ -241,7 +241,7 @@ export default function Projects({ lang }: ProjectsProps) {
                 {lang === 'fr' ? 'Projet Privé' : 'Private Project'}
               </span>
             ) : selectedProject.link && (
-              <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" style={{ color: "#61dafb", display: "block", marginBottom: 16 }}>
+              <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" style={{ color: "#a259ff", display: "block", marginBottom: 16 }}>
                 {lang === 'fr' ? 'Lien du projet' : 'Project link'}
               </a>
             )}
