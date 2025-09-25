@@ -17,6 +17,7 @@ import panda from './assets/panda.png';
 import myworldscreen from './assets/myworldscreen.png';
 import c_logo from './assets/C_Logo.png';
 import csfml from './assets/csfml.png';
+import portfolio from './assets/portfoliomainpage.png';
 
 type Project = {
   title: string | { fr: string; en: string };
@@ -41,7 +42,7 @@ const projects: Project[] = [
     },
     link: "https://github.com/lucasskvn/lucasskvn.github.io/",
     image: githubImg,
-    detailImage: githubImg,
+    detailImage: portfolio,
   },
   {
     title: { fr: "Webradio", en: "Webradio" },
