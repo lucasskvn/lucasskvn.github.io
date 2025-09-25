@@ -142,24 +142,20 @@
     color: #b0b0b0;
 }
 
-/* Projects container */
 .projects-container {
   padding: 2rem;
   color: #fff;
 }
 
-/* Project detail image in modal */
 .project-detail-image {
   max-width: 60%;
   margin-bottom: 16px;
 }
 
-/* Project detail description */
 .project-detail-description {
   margin-bottom: 16px;
 }
 
-/* Private project label */
 .private-project-label {
   color: #888;
   display: block;
@@ -167,7 +163,6 @@
   font-style: italic;
 }
 
-/* Project link */
 .project-link {
   color: #a259ff;
   display: block;
