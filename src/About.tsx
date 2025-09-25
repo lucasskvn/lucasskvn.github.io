@@ -24,7 +24,6 @@ const About = ({ lang }: { lang: 'fr' | 'en' }) => (
             : "I'm Lucas Sangkhavongs, I'm 19 years old and a second-year EPITECH student based in Lyon, France. I'm passionate about programming and computers."}
           <br />
         </p>
-        <p>{lang === 'fr' ? "Je développe des applications en C et Python" : "I build apps in C and Python. bla bla bla bla placeholder bla bla bla "}</p>
       </div>
     </div>
   </div>

@@ -1,5 +1,5 @@
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import linkedinLogo from './assets/linkedin.svg';
 import githubLogo from './assets/github.png';
 import mailLogo from './assets/mail.png';
@@ -21,6 +21,11 @@ function App() {
   const location = useLocation();
   const [lang, setLang] = useState<'fr' | 'en'>('en');
   const [navOpen, setNavOpen] = useState(false);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  }, [location.pathname]);
+
   const t = {
     fr: {
       home: "Accueil",
@@ -43,7 +48,6 @@ function App() {
         <img src={PP} alt="PP GitHub" className="Navbar-ppgithub" />
         <div className="Navbar-divider"></div>
         <span className="Navbar-title">lucasskvn</span>
-        {/* Hamburger menu visible sur mobile */}
         <button
           className="Navbar-burger"
           aria-label="Ouvrir le menu"
@@ -78,7 +82,6 @@ function App() {
           >
             {t[lang].contact}
           </span>
-          {/* Réseaux sociaux et langue dans le menu hamburger (mobile) */}
           <div className="Navbar-socials mobile">
             <a href={linkedin} target="_blank" rel="noopener noreferrer">
               <img src={linkedinLogo} alt="LinkedIn" className="SocialLogo" />
@@ -98,7 +101,6 @@ function App() {
             </button>
           </div>
         </div>
-        {/* Réseaux sociaux et langue à droite sur desktop uniquement */}
         <div className="Navbar-socials desktop">
           <a href={linkedin} target="_blank" rel="noopener noreferrer">
             <img src={linkedinLogo} alt="LinkedIn" className="SocialLogo" />

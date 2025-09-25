@@ -2,7 +2,21 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import './Project.css';
 import githubImg from './assets/github.png';
-import placeholder from './assets/placeholder.jpg';
+import wolf3dscreen from './assets/wolf3dscreen.png';
+import wolf3d from './assets/wolf3d.png';
+import icecast from './assets/icecast_logo.svg';
+import webradioscreen from './assets/webradioscreen.png';
+import nixos from './assets/nixos.png';
+import nvimscreen from './assets/nvimscreen.png';
+import nvim from './assets/nvimlogo.png';
+import nvimcstyle from './assets/nvimepitechcstyle.png';
+import webpage from './assets/webpage.png';
+import minishellscreen from './assets/minishellscreen.png';
+import minishell from './assets/minishell.png';
+import panda from './assets/panda.png';
+import myworldscreen from './assets/myworldscreen.png';
+import c_logo from './assets/C_Logo.png';
+import csfml from './assets/csfml.png';
 
 type Project = {
   title: string | { fr: string; en: string };
@@ -40,8 +54,8 @@ const projects: Project[] = [
       en: "Online audio player, using Liquidsoap and Icecast for streaming. Lets you listen live and shows the current track title. I casually (always) blast some Loona songs."
     },
     link: "/radio",
-    image: placeholder,
-    detailImage: placeholder,
+    image: icecast,
+    detailImage: webradioscreen,
   },
   {
     title: { fr: "Dotfiles", en: "Dotfiles" },
@@ -54,8 +68,8 @@ const projects: Project[] = [
       en: "This repo contains all my personal configs for various dev tools, making my environment portable."
     },
     link: "https://github.com/lucasskvn/NixOS-config",
-    image: githubImg,
-    detailImage: placeholder,
+    image: nixos,
+    detailImage: nvimscreen,
   },
   {
     title: { fr: "Webpage", en: "Webpage" },
@@ -68,8 +82,8 @@ const projects: Project[] = [
       en: ":^)"
     },
     link: "https://lucasskvn.fr/",
-    image: githubImg,
-    detailImage: placeholder,
+    image: webpage,
+    detailImage: webpage,
   },
   {
     title: { fr: "EpitechCoding-style-Quickfixlist", en: "EpitechCoding-style-Quickfixlist" },
@@ -82,8 +96,8 @@ const projects: Project[] = [
       en: "This plugin boosts productivity by showing coding-style errors directly in Neovim's quickfixlist."
     },
     link: "https://github.com/lucasskvn/EpitechCoding-style-Quickfixlist",
-    image: githubImg,
-    detailImage: placeholder,
+    image: nvim,
+    detailImage: nvimcstyle,
   },
   {
     title: { fr: "Wolf3D", en: "Wolf3D" },
@@ -96,8 +110,8 @@ const projects: Project[] = [
       en: "Wolf3D is a game inspired by the famous Wolfenstein 3D, coded in C with CSFML for graphics."
     },
     link: "https://github.com/lucasskvn/Wolf3D",
-    image: githubImg,
-    detailImage: placeholder,
+    image: wolf3d,
+    detailImage: wolf3dscreen,
   },
   {
     title: { fr: "Minishell", en: "Minishell" },
@@ -110,8 +124,8 @@ const projects: Project[] = [
       en: "Minishell is a simplified Unix shell implementation, allowing command and process management."
     },
     link: "https://github.com/lucasskvn/Minishell",
-    image: githubImg,
-    detailImage: placeholder,
+    image: minishell,
+    detailImage: minishellscreen,
   },
   {
     title: { fr: "my_printf", en: "my_printf" },
@@ -124,8 +138,8 @@ const projects: Project[] = [
       en: "This project is about reimplementing the C printf function, handling various formats and options."
     },
     link: "https://github.com/lucasskvn/my_printf",
-    image: githubImg,
-    detailImage: placeholder,
+    image: c_logo,
+    detailImage: githubImg,
   },
   {
     title: { fr: "my_world", en: "my_world" },
@@ -137,8 +151,8 @@ const projects: Project[] = [
       fr: "Ce projet consiste à créer un éditeur de carte 3D avec une vue isométrique, en utilisant le langage C et la bibliothèque CSFML.",
       en: "This project is about creating a 3D map editor with an isometric view, using the C language and the CSFML library."
     },
-    image: githubImg,
-    detailImage: placeholder,
+    image: csfml,
+    detailImage: myworldscreen,
     isPrivate: true,
   },
   {
@@ -151,22 +165,8 @@ const projects: Project[] = [
       fr: "Ce projet consiste à réimplémenter la librairie Python Panda en C, en se concentrant sur les fonctionnalités de manipulation de données.",
       en: "This project is about reimplementing the Python Panda library in C, focusing on data manipulation features."
     },
-    image: githubImg,
-    detailImage: placeholder,
-    isPrivate: true,
-  },
-  {
-    title: { fr: "my_world", en: "my_world" },
-    description: {
-      fr: "Projet de création d'un éditeur de carte 3D vue isométrique en C avec CSFML.",
-      en: "3D isometric map editor project in C with CSFML."
-    },
-    details: {
-      fr: "Ce projet consiste à créer un éditeur de carte 3D avec une vue isométrique, en utilisant le langage C et la bibliothèque CSFML.",
-      en: "This project is about creating a 3D map editor with an isometric view, using the C language and the CSFML library."
-    },
-    image: githubImg,
-    detailImage: placeholder,
+    image: panda,
+    detailImage: githubImg,
     isPrivate: true,
   },
   {
@@ -179,8 +179,8 @@ const projects: Project[] = [
       fr: "Ce projet consiste à créer un simulateur de trajectoire et collision d'avions en C avec CSFML.",
       en: "This project is about creating an airplane trajectory and collision simulator in C with CSFML."
     },
-    image: githubImg,
-    detailImage: placeholder,
+    image: csfml,
+    detailImage: githubImg,
     isPrivate: true,
   },
 ];
