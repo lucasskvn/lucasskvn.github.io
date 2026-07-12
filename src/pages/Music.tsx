@@ -56,28 +56,30 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
         const topData = await topRes.json();
         const rawArtists = topData?.topartists?.artist || [];
 
+        const DEEZER_BASE = 'https://api.deezer.com';
+
         const artists: TopArtist[] = await Promise.all(
           rawArtists.map(async (a: any) => {
-            let img = a.image?.find((i: any) => i.size === 'mega')?.['#text']
-              || a.image?.find((i: any) => i.size === 'extralarge')?.['#text']
-              || a.image?.find((i: any) => i.size === 'large')?.['#text']
-              || '';
+            let img = '';
 
-            // If it's the Last.fm default placeholder, try artist.getinfo
-            if (!img || img.includes('2a96cbd8b46e442fc41c2b86b821562f')) {
-              try {
-                const infoRes = await fetch(
-                  `${LASTFM_BASE}?method=artist.getinfo&artist=${encodeURIComponent(a.name)}&api_key=${LASTFM_API_KEY}&format=json`
-                );
-                const infoData = await infoRes.json();
-                const infoImg = infoData?.artist?.image?.find((i: any) => i.size === 'mega')?.['#text']
-                  || infoData?.artist?.image?.find((i: any) => i.size === 'extralarge')?.['#text']
-                  || infoData?.artist?.image?.find((i: any) => i.size === 'large')?.['#text']
-                  || '';
-                if (infoImg && !infoImg.includes('2a96cbd8b46e442fc41c2b86b821562f')) {
-                  img = infoImg;
-                }
-              } catch {}
+            // Try Deezer for real artist images (free, no API key needed)
+            try {
+              const deezerRes = await fetch(
+                `${DEEZER_BASE}/search/artist?q=${encodeURIComponent(a.name)}&limit=1`
+              );
+              const deezerData = await deezerRes.json();
+              const deezerArtist = deezerData?.data?.[0];
+              if (deezerArtist) {
+                img = deezerArtist.picture_xl || deezerArtist.picture_medium || '';
+              }
+            } catch {}
+
+            // Fallback: Last.fm image if Deezer failed
+            if (!img) {
+              img = a.image?.find((i: any) => i.size === 'mega')?.['#text']
+                || a.image?.find((i: any) => i.size === 'extralarge')?.['#text']
+                || a.image?.find((i: any) => i.size === 'large')?.['#text']
+                || '';
             }
 
             return {
