@@ -12,7 +12,12 @@ import './App.css';
 import About from './About';
 import Home from './Home';
 import Music from './pages/Music';
+import Blog from './pages/Blog';
+import Article from './pages/Article';
 import NotFound from './pages/NotFound';
+import CustomCursor from './components/CustomCursor';
+import ScrollProgress from './components/ScrollProgress';
+import ParticleBackground from './components/ParticleBackground';
 import { useTheme } from './context/ThemeContext';
 
 const email = "lucas.sangkhavongs@epitech.eu";
@@ -36,6 +41,7 @@ function App() {
       about: "À propos",
       projects: "Projets",
       music: "Musique",
+      blog: "Blog",
       contact: "Contact",
       switch: "FR",
     },
@@ -44,6 +50,7 @@ function App() {
       about: "About",
       projects: "Projects",
       music: "Music",
+      blog: "Blog",
       contact: "Contact",
       switch: "EN",
     },
@@ -53,6 +60,9 @@ function App() {
 
   return (
     <>
+      <ParticleBackground />
+      <CustomCursor />
+      <ScrollProgress />
       <nav className="Navbar">
         <img src={PP} alt="PP GitHub" className="Navbar-ppgithub" />
         <div className="Navbar-divider"></div>
@@ -78,6 +88,9 @@ function App() {
           </span>
           <span className={`Navbar-Music${isActive('/music')}`} onClick={() => navigate('/music')}>
             {t[lang].music}
+          </span>
+          <span className={`Navbar-Blog${isActive('/blog') || location.pathname.startsWith('/blog/') ? ' active' : ''}`} onClick={() => navigate('/blog')}>
+            {t[lang].blog}
           </span>
           <span className={`Navbar-Contact${isActive('/contact')}`} onClick={() => navigate('/contact')}>
             {t[lang].contact}
@@ -141,6 +154,8 @@ function App() {
         <Route path="/about" element={<About lang={lang} />} />
         <Route path="/projects" element={<Projects lang={lang} />} />
         <Route path="/music" element={<Music lang={lang} />} />
+        <Route path="/blog" element={<Blog lang={lang} />} />
+        <Route path="/blog/:slug" element={<Article lang={lang} />} />
         <Route path="/contact" element={<Contact lang={lang} />} />
         <Route path="/radio" element={<RadioPlayer lang={lang} />} />
         <Route path="*" element={<NotFound />} />

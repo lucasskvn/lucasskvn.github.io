@@ -449,3 +449,227 @@ html {
     font-size: 5rem;
   }
 }
+
+/* ===== CUSTOM CURSOR ===== */
+.custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  width: 24px;
+  height: 24px;
+  border: 2px solid var(--accent);
+  border-radius: 50%;
+  transition: width 0.2s, height 0.2s, border-color 0.2s, background 0.2s;
+  mix-blend-mode: difference;
+}
+
+.custom-cursor-dot {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9999;
+  width: 4px;
+  height: 4px;
+  background: var(--accent);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: background 0.2s;
+}
+
+.cursor-hover {
+  width: 40px;
+  height: 40px;
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  border-color: var(--accent-secondary);
+}
+
+@media (pointer: coarse) {
+  .custom-cursor, .custom-cursor-dot { display: none; }
+}
+
+/* ===== SCROLL PROGRESS BAR ===== */
+.scroll-progress-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  z-index: 1001;
+  background: transparent;
+}
+
+.scroll-progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--accent), var(--accent-secondary));
+  transition: width 0.1s linear;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ===== PARTICLE CANVAS ===== */
+.particle-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ===== LAZY IMAGE ===== */
+.lazy-img-wrapper {
+  display: inline-block;
+}
+
+.lazy-img-real {
+  opacity: 0;
+  transition: opacity 0.4s ease-out;
+}
+
+.lazy-img-loaded {
+  opacity: 1;
+}
+
+/* ===== BLOG ===== */
+.blog-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.blog-card {
+  display: block;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  text-decoration: none;
+  transition: transform 0.2s, box-shadow 0.2s, background 0.2s;
+}
+
+.blog-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 20px var(--shadow);
+  background: var(--bg-card-hover);
+}
+
+.blog-card-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.blog-card-date {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-family: monospace;
+}
+
+.blog-card-tags {
+  display: flex;
+  gap: 0.4rem;
+  flex-wrap: wrap;
+}
+
+.blog-tag {
+  font-size: 0.7rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  background: color-mix(in srgb, var(--accent) 15%, transparent);
+  color: var(--accent);
+}
+
+.blog-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin: 0 0 0.4rem;
+  transition: color 0.2s;
+}
+
+.blog-card:hover .blog-card-title {
+  color: var(--accent);
+}
+
+.blog-card-desc {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Blog article page */
+.blog-back {
+  display: inline-block;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  margin-bottom: 1.5rem;
+  transition: color 0.2s;
+}
+
+.blog-back:hover {
+  color: var(--accent);
+}
+
+.blog-article {
+  max-width: 720px;
+}
+
+.blog-article-header {
+  margin-bottom: 2rem;
+}
+
+.blog-article-header .blog-card-tags {
+  margin: 0.5rem 0;
+}
+
+.blog-content {
+  line-height: 1.8;
+  font-size: 1.05rem;
+  color: var(--text-primary);
+}
+
+.blog-content h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin: 2rem 0 0.75rem;
+  color: var(--text-primary);
+}
+
+.blog-content h3 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 1.5rem 0 0.5rem;
+  color: var(--text-primary);
+}
+
+.blog-content p {
+  margin: 0.75rem 0;
+}
+
+.blog-content ul {
+  margin: 0.75rem 0;
+  padding-left: 1.5rem;
+}
+
+.blog-content li {
+  margin: 0.3rem 0;
+  color: var(--text-secondary);
+}
+
+.blog-content strong {
+  color: var(--accent);
+}
+
+/* ===== RESPONSIVE UPDATES ===== */
+@media (max-width: 768px) {
+  .blog-card {
+    padding: 1rem;
+  }
+  .blog-content {
+    font-size: 1rem;
+  }
+}

@@ -45,7 +45,7 @@
 	margin: 0 auto;
 }
 
-.Navbar-Home, .Navbar-About, .Navbar-Projects, .Navbar-Contact, .Navbar-Music {
+.Navbar-Home, .Navbar-About, .Navbar-Projects, .Navbar-Contact, .Navbar-Music, .Navbar-Blog {
 	color: var(--text-muted);
 	font-size: 1.2rem;
 	font-weight: bold;
@@ -59,7 +59,8 @@
 .Navbar-About::after,
 .Navbar-Projects::after,
 .Navbar-Contact::after,
-.Navbar-Music::after {
+.Navbar-Music::after,
+.Navbar-Blog::after {
 	content: '';
 	display: block;
 	position: absolute;
@@ -78,7 +79,8 @@
 .Navbar-About.active::after,
 .Navbar-Projects.active::after,
 .Navbar-Contact.active::after,
-.Navbar-Music.active::after {
+.Navbar-Music.active::after,
+.Navbar-Blog.active::after {
 	transform: scaleX(1);
 }
 
@@ -86,7 +88,8 @@
 .Navbar-About:hover::after,
 .Navbar-Projects:hover::after,
 .Navbar-Contact:hover::after,
-.Navbar-Music:hover::after {
+.Navbar-Music:hover::after,
+.Navbar-Blog:hover::after {
 	transform: scaleX(1);
 }
 
