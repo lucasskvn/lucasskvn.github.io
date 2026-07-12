@@ -57,7 +57,10 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
         const artists = (topData?.topartists?.artist || []).map((a: any) => ({
           name: a.name,
           playcount: a.playcount,
-          image: a.image?.find((i: any) => i.size === 'large')?.['#text'] || '',
+          image: a.image?.find((i: any) => i.size === 'extralarge')?.['#text']
+            || a.image?.find((i: any) => i.size === 'large')?.['#text']
+            || a.image?.find((i: any) => i.size === 'medium')?.['#text']
+            || '',
           url: a.url,
         }));
         setTopArtists(artists);
