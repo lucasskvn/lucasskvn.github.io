@@ -15,7 +15,6 @@ import Music from './pages/Music';
 import Blog from './pages/Blog';
 import Article from './pages/Article';
 import NotFound from './pages/NotFound';
-import CustomCursor from './components/CustomCursor';
 import ScrollProgress from './components/ScrollProgress';
 import ParticleBackground from './components/ParticleBackground';
 import { useTheme } from './context/ThemeContext';
@@ -61,7 +60,6 @@ function App() {
   return (
     <>
       <ParticleBackground />
-      <CustomCursor />
       <ScrollProgress />
       <nav className="Navbar">
         <img src={PP} alt="PP GitHub" className="Navbar-ppgithub" />
