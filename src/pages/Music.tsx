@@ -202,4 +202,3 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
     </div>
   );
 }
-// force redeploy Sun Jul 12 11:17:29 PM CEST 2026
