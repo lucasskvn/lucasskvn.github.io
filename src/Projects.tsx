@@ -55,17 +55,17 @@ const projects: Project[] = [
     detailImage: githubImg,
   },
   {
-    title: { fr: "jellystack - Stack media automatisé", en: "jellystack - Automated Media Stack" },
+    title: { fr: "lucasskvn.fr - Site personnel", en: "lucasskvn.fr - Personal Site" },
     description: {
-      fr: "Stack media entièrement conteneurisé et automatisé (Jellyfin, arr-stack, VPN).",
-      en: "Fully containerized and automated media server stack (Jellyfin, arr-stack, VPN)."
+      fr: "Site statique dark theme avec esthétique terminal, hébergé sur mon VPS.",
+      en: "Static dark theme site with terminal aesthetic, hosted on my VPS."
     },
     details: {
-      fr: "jellystack est une stack media complète conteneurisée avec Docker, incluant Jellyfin, Sonarr, Radarr, Prowlarr, qBittorrent, et VPN intégré. Le tout automatisé et prêt à l'emploi.",
-      en: "jellystack is a complete containerized media stack with Docker, including Jellyfin, Sonarr, Radarr, Prowlarr, qBittorrent, and integrated VPN. Fully automated and ready to deploy."
+      fr: "Site personnel statique avec un design dark theme, typographie Garamond, et une esthétique terminal. Déployé automatiquement via GitHub Actions sur mon VPS OVH avec Caddy.",
+      en: "Personal static site with dark theme design, Garamond typography, and terminal aesthetic. Auto-deployed via GitHub Actions on my OVH VPS with Caddy."
     },
-    link: "https://github.com/lucasskvn/jellystack",
-    image: nixos,
+    link: "https://lucasskvn.fr",
+    image: webpage,
     detailImage: githubImg,
   },
   {
