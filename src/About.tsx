@@ -1,4 +1,5 @@
 import SEO from './components/SEO';
+import Skills from './components/Skills';
 import Profile from './assets/profile.jpg';
 import DownloadIcon from './assets/download.png';
 import './About.css';
@@ -26,12 +27,16 @@ const About = ({ lang }: { lang: 'fr' | 'en' }) => (
         <div className="Profile-subtitle">{status}</div>
         <p>
           {lang === 'fr'
-            ? "Je m'appelle Lucas Sangkhavongs, j'ai 19 ans et je suis étudiant en deuxième année à EPITECH Lyon. Passionné d'informatique et de programmation."
-            : "I'm Lucas Sangkhavongs, I'm 19 years old and a second-year EPITECH student based in Lyon, France. I'm passionate about programming and computers."}
+            ? "Je m'appelle Lucas Sangkhavongs, j'ai 20 ans et je suis étudiant en deuxième année à EPITECH Lyon. Passionné d'informatique et de programmation."
+            : "I'm Lucas Sangkhavongs, I'm 20 years old and a second-year EPITECH student based in Lyon, France. I'm passionate about programming and computers."}
           <br />
         </p>
       </div>
     </div>
+    <h2 className="section-title" style={{ marginTop: '3rem', textAlign: 'center' }}>
+      {lang === 'fr' ? 'Compétences' : 'Skills'}
+    </h2>
+    <Skills />
   </div>
 );
 

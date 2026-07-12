@@ -1,5 +1,6 @@
 import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import { useState, useEffect } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
 import linkedinLogo from './assets/linkedin.svg';
 import githubLogo from './assets/github.png';
 import mailLogo from './assets/mail.png';
@@ -17,6 +18,7 @@ import Article from './pages/Article';
 import NotFound from './pages/NotFound';
 import ScrollProgress from './components/ScrollProgress';
 import ParticleBackground from './components/ParticleBackground';
+import BackToTop from './components/BackToTop';
 import { useTheme } from './context/ThemeContext';
 
 const email = "lucas.sangkhavongs@epitech.eu";
@@ -61,6 +63,7 @@ function App() {
     <>
       <ParticleBackground />
       <ScrollProgress />
+      <BackToTop />
       <nav className="Navbar">
         <img src={PP} alt="PP GitHub" className="Navbar-ppgithub" />
         <div className="Navbar-divider"></div>
@@ -147,17 +150,27 @@ function App() {
           </button>
         </div>
       </nav>
-      <Routes>
-        <Route path="/" element={<Home lang={lang} />} />
-        <Route path="/about" element={<About lang={lang} />} />
-        <Route path="/projects" element={<Projects lang={lang} />} />
-        <Route path="/music" element={<Music lang={lang} />} />
-        <Route path="/blog" element={<Blog lang={lang} />} />
-        <Route path="/blog/:slug" element={<Article lang={lang} />} />
-        <Route path="/contact" element={<Contact lang={lang} />} />
-        <Route path="/radio" element={<RadioPlayer lang={lang} />} />
-        <Route path="*" element={<NotFound />} />
-      </Routes>
+      <AnimatePresence mode="wait">
+        <motion.div
+          key={location.pathname}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: -20 }}
+          transition={{ duration: 0.25, ease: 'easeInOut' }}
+        >
+          <Routes location={location}>
+            <Route path="/" element={<Home lang={lang} />} />
+            <Route path="/about" element={<About lang={lang} />} />
+            <Route path="/projects" element={<Projects lang={lang} />} />
+            <Route path="/music" element={<Music lang={lang} />} />
+            <Route path="/blog" element={<Blog lang={lang} />} />
+            <Route path="/blog/:slug" element={<Article lang={lang} />} />
+            <Route path="/contact" element={<Contact lang={lang} />} />
+            <Route path="/radio" element={<RadioPlayer lang={lang} />} />
+            <Route path="*" element={<NotFound />} />
+          </Routes>
+        </motion.div>
+      </AnimatePresence>
     </>
   );
 }

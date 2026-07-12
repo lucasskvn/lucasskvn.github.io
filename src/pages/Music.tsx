@@ -20,10 +20,19 @@ interface TopArtist {
   url: string;
 }
 
+interface TopAlbum {
+  name: string;
+  artist: string;
+  playcount: string;
+  image: string;
+  url: string;
+}
+
 export default function Music({ lang }: { lang: 'fr' | 'en' }) {
   const [nowPlaying, setNowPlaying] = useState<Track | null>(null);
   const [recentTracks, setRecentTracks] = useState<Track[]>([]);
   const [topArtists, setTopArtists] = useState<TopArtist[]>([]);
+  const [topAlbums, setTopAlbums] = useState<TopAlbum[]>([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -90,6 +99,24 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
           })
         );
         setTopArtists(artists);
+
+        // Top albums
+        const albumRes = await fetch(
+          `${LASTFM_BASE}?method=user.gettopalbums&user=${LASTFM_USER}&api_key=${LASTFM_API_KEY}&format=json&period=1month&limit=8`
+        );
+        const albumData = await albumRes.json();
+        const rawAlbums = albumData?.topalbums?.album || [];
+
+        const albums: TopAlbum[] = rawAlbums.map((a: any) => ({
+          name: a.name,
+          artist: a.artist['#text'],
+          playcount: a.playcount,
+          image: a.image?.find((i: any) => i.size === 'extralarge')?.['#text']
+            || a.image?.find((i: any) => i.size === 'large')?.['#text']
+            || '',
+          url: a.url,
+        }));
+        setTopAlbums(albums);
       } catch (e) {
         console.error('Last.fm fetch error:', e);
       } finally {
@@ -103,8 +130,8 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
   }, []);
 
   const t = {
-    fr: { title: 'Musique', desc: 'Ce que j\'écoute en ce moment', now: 'En écoute', recent: 'Récemment écouté', top: 'Top artistes du mois', noData: 'Aucune donnée pour le moment' },
-    en: { title: 'Music', desc: 'What I\'m listening to right now', now: 'Now Playing', recent: 'Recently Played', top: 'Top Artists This Month', noData: 'No data yet' },
+    fr: { title: 'Musique', desc: 'Ce que j\'écoute en ce moment', now: 'En écoute', recent: 'Récemment écouté', top: 'Top artistes du mois', topAlbums: 'Top albums du mois', noData: 'Aucune donnée pour le moment' },
+    en: { title: 'Music', desc: 'What I\'m listening to right now', now: 'Now Playing', recent: 'Recently Played', top: 'Top Artists This Month', topAlbums: 'Top Albums This Month', noData: 'No data yet' },
   }[lang];
 
   return (
@@ -191,6 +218,36 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
                     )}
                     <span className="artist-name">{artist.name}</span>
                     <span className="artist-plays">{artist.playcount} plays</span>
+                  </a>
+                ))
+              )}
+            </div>
+          </section>
+          {/* Top Albums */}
+          <section style={{ marginTop: '3rem' }}>
+            <h2 className="section-title">{t.topAlbums}</h2>
+            <div className="top-albums-grid">
+              {topAlbums.length === 0 ? (
+                <p className="empty-state">{t.noData}</p>
+              ) : (
+                topAlbums.map((album, i) => (
+                  <a
+                    key={i}
+                    href={album.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="album-card"
+                  >
+                    {album.image ? (
+                      <img src={album.image} alt={album.name} className="album-img" />
+                    ) : (
+                      <div className="album-img album-img-fallback">
+                        {album.name.charAt(0).toUpperCase()}
+                      </div>
+                    )}
+                    <span className="album-name">{album.name}</span>
+                    <span className="album-artist">{album.artist}</span>
+                    <span className="album-plays">{album.playcount} plays</span>
                   </a>
                 ))
               )}
