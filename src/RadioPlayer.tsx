@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import SEO from './components/SEO';
 
 interface RadioPlayerProps { lang: 'fr' | 'en' }
 
@@ -28,9 +29,14 @@ export default function RadioPlayer({ lang }: RadioPlayerProps) {
   }, []);
 
   return (
-    <div style={{ padding: "2rem", color: "#fff", textAlign: "center" }}>
-      <h1>{lang === 'fr' ? 'Lecteur Webradio' : 'Webradio Player'}</h1>
-      <div style={{ marginBottom: 16, fontWeight: "bold" }}>
+    <div className="page-container fade-in" style={{ textAlign: "center" }}>
+      <SEO
+        title="Webradio"
+        description={lang === 'fr' ? 'Écouter la webradio en direct' : 'Listen to the webradio live'}
+        path="/radio"
+      />
+      <h1 className="title">{lang === 'fr' ? 'Lecteur Webradio' : 'Webradio Player'}</h1>
+      <div style={{ marginBottom: 16, fontWeight: "bold", color: "var(--text-secondary)" }}>
         {track
           ? (lang === 'fr' ? `En cours : ${track}` : `Now playing: ${track}`)
           : (lang === 'fr' ? 'Titre inconnu' : 'Unknown title')}

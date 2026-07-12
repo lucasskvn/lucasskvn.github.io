@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import SEO from './components/SEO';
 import './Project.css';
 import githubImg from './assets/github.png';
 import wolf3dscreen from './assets/wolf3dscreen.png';
@@ -262,6 +263,11 @@ export default function Projects({ lang }: ProjectsProps) {
 
   return (
     <div style={{ padding: "2rem", color: "#fff" }}>
+      <SEO
+        title="Projects"
+        description={lang === 'fr' ? 'Projets de Lucas Sangkhavongs — EPITECH et open source' : "Lucas Sangkhavongs' projects — EPITECH and open source"}
+        path="/projects"
+      />
       <h1 className="title">{lang === 'fr' ? 'Projets' : 'Projects'}</h1>
       <p className="subtitle">{lang === 'fr' ? 'Voici quelques-uns de mes projets réalisés à EPITECH et en dehors.' : 'Here are some of my projects made at EPITECH and beyond.'}</p>
       <div className="projects-grid">

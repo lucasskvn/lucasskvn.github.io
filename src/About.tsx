@@ -1,3 +1,4 @@
+import SEO from './components/SEO';
 import Profile from './assets/profile.jpg';
 import DownloadIcon from './assets/download.png';
 import './About.css';
@@ -6,6 +7,11 @@ const status = "EPITECH Lyon Student";
 
 const About = ({ lang }: { lang: 'fr' | 'en' }) => (
   <div className="Rectangles-container fade-in-home">
+    <SEO
+      title="About"
+      description={lang === 'fr' ? 'À propos de Lucas Sangkhavongs — étudiant EPITECH Lyon' : 'About Lucas Sangkhavongs — EPITECH Lyon student'}
+      path="/about"
+    />
     <div className="Rounded-rectangle">
       <img src={Profile} alt="Profile" className="Profile-rectangle" />
       <a href="/CV_LucasSangkhavongs.pdf" download className="CV-download-btn">

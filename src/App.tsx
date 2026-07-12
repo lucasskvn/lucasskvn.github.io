@@ -11,6 +11,9 @@ import './About.css';
 import './App.css';
 import About from './About';
 import Home from './Home';
+import Music from './pages/Music';
+import NotFound from './pages/NotFound';
+import { useTheme } from './context/ThemeContext';
 
 const email = "lucas.sangkhavongs@epitech.eu";
 const linkedin = "https://www.linkedin.com/in/lucas-sangkhavongs/";
@@ -21,6 +24,7 @@ function App() {
   const location = useLocation();
   const [lang, setLang] = useState<'fr' | 'en'>('en');
   const [navOpen, setNavOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -31,6 +35,7 @@ function App() {
       home: "Accueil",
       about: "À propos",
       projects: "Projets",
+      music: "Musique",
       contact: "Contact",
       switch: "FR",
     },
@@ -38,10 +43,14 @@ function App() {
       home: "Home",
       about: "About",
       projects: "Projects",
+      music: "Music",
       contact: "Contact",
       switch: "EN",
     },
   };
+
+  const isActive = (path: string) => location.pathname === path ? ' active' : '';
+
   return (
     <>
       <nav className="Navbar">
@@ -58,28 +67,19 @@ function App() {
           <span />
         </button>
         <div className={`Navbar-center${navOpen ? ' open' : ''}`} onClick={() => setNavOpen(false)}>
-          <span
-            className={`Navbar-Home${location.pathname === '/' ? ' active' : ''}`}
-            onClick={() => navigate('/')}
-          >
+          <span className={`Navbar-Home${isActive('/')}`} onClick={() => navigate('/')}>
             {t[lang].home}
           </span>
-          <span
-            className={`Navbar-About${location.pathname === '/about' ? ' active' : ''}`}
-            onClick={() => navigate('/about')}
-          >
+          <span className={`Navbar-About${isActive('/about')}`} onClick={() => navigate('/about')}>
             {t[lang].about}
           </span>
-          <span
-            className={`Navbar-Projects${location.pathname === '/projects' ? ' active' : ''}`}
-            onClick={() => navigate('/projects')}
-          >
+          <span className={`Navbar-Projects${isActive('/projects')}`} onClick={() => navigate('/projects')}>
             {t[lang].projects}
           </span>
-          <span
-            className={`Navbar-Contact${location.pathname === '/contact' ? ' active' : ''}`}
-            onClick={() => navigate('/contact')}
-          >
+          <span className={`Navbar-Music${isActive('/music')}`} onClick={() => navigate('/music')}>
+            {t[lang].music}
+          </span>
+          <span className={`Navbar-Contact${isActive('/contact')}`} onClick={() => navigate('/contact')}>
             {t[lang].contact}
           </span>
           <div className="Navbar-socials mobile">
@@ -92,6 +92,14 @@ function App() {
             <a href={`mailto:${email}`}>
               <img src={mailLogo} alt="Email" className="SocialLogo" />
             </a>
+            <button
+              className="theme-toggle-btn"
+              onClick={e => { e.stopPropagation(); toggleTheme(); }}
+              aria-label="Toggle theme"
+              title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
+            >
+              {theme === 'dark' ? '☀️' : '🌙'}
+            </button>
             <button
               className="language-switch-btn"
               onClick={e => { e.stopPropagation(); setLang(lang === 'fr' ? 'en' : 'fr'); }}
@@ -112,6 +120,14 @@ function App() {
             <img src={mailLogo} alt="Email" className="SocialLogo" />
           </a>
           <button
+            className="theme-toggle-btn"
+            onClick={toggleTheme}
+            aria-label="Toggle theme"
+            title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
+          >
+            {theme === 'dark' ? '☀️' : '🌙'}
+          </button>
+          <button
             className="language-switch-btn"
             onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
             aria-label="Switch language"
@@ -124,8 +140,10 @@ function App() {
         <Route path="/" element={<Home lang={lang} />} />
         <Route path="/about" element={<About lang={lang} />} />
         <Route path="/projects" element={<Projects lang={lang} />} />
+        <Route path="/music" element={<Music lang={lang} />} />
         <Route path="/contact" element={<Contact lang={lang} />} />
         <Route path="/radio" element={<RadioPlayer lang={lang} />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </>
   );

@@ -1,3 +1,4 @@
+import SEO from './components/SEO';
 import './home.css';
 
 type HomeProps = {
@@ -6,6 +7,11 @@ type HomeProps = {
 
 const Home = ({ lang = 'en' }: HomeProps) => (
   <div className="Home-container fade-in-home">
+    <SEO
+      title="Home"
+      description={lang === 'fr' ? 'Portfolio de Lucas Sangkhavongs — développeur, projets Epitech, musique' : "Lucas Sangkhavongs' portfolio — developer, Epitech projects, music"}
+      path="/"
+    />
     <h1>{lang === 'fr' ? 'Bienvenue !' : 'Welcome!'}</h1>
     <p>
       {lang === 'fr'
