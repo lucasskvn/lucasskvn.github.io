@@ -391,6 +391,16 @@ html {
   object-fit: cover;
 }
 
+.artist-img-fallback {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--accent), var(--accent-secondary));
+  color: #fff;
+  font-size: 2rem;
+  font-weight: 700;
+}
+
 .artist-name {
   font-weight: 600;
   color: var(--text-primary);

@@ -49,20 +49,45 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
         setNowPlaying(playing);
         setRecentTracks(mapped.filter(t => !t.nowPlaying).slice(0, 9));
 
-        // Top artists
+        // Top artists — fetch real images via artist.getinfo
         const topRes = await fetch(
           `${LASTFM_BASE}?method=user.gettopartists&user=${LASTFM_USER}&api_key=${LASTFM_API_KEY}&format=json&period=1month&limit=8`
         );
         const topData = await topRes.json();
-        const artists = (topData?.topartists?.artist || []).map((a: any) => ({
-          name: a.name,
-          playcount: a.playcount,
-          image: a.image?.find((i: any) => i.size === 'extralarge')?.['#text']
-            || a.image?.find((i: any) => i.size === 'large')?.['#text']
-            || a.image?.find((i: any) => i.size === 'medium')?.['#text']
-            || '',
-          url: a.url,
-        }));
+        const rawArtists = topData?.topartists?.artist || [];
+
+        const artists: TopArtist[] = await Promise.all(
+          rawArtists.map(async (a: any) => {
+            let img = a.image?.find((i: any) => i.size === 'mega')?.['#text']
+              || a.image?.find((i: any) => i.size === 'extralarge')?.['#text']
+              || a.image?.find((i: any) => i.size === 'large')?.['#text']
+              || '';
+
+            // If it's the Last.fm default placeholder, try artist.getinfo
+            if (!img || img.includes('2a96cbd8b46e442fc41c2b86b821562f')) {
+              try {
+                const infoRes = await fetch(
+                  `${LASTFM_BASE}?method=artist.getinfo&artist=${encodeURIComponent(a.name)}&api_key=${LASTFM_API_KEY}&format=json`
+                );
+                const infoData = await infoRes.json();
+                const infoImg = infoData?.artist?.image?.find((i: any) => i.size === 'mega')?.['#text']
+                  || infoData?.artist?.image?.find((i: any) => i.size === 'extralarge')?.['#text']
+                  || infoData?.artist?.image?.find((i: any) => i.size === 'large')?.['#text']
+                  || '';
+                if (infoImg && !infoImg.includes('2a96cbd8b46e442fc41c2b86b821562f')) {
+                  img = infoImg;
+                }
+              } catch {}
+            }
+
+            return {
+              name: a.name,
+              playcount: a.playcount,
+              image: img,
+              url: a.url,
+            };
+          })
+        );
         setTopArtists(artists);
       } catch (e) {
         console.error('Last.fm fetch error:', e);
@@ -156,7 +181,13 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
                     rel="noopener noreferrer"
                     className="artist-card"
                   >
-                    <img src={artist.image || '/assets/placeholder.jpg'} alt={artist.name} className="artist-img" />
+                    {artist.image ? (
+                      <img src={artist.image} alt={artist.name} className="artist-img" />
+                    ) : (
+                      <div className="artist-img artist-img-fallback">
+                        {artist.name.charAt(0).toUpperCase()}
+                      </div>
+                    )}
                     <span className="artist-name">{artist.name}</span>
                     <span className="artist-plays">{artist.playcount} plays</span>
                   </a>
