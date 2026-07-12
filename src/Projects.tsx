@@ -27,6 +27,20 @@ type Project = {
 
 const projects: Project[] = [
   {
+    title: { fr: "Staarscreaam.wav - App musique en Rust", en: "Staarscreaam.wav - Music App in Rust" },
+    description: {
+      fr: "Application musicale open source personnalisable écrite en Rust. Architecture modulaire, focus performance.",
+      en: "Open source customizable music app written in Rust. Modular architecture, performance-focused."
+    },
+    details: {
+      fr: "Staarscreaam.wav est une application musicale open source écrite en Rust, conçue pour être hautement personnalisable. Architecture modulaire, gestion de playlists, égaliseur, et support de multiples formats audio.",
+      en: "Staarscreaam.wav is an open source music application written in Rust, designed to be highly customizable. Modular architecture, playlist management, equalizer, and multiple audio format support."
+    },
+    link: "https://github.com/lucasskvn/Staarscreaam.wav",
+    image: c_logo,
+    detailImage: githubImg,
+  },
+  {
     title: { fr: "RMRF - Outil de backup dédupliqué", en: "RMRF - Deduplicated Backup Tool" },
     description: {
       fr: "Outil de backup resilient en Rust avec chunking FastCDC, BLAKE3 et compression zstd. Support Proxmox (QEMU/LXC).",
@@ -38,6 +52,20 @@ const projects: Project[] = [
     },
     link: "https://github.com/lucasskvn/RMRF",
     image: c_logo,
+    detailImage: githubImg,
+  },
+  {
+    title: { fr: "jellystack - Stack media automatisé", en: "jellystack - Automated Media Stack" },
+    description: {
+      fr: "Stack media entièrement conteneurisé et automatisé (Jellyfin, arr-stack, VPN).",
+      en: "Fully containerized and automated media server stack (Jellyfin, arr-stack, VPN)."
+    },
+    details: {
+      fr: "jellystack est une stack media complète conteneurisée avec Docker, incluant Jellyfin, Sonarr, Radarr, Prowlarr, qBittorrent, et VPN intégré. Le tout automatisé et prêt à l'emploi.",
+      en: "jellystack is a complete containerized media stack with Docker, including Jellyfin, Sonarr, Radarr, Prowlarr, qBittorrent, and integrated VPN. Fully automated and ready to deploy."
+    },
+    link: "https://github.com/lucasskvn/jellystack",
+    image: nixos,
     detailImage: githubImg,
   },
   {
@@ -81,6 +109,51 @@ const projects: Project[] = [
     link: "https://github.com/lucasskvn/NixOS-config",
     image: nixos,
     detailImage: nvimscreen,
+  },
+  {
+    title: { fr: "FarmerMonkey - Bot Discord de tournois", en: "FarmerMonkey - Tournament Discord Bot" },
+    description: {
+      fr: "Bot Discord de gestion de tournois avec brackets, équipes et statistiques. En production.",
+      en: "Discord tournament bot with brackets, teams, and statistics. In production."
+    },
+    details: {
+      fr: "FarmerMonkey est un bot Discord complet pour la gestion de tournois : création de brackets, gestion d'équipes, suivi des statistiques, et système d'élimination. Déployé en production sur plusieurs serveurs Discord.",
+      en: "FarmerMonkey is a complete Discord bot for tournament management: bracket creation, team management, statistics tracking, and elimination system. Deployed in production on multiple Discord servers."
+    },
+    link: "https://github.com/lucasskvn/FarmerMonkey",
+    image: githubImg,
+    detailImage: githubImg,
+    isPrivate: true,
+  },
+  {
+    title: { fr: "VirtualAngel - Bot IA conversationnel", en: "VirtualAngel - Conversational AI Bot" },
+    description: {
+      fr: "Bot Discord IA conversationnel avec apprentissage par chaînes de Markov. Déployé via Docker.",
+      en: "Conversational AI Discord bot with Markov chain learning. Deployed via Docker."
+    },
+    details: {
+      fr: "VirtualAngel est un bot Discord utilisant des chaînes de Markov pour apprendre des conversations et générer des réponses contextuelles. Architecture modulaire avec persistance des données et déploiement Docker.",
+      en: "VirtualAngel is a Discord bot using Markov chains to learn from conversations and generate contextual responses. Modular architecture with data persistence and Docker deployment."
+    },
+    link: "https://github.com/lucasskvn/VirtualAngel",
+    image: githubImg,
+    detailImage: githubImg,
+    isPrivate: true,
+  },
+  {
+    title: { fr: "ZhouXinyu - Bot de cartes à collectionner", en: "ZhouXinyu - Trading Card Bot" },
+    description: {
+      fr: "Bot Discord de cartes à collectionner avec système d'échange et persistance.",
+      en: "Trading card Discord bot with exchange system and data persistence."
+    },
+    details: {
+      fr: "ZhouXinyu est un bot Discord de cartes à collectionner avec un système d'échange complet, collection de cartes, raretés, et persistance des données des utilisateurs.",
+      en: "ZhouXinyu is a trading card Discord bot with a complete exchange system, card collection, rarities, and user data persistence."
+    },
+    link: "https://github.com/lucasskvn/ZhouXinyu",
+    image: githubImg,
+    detailImage: githubImg,
+    isPrivate: true,
   },
   {
     title: { fr: "Zappy - Jeu réseau multijoueur", en: "Zappy - Multiplayer Network Game" },
