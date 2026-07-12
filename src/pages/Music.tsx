@@ -56,25 +56,24 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
         const topData = await topRes.json();
         const rawArtists = topData?.topartists?.artist || [];
 
-        const DEEZER_BASE = 'https://api.deezer.com';
-
         const artists: TopArtist[] = await Promise.all(
           rawArtists.map(async (a: any) => {
             let img = '';
 
-            // Try Deezer for real artist images (free, no API key needed)
+            // Try iTunes Search API for artist album artwork (free, CORS-friendly)
             try {
-              const deezerRes = await fetch(
-                `${DEEZER_BASE}/search/artist?q=${encodeURIComponent(a.name)}&limit=1`
+              const itunesRes = await fetch(
+                `https://itunes.apple.com/search?term=${encodeURIComponent(a.name)}&entity=album&limit=1`
               );
-              const deezerData = await deezerRes.json();
-              const deezerArtist = deezerData?.data?.[0];
-              if (deezerArtist) {
-                img = deezerArtist.picture_xl || deezerArtist.picture_medium || '';
+              const itunesData = await itunesRes.json();
+              const itunesAlbum = itunesData?.results?.[0];
+              if (itunesAlbum?.artworkUrl100) {
+                // Replace 100x100 with 600x600 for larger image
+                img = itunesAlbum.artworkUrl100.replace('100x100', '600x600');
               }
             } catch {}
 
-            // Fallback: Last.fm image if Deezer failed
+            // Fallback: Last.fm image if iTunes failed
             if (!img) {
               img = a.image?.find((i: any) => i.size === 'mega')?.['#text']
                 || a.image?.find((i: any) => i.size === 'extralarge')?.['#text']
