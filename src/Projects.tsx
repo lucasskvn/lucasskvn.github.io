@@ -8,13 +8,9 @@ import icecast from './assets/icecast_logo.svg';
 import webradioscreen from './assets/webradioscreen.png';
 import nixos from './assets/nixos.png';
 import nvimscreen from './assets/nvimscreen.png';
-import nvim from './assets/nvimlogo.png';
-import nvimcstyle from './assets/nvimepitechcstyle.png';
 import webpage from './assets/webpage.png';
 import minishellscreen from './assets/minishellscreen.png';
 import minishell from './assets/minishell.png';
-import panda from './assets/panda.png';
-import myworldscreen from './assets/myworldscreen.png';
 import c_logo from './assets/C_Logo.png';
 import csfml from './assets/csfml.png';
 import portfolio from './assets/portfoliomainpage.png';
@@ -30,6 +26,20 @@ type Project = {
 };
 
 const projects: Project[] = [
+  {
+    title: { fr: "RMRF - Outil de backup dédupliqué", en: "RMRF - Deduplicated Backup Tool" },
+    description: {
+      fr: "Outil de backup resilient en Rust avec chunking FastCDC, BLAKE3 et compression zstd. Support Proxmox (QEMU/LXC).",
+      en: "Resilient backup tool in Rust with FastCDC chunking, BLAKE3 hashing, and zstd compression. Proxmox (QEMU/LXC) support."
+    },
+    details: {
+      fr: "RMRF (Resilient Modular Reduction Framework) est un outil de backup avec déduplication par chunking, hachage BLAKE3 et compression zstd. Il supporte la suspension automatique des VMs Proxmox pour des snapshots cohérents, la vérification d'intégrité, le garbage collection, et une politique de rétention.",
+      en: "RMRF (Resilient Modular Reduction Framework) is a backup tool with content-defined chunking, BLAKE3 hashing, and zstd compression. It supports automatic Proxmox VM suspension for consistent snapshots, integrity verification, garbage collection, and retention policies."
+    },
+    link: "https://github.com/lucasskvn/RMRF",
+    image: c_logo,
+    detailImage: githubImg,
+  },
   {
     title: { fr: "Portfolio Website", en: "Portfolio Website" },
     description: {
@@ -51,8 +61,8 @@ const projects: Project[] = [
       en: "Listen to the webradio live (Liquidsoap, Icecast). Hosted on this site"
     },
     details: {
-      fr: "Player audio en ligne, utilisant Liquidsoap et Icecast pour la diffusion. Permet d'écouter la radio en direct et d'afficher le titre du morceau en cours. J'écoute souvent (toujours) des chansons de Loona.",
-      en: "Online audio player, using Liquidsoap and Icecast for streaming. Lets you listen live and shows the current track title. I casually (always) blast some Loona songs."
+      fr: "Player audio en ligne, utilisant Liquidsoap et Icecast pour la diffusion. Permet d'écouter la radio en direct et d'afficher le titre du morceau en cours.",
+      en: "Online audio player, using Liquidsoap and Icecast for streaming. Lets you listen live and shows the current track title."
     },
     link: "/radio",
     image: icecast,
@@ -73,32 +83,60 @@ const projects: Project[] = [
     detailImage: nvimscreen,
   },
   {
-    title: { fr: "Webpage", en: "Webpage" },
+    title: { fr: "Zappy - Jeu réseau multijoueur", en: "Zappy - Multiplayer Network Game" },
     description: {
-      fr: "Site personnel réalisé avec HTML et CSS",
-      en: "Personal website made with HTML and CSS"
+      fr: "Jeu réseau multijoueur en temps réel unissant GUI, IA et serveur en C/CPP et Python.",
+      en: "Real-time multiplayer network game combining GUI, AI, and server in C/CPP and Python."
     },
     details: {
-      fr: ":^)",
-      en: ":^)"
+      fr: "Zappy est un projet de jeu réseau où plusieurs équipes s'affrontent via une IA autonome. L'architecture sépare un serveur central en C/CPP, des clients graphiques, et des IA en Python qui interagissent en temps réel.",
+      en: "Zappy is a network game project where multiple teams compete via autonomous AI. The architecture separates a central C/CPP server, graphical clients, and Python AIs interacting in real-time."
     },
-    link: "https://lucasskvn.fr/",
-    image: webpage,
-    detailImage: webpage,
+    image: csfml,
+    detailImage: githubImg,
+    isPrivate: true,
   },
   {
-    title: { fr: "EpitechCoding-style-Quickfixlist", en: "EpitechCoding-style-Quickfixlist" },
+    title: { fr: "Cartridge - Recreation jeu GameBoy", en: "Cartridge - GameBoy Recreation" },
     description: {
-      fr: "Plugin nvim pour afficher les erreurs de coding-style Epitech dans la quickfixlist.",
-      en: "Nvim plugin to show Epitech coding-style errors in the quickfixlist."
+      fr: "Recréation d'un jeu GameBoy en C avec les contraintes de ressources de la console.",
+      en: "GameBoy game recreation in C with the console's resource constraints."
     },
     details: {
-      fr: "Ce plugin améliore la productivité en affichant directement les erreurs de coding-style dans la quickfixlist de Neovim.",
-      en: "This plugin boosts productivity by showing coding-style errors directly in Neovim's quickfixlist."
+      fr: "Cartridge est un projet qui consiste à recréer un jeu GameBoy en C, en respectant les limitations techniques de la console originale : mémoire limitée, affichage contraint, et performances réduites.",
+      en: "Cartridge is a project recreating a GameBoy game in C, respecting the original console's technical limitations: limited memory, constrained display, and reduced performance."
     },
-    link: "https://github.com/lucasskvn/EpitechCoding-style-Quickfixlist",
-    image: nvim,
-    detailImage: nvimcstyle,
+    image: c_logo,
+    detailImage: githubImg,
+    isPrivate: true,
+  },
+  {
+    title: { fr: "my_teams - Chat client/serveur", en: "my_teams - Client/Server Chat" },
+    description: {
+      fr: "Recreation d'un chat en Rust similaire au logiciel Teams, liant client et serveur.",
+      en: "Chat recreation in Rust similar to Teams software, linking client and server."
+    },
+    details: {
+      fr: "my_teams est un projet de messagerie instantanée en Rust avec une architecture client/serveur. Il implémente la gestion de canaux, messages privés, et notifications en temps réel.",
+      en: "my_teams is an instant messaging project in Rust with a client/server architecture. It implements channel management, private messages, and real-time notifications."
+    },
+    image: c_logo,
+    detailImage: githubImg,
+    isPrivate: true,
+  },
+  {
+    title: { fr: "Codewash - Refactorisation", en: "Codewash - Refactoring" },
+    description: {
+      fr: "Refactorisation et nettoyage d'une application vibecodée pour la rendre plus fluide et maintenable.",
+      en: "Refactoring and cleanup of a vibecoded application to make it smoother and maintainable."
+    },
+    details: {
+      fr: "Codewash est un projet de refactorisation complète d'une application existante, visant à améliorer la qualité du code, la maintenabilité et faciliter l'implémentation de nouvelles fonctionnalités.",
+      en: "Codewash is a complete refactoring project of an existing application, aiming to improve code quality, maintainability, and ease the implementation of new features."
+    },
+    image: webpage,
+    detailImage: githubImg,
+    isPrivate: true,
   },
   {
     title: { fr: "Wolf3D", en: "Wolf3D" },
@@ -129,52 +167,10 @@ const projects: Project[] = [
     detailImage: minishellscreen,
   },
   {
-    title: { fr: "my_printf", en: "my_printf" },
-    description: {
-      fr: "Projet de recréation de la fonction printf réalisé en C.",
-      en: "Recreation of the printf function in C."
-    },
-    details: {
-      fr: "Ce projet consiste à réimplémenter la fonction printf du C, en gérant différents formats et options.",
-      en: "This project is about reimplementing the C printf function, handling various formats and options."
-    },
-    link: "https://github.com/lucasskvn/my_printf",
-    image: c_logo,
-    detailImage: githubImg,
-  },
-  {
-    title: { fr: "my_world", en: "my_world" },
-    description: {
-      fr: "Projet de création d'un éditeur de carte 3D vue isométrique en C avec CSFML.",
-      en: "3D isometric map editor project in C with CSFML."
-    },
-    details: {
-      fr: "Ce projet consiste à créer un éditeur de carte 3D avec une vue isométrique, en utilisant le langage C et la bibliothèque CSFML.",
-      en: "This project is about creating a 3D map editor with an isometric view, using the C language and the CSFML library."
-    },
-    image: csfml,
-    detailImage: myworldscreen,
-    isPrivate: true,
-  },
-  {
-    title: { fr: "Cuddle", en: "Cuddle" },
-    description: {
-      fr: "Projet de recréation de la librairie Python Panda en C.",
-      en: "Recreation of the Python Panda library in C."
-    },
-    details: {
-      fr: "Ce projet consiste à réimplémenter la librairie Python Panda en C, en se concentrant sur les fonctionnalités de manipulation de données.",
-      en: "This project is about reimplementing the Python Panda library in C, focusing on data manipulation features."
-    },
-    image: panda,
-    detailImage: githubImg,
-    isPrivate: true,
-  },
-  {
     title: { fr: "my_radar", en: "my_radar" },
     description: {
-      fr: "Projet de création d'un simulateur de trajectoire et de collision d'avions en C avec CSFML.",
-      en: "Airplane trajectory and collision simulator project in C with CSFML"
+      fr: "Simulateur de trajectoire et de collision d'avions en C avec CSFML.",
+      en: "Airplane trajectory and collision simulator in C with CSFML."
     },
     details: {
       fr: "Ce projet consiste à créer un simulateur de trajectoire et collision d'avions en C avec CSFML.",
