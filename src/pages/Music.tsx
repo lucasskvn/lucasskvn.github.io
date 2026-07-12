@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import SEO from '../components/SEO';
 
 const LASTFM_USER = 'Snow3945KKK';
-const LASTFM_API_KEY = 'YOUR_LASTFM_API_KEY'; // Get yours at https://www.last.fm/api/account/create
+const LASTFM_API_KEY = import.meta.env.VITE_LASTFM_API_KEY;
 const LASTFM_BASE = 'https://ws.audioscrobbler.com/2.0/';
 interface Track {
   name: string;
