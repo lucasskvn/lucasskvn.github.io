@@ -2,10 +2,18 @@ import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import { VitePWA } from 'vite-plugin-pwa'
 
+import { copyFileSync } from 'fs'
+
 export default defineConfig({
   base: '/',
   plugins: [
     react(),
+    {
+      name: 'copy-index-to-404',
+      closeBundle() {
+        copyFileSync('dist/index.html', 'dist/404.html')
+      },
+    },
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['assets/ppgithub.png', 'assets/placeholder.jpg'],
