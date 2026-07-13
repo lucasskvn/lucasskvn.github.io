@@ -115,6 +115,7 @@ const sites = [
 
 export default function Playground({ lang }: { lang: 'fr' | 'en' }) {
   const [active, setActive] = useState(experiments[0].id);
+  const [preview, setPreview] = useState<string | null>(null);
 
   const current = experiments.find(e => e.id === active)!;
 
@@ -160,15 +161,13 @@ export default function Playground({ lang }: { lang: 'fr' | 'en' }) {
       <h2 className="section-title">{lang === 'fr' ? 'Sites artistiques' : 'Artistic Sites'}</h2>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
         {sites.map(site => (
-          <a
+          <div
             key={site.title}
-            href={site.url}
-            target="_blank"
-            rel="noopener noreferrer"
+            onClick={() => setPreview(site.url)}
             style={{
               display: 'flex', flexDirection: 'column', gap: '0.3rem',
               background: 'var(--bg-card)', border: '1px solid var(--border)',
-              borderRadius: 16, padding: '1.25rem', textDecoration: 'none',
+              borderRadius: 16, padding: '1.25rem', cursor: 'pointer',
               transition: 'transform 0.2s, box-shadow 0.2s, border-color 0.2s',
             }}
             onMouseEnter={e => {
@@ -183,7 +182,7 @@ export default function Playground({ lang }: { lang: 'fr' | 'en' }) {
             }}
           >
             <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--accent)' }}>
-              {site.title} ↗
+              {site.title}
             </span>
             <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
               {site.desc[lang]}
@@ -191,9 +190,52 @@ export default function Playground({ lang }: { lang: 'fr' | 'en' }) {
             <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontFamily: 'monospace', marginTop: '0.25rem' }}>
               {site.url}
             </span>
-          </a>
+          </div>
         ))}
       </div>
+
+      {/* Preview Modal */}
+      {preview && (
+        <div
+          className="modal-overlay"
+          onClick={() => setPreview(null)}
+          style={{ zIndex: 200 }}
+        >
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{
+              width: '90vw', height: '85vh', maxWidth: 1200,
+              background: '#fff', borderRadius: 16, overflow: 'hidden',
+              display: 'flex', flexDirection: 'column',
+              boxShadow: '0 16px 64px rgba(0,0,0,0.5)',
+            }}
+          >
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              padding: '0.75rem 1rem', background: '#1a1a2e', color: '#fff',
+            }}>
+              <span style={{ fontSize: '0.85rem', fontFamily: 'monospace', color: '#aaa' }}>
+                {preview}
+              </span>
+              <button
+                onClick={() => setPreview(null)}
+                style={{
+                  background: 'none', border: 'none', color: '#fff', fontSize: '1.3rem',
+                  cursor: 'pointer', padding: '0 0.25rem', lineHeight: 1,
+                }}
+              >
+                ✕
+              </button>
+            </div>
+            <iframe
+              src={preview}
+              title={preview}
+              style={{ flex: 1, width: '100%', border: 'none' }}
+              sandbox="allow-scripts allow-same-origin"
+            />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
