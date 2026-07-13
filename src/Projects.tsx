@@ -87,6 +87,7 @@ const projects: Project[] = [
     link: "https://github.com/lucasskvn/WAV.PY",
     image: wavpy,
     detailImage: wavpy,
+    isPrivate: true,
   },
   {
     title: { fr: "Staarscreaam.wav - App musique en Rust", en: "Staarscreaam.wav - Music App in Rust" },
