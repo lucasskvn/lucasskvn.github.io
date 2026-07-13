@@ -17,6 +17,7 @@ import butterflynet from './assets/projects/butterflynet.png';
 import staarscreaam from './assets/projects/staarscreaam.png';
 import rmrf from './assets/projects/rmrf.svg';
 import farmermonkey from './assets/projects/farmermonkey.svg';
+import farmermonkeyDetail from './assets/projects/farmermonkey-detail.png';
 import virtualangel from './assets/projects/virtualangel.svg';
 import virtualangelDetail from './assets/projects/virtualangel-detail.png';
 import zhouxinyu from './assets/projects/zhouxinyu.svg';
@@ -148,7 +149,7 @@ const projects: Project[] = [
     },
     link: "https://github.com/lucasskvn/FarmerMonkey",
     image: farmermonkey,
-    detailImage: farmermonkey,
+    detailImage: farmermonkeyDetail,
     isPrivate: true,
   },
   {
