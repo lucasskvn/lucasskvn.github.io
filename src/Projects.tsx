@@ -27,6 +27,9 @@ import cartridge from './assets/projects/cartridge.png';
 import myteams from './assets/projects/myteams.png';
 import codewash from './assets/projects/codewash.png';
 import myradar from './assets/projects/myradar.svg';
+import pomodocus from './assets/projects/pomodocus.svg';
+import wavpy from './assets/projects/wavpy.svg';
+import armageddon from './assets/projects/armageddon.svg';
 
 type Project = {
   title: string | { fr: string; en: string };
@@ -64,8 +67,8 @@ const projects: Project[] = [
       en: "Pomodocus is a gamified Pomodoro app that turns productivity into a game. Collect dinosaurs by completing work sessions, track your stats, and customize the appearance. Data persisted in localStorage."
     },
     link: "https://github.com/lucasskvn/Pomodocus",
-    image: staarscreaam,
-    detailImage: staarscreaam,
+    image: pomodocus,
+    detailImage: pomodocus,
   },
   {
     title: { fr: "WAV.PY - Manipulation audio en Python", en: "WAV.PY - Audio Processing in Python" },
@@ -78,8 +81,8 @@ const projects: Project[] = [
       en: "WAV.PY is a Python tool for WAV audio file manipulation: reading, writing, editing, and analyzing audio files."
     },
     link: "https://github.com/lucasskvn/WAV.PY",
-    image: staarscreaam,
-    detailImage: staarscreaam,
+    image: wavpy,
+    detailImage: wavpy,
   },
   {
     title: { fr: "Armageddon - Jeu en Rust", en: "Armageddon - Game in Rust" },
@@ -92,8 +95,8 @@ const projects: Project[] = [
       en: "Armageddon is a game developed in Rust."
     },
     link: "https://github.com/lucasskvn/Armageddon",
-    image: zappy,
-    detailImage: zappy,
+    image: armageddon,
+    detailImage: armageddon,
   },
   {
     title: { fr: "Staarscreaam.wav - App musique en Rust", en: "Staarscreaam.wav - Music App in Rust" },

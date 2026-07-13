@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250">
+  <rect width="400" height="250" rx="12" fill="#0a0a0a"/>
+  <defs>
+    <linearGradient id="bgp3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0a0a0a"/>
+      <stop offset="100%" stop-color="#2e0a0a"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="250" rx="12" fill="url(#bgp3)"/>
+  <!-- Explosion / Armageddon -->
+  <g transform="translate(200, 70)" fill="none" stroke="#ff6600" stroke-width="2" opacity="0.5">
+    <circle cx="0" cy="0" r="25" fill="#ff6600" opacity="0.08"/>
+    <path d="M0,-30 L5,-10 L25,-15 L10,0 L20,20 L0,8 L-20,20 L-10,0 L-25,-15 L-5,-10 Z" fill="#ff6600" opacity="0.15"/>
+  </g>
+  <!-- Asteroid -->
+  <g transform="translate(200, 140)" fill="none" stroke="#ff6600" stroke-width="2" opacity="0.4">
+    <ellipse cx="0" cy="0" rx="18" ry="12" transform="rotate(-20)" fill="#ff6600" opacity="0.1"/>
+    <circle cx="-5" cy="-3" r="2" fill="#ff6600" opacity="0.3"/>
+    <circle cx="5" cy="2" r="1.5" fill="#ff6600" opacity="0.3"/>
+  </g>
+  <!-- Rust crab simplified -->
+  <g transform="translate(200, 140)" fill="none" stroke="#ff6600" stroke-width="1.5" opacity="0.3">
+    <ellipse cx="0" cy="0" rx="12" ry="8"/>
+    <path d="M-12,-3 C-18,-8 -20,-2 -18,2"/>
+    <path d="M12,-3 C18,-8 20,-2 18,2"/>
+  </g>
+  <text x="200" y="220" text-anchor="middle" fill="#ff6600" font-family="monospace" font-size="14" font-weight="bold">Armageddon</text>
+  <text x="200" y="238" text-anchor="middle" fill="#666" font-family="monospace" font-size="10">Game · Rust</text>
+</svg>
