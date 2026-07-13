@@ -32,6 +32,11 @@ interface TopAlbum {
   url: string;
 }
 
+const periods = [
+  { key: '7day', label: { fr: '7 jours', en: '7 days' } },
+  { key: '1month', label: { fr: '1 mois', en: '1 month' } },
+] as const;
+
 export default function Music({ lang }: { lang: 'fr' | 'en' }) {
   const [nowPlaying, setNowPlaying] = useState<Track | null>(null);
   const [recentTracks, setRecentTracks] = useState<Track[]>([]);
@@ -39,6 +44,7 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
   const [topAlbums, setTopAlbums] = useState<TopAlbum[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [period, setPeriod] = useState<'7day' | '1month'>('1month');
 
   useEffect(() => {
     let retryCount = 0;
@@ -47,7 +53,6 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
     const fetchLastfm = async () => {
       try {
         setError(false);
-        // Now playing + recent
         const recentRes = await fetch(proxyUrl(
           `${LASTFM_BASE}?method=user.getrecenttracks&user=${LASTFM_USER}&api_key=${LASTFM_API_KEY}&format=json&limit=10`
         ));
@@ -67,10 +72,29 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
         const playing = mapped.find(t => t.nowPlaying) || null;
         setNowPlaying(playing);
         setRecentTracks(mapped.filter(t => !t.nowPlaying).slice(0, 9));
+        retryCount = 0;
+      } catch (e) {
+        console.error('Last.fm fetch error:', e);
+        setError(true);
+        retryCount++;
+        if (retryCount < maxRetries && !nowPlaying && recentTracks.length === 0) {
+          return;
+        }
+      } finally {
+        setLoading(false);
+      }
+    };
 
-        // Top artists
+    fetchLastfm();
+    const interval = setInterval(fetchLastfm, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
+  useEffect(() => {
+    const fetchTop = async () => {
+      try {
         const topRes = await fetch(proxyUrl(
-          `${LASTFM_BASE}?method=user.gettopartists&user=${LASTFM_USER}&api_key=${LASTFM_API_KEY}&format=json&period=1month&limit=8`
+          `${LASTFM_BASE}?method=user.gettopartists&user=${LASTFM_USER}&api_key=${LASTFM_API_KEY}&format=json&period=${period}&limit=8`
         ));
         if (!topRes.ok) throw new Error(`HTTP ${topRes.status}`);
         const topData = await topRes.json();
@@ -79,7 +103,6 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
         const artists: TopArtist[] = await Promise.all(
           rawArtists.map(async (a: any) => {
             let img = '';
-
             try {
               const itunesRes = await fetch(
                 `https://itunes.apple.com/search?term=${encodeURIComponent(a.name)}&entity=album&limit=1`
@@ -97,20 +120,13 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
                 || a.image?.find((i: any) => i.size === 'large')?.['#text']
                 || '';
             }
-
-            return {
-              name: a.name,
-              playcount: a.playcount,
-              image: img,
-              url: a.url,
-            };
+            return { name: a.name, playcount: a.playcount, image: img, url: a.url };
           })
         );
         setTopArtists(artists);
 
-        // Top albums
         const albumRes = await fetch(proxyUrl(
-          `${LASTFM_BASE}?method=user.gettopalbums&user=${LASTFM_USER}&api_key=${LASTFM_API_KEY}&format=json&period=1month&limit=8`
+          `${LASTFM_BASE}?method=user.gettopalbums&user=${LASTFM_USER}&api_key=${LASTFM_API_KEY}&format=json&period=${period}&limit=8`
         ));
         if (!albumRes.ok) throw new Error(`HTTP ${albumRes.status}`);
         const albumData = await albumRes.json();
@@ -126,28 +142,17 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
           url: a.url,
         }));
         setTopAlbums(albums);
-        retryCount = 0;
       } catch (e) {
-        console.error('Last.fm fetch error:', e);
-        setError(true);
-        retryCount++;
-        // If we have no data at all and still retrying, keep loading state
-        if (retryCount < maxRetries && !nowPlaying && recentTracks.length === 0) {
-          return; // Don't set loading false yet
-        }
-      } finally {
-        setLoading(false);
+        console.error('Top fetch error:', e);
       }
     };
 
-    fetchLastfm();
-    const interval = setInterval(fetchLastfm, 30000);
-    return () => clearInterval(interval);
-  }, []);
+    fetchTop();
+  }, [period]);
 
   const t = {
-    fr: { title: 'Musique', desc: 'Ce que j\'écoute en ce moment', now: 'En écoute', recent: 'Récemment écouté', top: 'Top artistes du mois', topAlbums: 'Top albums du mois', noData: 'Aucune donnée pour le moment' },
-    en: { title: 'Music', desc: 'What I\'m listening to right now', now: 'Now Playing', recent: 'Recently Played', top: 'Top Artists This Month', topAlbums: 'Top Albums This Month', noData: 'No data yet' },
+    fr: { title: 'Musique', desc: 'Ce que j\'écoute en ce moment', now: 'En écoute', recent: 'Récemment écouté', top: 'Top artistes', topAlbums: 'Top albums', noData: 'Aucune donnée pour le moment' },
+    en: { title: 'Music', desc: 'What I\'m listening to right now', now: 'Now Playing', recent: 'Recently Played', top: 'Top Artists', topAlbums: 'Top Albums', noData: 'No data yet' },
   }[lang];
 
   return (
@@ -171,27 +176,20 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
               </p>
             </div>
           )}
-          {/* Now Playing */}
+
           {nowPlaying && (
             <div className="now-playing-card">
               <div className="now-playing-bar" />
-              <img
-                src={nowPlaying.image || '/assets/placeholder.jpg'}
-                alt={nowPlaying.album}
-                className="now-playing-img"
-              />
+              <img src={nowPlaying.image || '/assets/placeholder.jpg'} alt={nowPlaying.album} className="now-playing-img" />
               <div className="now-playing-info">
                 <span className="now-playing-badge">{t.now}</span>
-                <a href={nowPlaying.url} target="_blank" rel="noopener noreferrer" className="now-playing-title">
-                  {nowPlaying.name}
-                </a>
+                <a href={nowPlaying.url} target="_blank" rel="noopener noreferrer" className="now-playing-title">{nowPlaying.name}</a>
                 <span className="now-playing-artist">{nowPlaying.artist}</span>
                 <span className="now-playing-album">{nowPlaying.album}</span>
               </div>
             </div>
           )}
 
-          {/* Recent Tracks */}
           <section style={{ marginTop: '3rem' }}>
             <h2 className="section-title">{t.recent}</h2>
             <div className="recent-tracks">
@@ -199,13 +197,7 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
                 <p className="empty-state">{t.noData}</p>
               ) : (
                 recentTracks.map((track, i) => (
-                  <a
-                    key={i}
-                    href={track.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="track-row"
-                  >
+                  <a key={i} href={track.url} target="_blank" rel="noopener noreferrer" className="track-row">
                     <img src={track.image || '/assets/placeholder.jpg'} alt={track.album} className="track-img" />
                     <div className="track-info">
                       <span className="track-name">{track.name}</span>
@@ -217,27 +209,26 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
             </div>
           </section>
 
-          {/* Top Artists */}
-          <section style={{ marginTop: '3rem' }}>
+          <div className="period-tabs">
+            {periods.map(p => (
+              <button key={p.key} className={`period-tab${period === p.key ? ' active' : ''}`} onClick={() => setPeriod(p.key)}>
+                {p.label[lang]}
+              </button>
+            ))}
+          </div>
+
+          <section style={{ marginTop: '1.5rem' }}>
             <h2 className="section-title">{t.top}</h2>
             <div className="top-artists-grid">
               {topArtists.length === 0 ? (
                 <p className="empty-state">{t.noData}</p>
               ) : (
                 topArtists.map((artist, i) => (
-                  <a
-                    key={i}
-                    href={artist.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="artist-card"
-                  >
+                  <a key={i} href={artist.url} target="_blank" rel="noopener noreferrer" className="artist-card">
                     {artist.image ? (
                       <img src={artist.image} alt={artist.name} className="artist-img" />
                     ) : (
-                      <div className="artist-img artist-img-fallback">
-                        {artist.name.charAt(0).toUpperCase()}
-                      </div>
+                      <div className="artist-img artist-img-fallback">{artist.name.charAt(0).toUpperCase()}</div>
                     )}
                     <span className="artist-name">{artist.name}</span>
                     <span className="artist-plays">{artist.playcount} plays</span>
@@ -246,7 +237,7 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
               )}
             </div>
           </section>
-          {/* Top Albums */}
+
           <section style={{ marginTop: '3rem' }}>
             <h2 className="section-title">{t.topAlbums}</h2>
             <div className="top-albums-grid">
@@ -254,19 +245,11 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
                 <p className="empty-state">{t.noData}</p>
               ) : (
                 topAlbums.map((album, i) => (
-                  <a
-                    key={i}
-                    href={album.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="album-card"
-                  >
+                  <a key={i} href={album.url} target="_blank" rel="noopener noreferrer" className="album-card">
                     {album.image ? (
                       <img src={album.image} alt={album.name} className="album-img" />
                     ) : (
-                      <div className="album-img album-img-fallback">
-                        {album.name.charAt(0).toUpperCase()}
-                      </div>
+                      <div className="album-img album-img-fallback">{album.name.charAt(0).toUpperCase()}</div>
                     )}
                     <span className="album-name">{album.name}</span>
                     <span className="album-artist">{album.artist}</span>
