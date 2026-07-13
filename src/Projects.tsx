@@ -13,7 +13,7 @@ import webpage from './assets/webpage.png';
 import minishellscreen from './assets/minishellscreen.png';
 import minishell from './assets/minishell.png';
 import portfolio from './assets/portfoliomainpage.png';
-import butterflynet from './assets/projects/butterflynet.svg';
+import butterflynet from './assets/projects/butterflynet.png';
 import staarscreaam from './assets/projects/staarscreaam.svg';
 import rmrf from './assets/projects/rmrf.svg';
 import farmermonkey from './assets/projects/farmermonkey.svg';
