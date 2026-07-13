@@ -8,7 +8,7 @@ const gear = {
     { name: 'Zsh', desc: { fr: 'Shell secondaire avec starship', en: 'Secondary shell with starship' } },
   ],
   wm: [
-    { name: 'oxwm', desc: { fr: 'Window manager minimaliste en C', en: 'Minimalist window manager in C' } },
+    { name: 'oxwm', desc: { fr: 'Window manager dynamique en Zig avec hot-reload', en: 'Dynamic window manager in Zig with hot-reload' }, link: 'https://github.com/tonybanters/oxwm' },
   ],
   editor: [
     { name: 'Neovim', desc: { fr: 'Éditeur principal, config from scratch', en: 'Main editor, built from scratch' } },
@@ -43,22 +43,31 @@ const categories = [
 export default function Setup({ lang }: { lang: 'fr' | 'en' }) {
   return (
     <div className="setup-grid">
-      {categories.map(cat => (
-        <div key={cat.key} className="setup-card">
-          <div className="setup-card-header">
-            <span className="setup-icon">{cat.icon}</span>
-            <h3 className="setup-category">{cat.label[lang]}</h3>
+      {categories.map(cat => {
+        const items = gear[cat.key as keyof typeof gear];
+        return (
+          <div key={cat.key} className="setup-card">
+            <div className="setup-card-header">
+              <span className="setup-icon">{cat.icon}</span>
+              <h3 className="setup-category">{cat.label[lang]}</h3>
+            </div>
+            <div className="setup-items">
+              {items.map(item => (
+                <div key={item.name} className="setup-item">
+                  {'link' in item && item.link ? (
+                    <a href={item.link} target="_blank" rel="noopener noreferrer" className="setup-item-name setup-item-link">
+                      {item.name} ↗
+                    </a>
+                  ) : (
+                    <span className="setup-item-name">{item.name}</span>
+                  )}
+                  <span className="setup-item-desc">{item.desc[lang]}</span>
+                </div>
+              ))}
+            </div>
           </div>
-          <div className="setup-items">
-            {gear[cat.key as keyof typeof gear].map(item => (
-              <div key={item.name} className="setup-item">
-                <span className="setup-item-name">{item.name}</span>
-                <span className="setup-item-desc">{item.desc[lang]}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 }
