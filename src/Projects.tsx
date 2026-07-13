@@ -20,6 +20,7 @@ import farmermonkey from './assets/projects/farmermonkey.svg';
 import virtualangel from './assets/projects/virtualangel.svg';
 import virtualangelDetail from './assets/projects/virtualangel-detail.png';
 import zhouxinyu from './assets/projects/zhouxinyu.svg';
+import zhouxinyuDetail from './assets/projects/zhouxinyu-detail.png';
 import zappy from './assets/projects/zappy.png';
 import cartridge from './assets/projects/cartridge.png';
 import myteams from './assets/projects/myteams.png';
@@ -177,7 +178,7 @@ const projects: Project[] = [
     },
     link: "https://github.com/lucasskvn/ZhouXinyu",
     image: zhouxinyu,
-    detailImage: zhouxinyu,
+    detailImage: zhouxinyuDetail,
     isPrivate: true,
   },
   {
