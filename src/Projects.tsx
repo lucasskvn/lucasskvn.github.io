@@ -32,7 +32,6 @@ import pomodocus2 from './assets/projects/pomodocus-2.webp';
 import pomodocus3 from './assets/projects/pomodocus-3.webp';
 import pomodocus4 from './assets/projects/pomodocus-4.webp';
 import wavpy from './assets/projects/wavpy.svg';
-import armageddon from './assets/projects/armageddon.svg';
 
 type Project = {
   title: string | { fr: string; en: string };
@@ -63,12 +62,12 @@ const projects: Project[] = [
   {
     title: { fr: "Pomodocus - Pomodoro gamifié", en: "Pomodocus - Gamified Pomodoro" },
     description: {
-      fr: "Application Pomodoro gamifiée avec des dinosaures collectibles. React, TypeScript, Tailwind.",
-      en: "Gamified Pomodoro app with collectible dinosaurs. React, TypeScript, Tailwind."
+      fr: "Projet hackathon de 10h — app Pomodoro gamifiée avec des dinosaures collectibles. React, TypeScript, Tailwind.",
+      en: "10-hour hackathon project — gamified Pomodoro app with collectible dinosaurs. React, TypeScript, Tailwind."
     },
     details: {
-      fr: "Pomodocus est une application Pomodoro gamifiée qui transforme la productivité en jeu. Collectionnez des dinosaures en complétant des sessions de travail, suivez vos statistiques, et personnalisez l'apparence. Données persistantes dans le localStorage.",
-      en: "Pomodocus is a gamified Pomodoro app that turns productivity into a game. Collect dinosaurs by completing work sessions, track your stats, and customize the appearance. Data persisted in localStorage."
+      fr: "Pomodocus est un projet réalisé en 10 heures lors d'un hackathon. Application Pomodoro gamifiée qui transforme la productivité en jeu : collectionnez des dinosaures en complétant des sessions de travail, suivez vos statistiques, et personnalisez l'apparence. Données persistantes dans le localStorage.",
+      en: "Pomodocus is a 10-hour hackathon project. A gamified Pomodoro app that turns productivity into a game: collect dinosaurs by completing work sessions, track your stats, and customize the appearance. Data persisted in localStorage."
     },
     link: "https://github.com/lucasskvn/Pomodocus",
     image: pomodocus,
@@ -76,32 +75,18 @@ const projects: Project[] = [
     gallery: [pomodocus, pomodocus2, pomodocus3, pomodocus4],
   },
   {
-    title: { fr: "WAV.PY - Manipulation audio en Python", en: "WAV.PY - Audio Processing in Python" },
+    title: { fr: "WAV.PY - Selfbot Discord", en: "WAV.PY - Discord Selfbot" },
     description: {
-      fr: "Outil de manipulation de fichiers audio WAV en Python.",
-      en: "WAV audio file manipulation tool in Python."
+      fr: "Selfbot Discord en Python qui permet d'exécuter des commandes de bot sur un compte personnel Discord.",
+      en: "Discord selfbot in Python that runs bot commands on a personal Discord account."
     },
     details: {
-      fr: "WAV.PY est un outil Python pour la manipulation de fichiers audio WAV : lecture, écriture, édition et analyse de fichiers audio.",
-      en: "WAV.PY is a Python tool for WAV audio file manipulation: reading, writing, editing, and analyzing audio files."
+      fr: "WAV.PY est un selfbot Discord écrit en Python. Contrairement à un bot classique qui utilise un token bot, un selfbot permet d'avoir des commandes automatisées directement sur un compte utilisateur Discord personnel. Attention : les selfbots sont contraires aux ToS de Discord, à utiliser avec précaution.",
+      en: "WAV.PY is a Discord selfbot written in Python. Unlike a regular bot that uses a bot token, a selfbot allows automated commands directly on a personal Discord user account. Note: selfbots violate Discord's ToS, use with caution."
     },
     link: "https://github.com/lucasskvn/WAV.PY",
     image: wavpy,
     detailImage: wavpy,
-  },
-  {
-    title: { fr: "Armageddon - Jeu en Rust", en: "Armageddon - Game in Rust" },
-    description: {
-      fr: "Jeu développé en Rust.",
-      en: "Game developed in Rust."
-    },
-    details: {
-      fr: "Armageddon est un jeu développé en Rust.",
-      en: "Armageddon is a game developed in Rust."
-    },
-    link: "https://github.com/lucasskvn/Armageddon",
-    image: armageddon,
-    detailImage: armageddon,
   },
   {
     title: { fr: "Staarscreaam.wav - App musique en Rust", en: "Staarscreaam.wav - Music App in Rust" },
