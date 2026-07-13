@@ -3,11 +3,10 @@ import SEO from '../components/SEO';
 
 const LASTFM_USER = 'Snow3945KKK';
 const LASTFM_API_KEY = import.meta.env.VITE_LASTFM_API_KEY;
-const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
 const LASTFM_BASE = 'https://ws.audioscrobbler.com/2.0/';
 
 function proxyUrl(url: string): string {
-  return CORS_PROXY + encodeURIComponent(url);
+  return url;
 }
 interface Track {
   name: string;
