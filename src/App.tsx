@@ -19,7 +19,6 @@ import NotFound from './pages/NotFound';
 import ScrollProgress from './components/ScrollProgress';
 import ParticleBackground from './components/ParticleBackground';
 import BackToTop from './components/BackToTop';
-import { useTheme } from './context/ThemeContext';
 
 const email = "lucas.sangkhavongs@epitech.eu";
 const linkedin = "https://www.linkedin.com/in/lucas-sangkhavongs/";
@@ -30,7 +29,6 @@ function App() {
   const location = useLocation();
   const [lang, setLang] = useState<'fr' | 'en'>('en');
   const [navOpen, setNavOpen] = useState(false);
-  const { theme, toggleTheme } = useTheme();
 
   useEffect(() => {
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -107,14 +105,6 @@ function App() {
               <img src={mailLogo} alt="Email" className="SocialLogo" />
             </a>
             <button
-              className="theme-toggle-btn"
-              onClick={e => { e.stopPropagation(); toggleTheme(); }}
-              aria-label="Toggle theme"
-              title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
-            >
-              {theme === 'dark' ? '☀️' : '🌙'}
-            </button>
-            <button
               className="language-switch-btn"
               onClick={e => { e.stopPropagation(); setLang(lang === 'fr' ? 'en' : 'fr'); }}
               aria-label="Switch language"
@@ -133,14 +123,6 @@ function App() {
           <a href={`mailto:${email}`}>
             <img src={mailLogo} alt="Email" className="SocialLogo" />
           </a>
-          <button
-            className="theme-toggle-btn"
-            onClick={toggleTheme}
-            aria-label="Toggle theme"
-            title={theme === 'dark' ? 'Light mode' : 'Dark mode'}
-          >
-            {theme === 'dark' ? '☀️' : '🌙'}
-          </button>
           <button
             className="language-switch-btn"
             onClick={() => setLang(lang === 'fr' ? 'en' : 'fr')}
