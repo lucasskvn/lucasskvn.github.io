@@ -13,6 +13,7 @@ import './App.css';
 import About from './About';
 import Home from './Home';
 import Music from './pages/Music';
+import Playground from './pages/Playground';
 import Blog from './pages/Blog';
 import Article from './pages/Article';
 import NotFound from './pages/NotFound';
@@ -88,6 +89,9 @@ function App() {
           <span className={`Navbar-Music${isActive('/music')}`} onClick={() => navigate('/music')}>
             {t[lang].music}
           </span>
+          <span className={`Navbar-Playground${isActive('/playground')}`} onClick={() => navigate('/playground')}>
+            Playground
+          </span>
           <span className={`Navbar-Blog${isActive('/blog') || location.pathname.startsWith('/blog/') ? ' active' : ''}`} onClick={() => navigate('/blog')}>
             {t[lang].blog}
           </span>
@@ -145,6 +149,7 @@ function App() {
             <Route path="/about" element={<About lang={lang} />} />
             <Route path="/projects" element={<Projects lang={lang} />} />
             <Route path="/music" element={<Music lang={lang} />} />
+            <Route path="/playground" element={<Playground lang={lang} />} />
             <Route path="/blog" element={<Blog lang={lang} />} />
             <Route path="/blog/:slug" element={<Article lang={lang} />} />
             <Route path="/contact" element={<Contact lang={lang} />} />

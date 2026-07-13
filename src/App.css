@@ -45,7 +45,7 @@
 	margin: 0 auto;
 }
 
-.Navbar-Home, .Navbar-About, .Navbar-Projects, .Navbar-Contact, .Navbar-Music, .Navbar-Blog {
+.Navbar-Home, .Navbar-About, .Navbar-Projects, .Navbar-Contact, .Navbar-Music, .Navbar-Blog, .Navbar-Playground {
 	color: var(--text-muted);
 	font-size: 1.2rem;
 	font-weight: bold;
@@ -60,7 +60,8 @@
 .Navbar-Projects::after,
 .Navbar-Contact::after,
 .Navbar-Music::after,
-.Navbar-Blog::after {
+.Navbar-Blog::after,
+.Navbar-Playground::after {
 	content: '';
 	display: block;
 	position: absolute;
@@ -80,7 +81,8 @@
 .Navbar-Projects.active::after,
 .Navbar-Contact.active::after,
 .Navbar-Music.active::after,
-.Navbar-Blog.active::after {
+.Navbar-Blog.active::after,
+.Navbar-Playground.active::after {
 	transform: scaleX(1);
 }
 
@@ -89,11 +91,12 @@
 .Navbar-Projects:hover::after,
 .Navbar-Contact:hover::after,
 .Navbar-Music:hover::after,
-.Navbar-Blog:hover::after {
+.Navbar-Blog:hover::after,
+.Navbar-Playground:hover::after {
 	transform: scaleX(1);
 }
 
-.Navbar-Home:hover, .Navbar-About:hover, .Navbar-Projects:hover, .Navbar-Contact:hover, .Navbar-Music:hover {
+.Navbar-Home:hover, .Navbar-About:hover, .Navbar-Projects:hover, .Navbar-Contact:hover, .Navbar-Music:hover, .Navbar-Playground:hover {
 	color: var(--text-primary);
 }
 
