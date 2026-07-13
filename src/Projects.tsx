@@ -22,7 +22,7 @@ import zhouxinyu from './assets/projects/zhouxinyu.svg';
 import zappy from './assets/projects/zappy.svg';
 import cartridge from './assets/projects/cartridge.svg';
 import myteams from './assets/projects/myteams.svg';
-import codewash from './assets/projects/codewash.svg';
+import codewash from './assets/projects/codewash.png';
 import myradar from './assets/projects/myradar.svg';
 
 type Project = {
@@ -231,7 +231,7 @@ const projects: Project[] = [
       en: "Codewash is a complete refactoring project of an existing application, aiming to improve code quality, maintainability, and ease the implementation of new features."
     },
     image: codewash,
-    detailImage: githubImg,
+    detailImage: codewash,
     isPrivate: true,
   },
   {
