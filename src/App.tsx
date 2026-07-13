@@ -150,7 +150,7 @@ function App() {
           </button>
         </div>
       </nav>
-      <AnimatePresence mode="wait">
+      <AnimatePresence>
         <motion.div
           key={location.pathname}
           initial={{ opacity: 0, y: 20 }}

@@ -674,14 +674,15 @@ html {
 /* ===== TERMINAL WIDGET ===== */
 .terminal-widget {
   margin: 2rem auto 0;
-  max-width: 680px;
+  width: min(90vw, 900px);
+  max-width: 900px;
   border-radius: 10px;
   overflow: hidden;
   border: 1px solid var(--border);
   background: #0d1117;
   font-family: 'Courier New', 'Fira Code', monospace;
-  font-size: 0.85rem;
-  line-height: 1.5;
+  font-size: clamp(0.75rem, 1.1vw, 0.95rem);
+  line-height: 1.6;
   cursor: text;
 }
 
@@ -712,7 +713,7 @@ html {
 
 .terminal-body {
   padding: 12px 16px;
-  max-height: 400px;
+  max-height: min(60vh, 600px);
   overflow-y: auto;
   color: #c9d1d9;
 }
@@ -720,6 +721,18 @@ html {
 .terminal-line {
   white-space: pre-wrap;
   word-break: break-all;
+  padding: 1px 0;
+}
+
+.terminal-line + .terminal-line {
+  margin-top: 1px;
+}
+
+/* Spacer between command output blocks */
+.terminal-line.prompt {
+  margin-top: 10px;
+  color: #3fb950;
+  font-weight: 500;
 }
 
 .terminal-line.ok {
@@ -729,6 +742,30 @@ html {
 .terminal-line.ascii {
   color: var(--accent);
   line-height: 1.1;
+}
+
+.terminal-line.error {
+  color: #ff5f56;
+  font-weight: 500;
+}
+
+.terminal-line.project {
+  color: #58a6ff;
+}
+
+.terminal-line.info {
+  color: #8b949e;
+  font-style: italic;
+}
+
+.terminal-line.kv {
+  color: #c9d1d9;
+}
+
+.terminal-line.kv::before {
+  content: '▸ ';
+  color: var(--accent-secondary);
+  opacity: 0.6;
 }
 
 .terminal-input-line {
@@ -965,9 +1002,10 @@ html {
   }
   .terminal-widget {
     font-size: 0.75rem;
+    width: 95vw;
   }
   .terminal-body {
-    max-height: 300px;
+    max-height: 50vh;
   }
   .back-to-top {
     bottom: 1rem;

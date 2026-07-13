@@ -77,6 +77,18 @@ const commands: Record<string, string[]> = {
   ],
 };
 
+function lineClass(line: string): string {
+  if (!line) return '';
+  if (line.startsWith('[  OK  ]')) return ' ok';
+  if (line.startsWith('  ██') || line.startsWith('  ╚█') || line.startsWith('  ██')) return ' ascii';
+  if (line.startsWith('lucasskvn@portfolio:~$')) return ' prompt';
+  if (line.startsWith('bash:')) return ' error';
+  if (line.startsWith('→')) return ' project';
+  if (line.startsWith('Available') || line.startsWith('Type')) return ' info';
+  if (line.includes(':')) return ' kv';
+  return '';
+}
+
 export default function TerminalWidget() {
   const [lines, setLines] = useState<string[]>([]);
   const [input, setInput] = useState('');
@@ -101,7 +113,9 @@ export default function TerminalWidget() {
   }, []);
 
   useEffect(() => {
-    endRef.current?.scrollIntoView({ behavior: 'smooth' });
+    if (endRef.current && endRef.current.parentElement) {
+      endRef.current.parentElement.scrollTop = endRef.current.parentElement.scrollHeight;
+    }
   }, [lines]);
 
   const runCommand = (cmd: string) => {
@@ -166,8 +180,8 @@ export default function TerminalWidget() {
       </div>
       <div className="terminal-body">
         {lines.map((line, i) => (
-          <div key={i} className={`terminal-line${line.startsWith('[  OK  ]') ? ' ok' : ''}${line.startsWith('  ██') ? ' ascii' : ''}`}>
-            {line}
+          <div key={i} className={`terminal-line${lineClass(line)}`}>
+            {line ?? ''}
           </div>
         ))}
         {bootDone && (
