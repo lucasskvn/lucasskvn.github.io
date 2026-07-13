@@ -54,6 +54,48 @@ const projects: Project[] = [
     link: "https://chat.2bananas4monkeys.org/",
   },
   {
+    title: { fr: "Pomodocus - Pomodoro gamifié", en: "Pomodocus - Gamified Pomodoro" },
+    description: {
+      fr: "Application Pomodoro gamifiée avec des dinosaures collectibles. React, TypeScript, Tailwind.",
+      en: "Gamified Pomodoro app with collectible dinosaurs. React, TypeScript, Tailwind."
+    },
+    details: {
+      fr: "Pomodocus est une application Pomodoro gamifiée qui transforme la productivité en jeu. Collectionnez des dinosaures en complétant des sessions de travail, suivez vos statistiques, et personnalisez l'apparence. Données persistantes dans le localStorage.",
+      en: "Pomodocus is a gamified Pomodoro app that turns productivity into a game. Collect dinosaurs by completing work sessions, track your stats, and customize the appearance. Data persisted in localStorage."
+    },
+    link: "https://github.com/lucasskvn/Pomodocus",
+    image: staarscreaam,
+    detailImage: staarscreaam,
+  },
+  {
+    title: { fr: "WAV.PY - Manipulation audio en Python", en: "WAV.PY - Audio Processing in Python" },
+    description: {
+      fr: "Outil de manipulation de fichiers audio WAV en Python.",
+      en: "WAV audio file manipulation tool in Python."
+    },
+    details: {
+      fr: "WAV.PY est un outil Python pour la manipulation de fichiers audio WAV : lecture, écriture, édition et analyse de fichiers audio.",
+      en: "WAV.PY is a Python tool for WAV audio file manipulation: reading, writing, editing, and analyzing audio files."
+    },
+    link: "https://github.com/lucasskvn/WAV.PY",
+    image: staarscreaam,
+    detailImage: staarscreaam,
+  },
+  {
+    title: { fr: "Armageddon - Jeu en Rust", en: "Armageddon - Game in Rust" },
+    description: {
+      fr: "Jeu développé en Rust.",
+      en: "Game developed in Rust."
+    },
+    details: {
+      fr: "Armageddon est un jeu développé en Rust.",
+      en: "Armageddon is a game developed in Rust."
+    },
+    link: "https://github.com/lucasskvn/Armageddon",
+    image: zappy,
+    detailImage: zappy,
+  },
+  {
     title: { fr: "Staarscreaam.wav - App musique en Rust", en: "Staarscreaam.wav - Music App in Rust" },
     description: {
       fr: "Application musicale open source personnalisable écrite en Rust. Architecture modulaire, focus performance.",
