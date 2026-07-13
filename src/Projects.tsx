@@ -319,9 +319,15 @@ const projects: Project[] = [
 
 function Gallery({ images, alt }: { images: string[]; alt: string }) {
   const [current, setCurrent] = useState(0);
+  const prev = () => setCurrent(c => (c - 1 + images.length) % images.length);
+  const next = () => setCurrent(c => (c + 1) % images.length);
   return (
     <div style={{ position: 'relative', marginBottom: 16 }}>
-      <img src={images[current]} alt={alt} className="project-image" style={{ maxWidth: '60%', display: 'block', margin: '0 auto' }} />
+      <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
+        <button onClick={prev} style={{ background: 'rgba(0,0,0,0.5)', color: '#fff', border: 'none', borderRadius: 4, cursor: 'pointer', fontSize: 20, padding: '8px 12px', lineHeight: 1 }}>◀</button>
+        <img src={images[current]} alt={alt} className="project-image" style={{ maxWidth: '55%', display: 'block' }} />
+        <button onClick={next} style={{ background: 'rgba(0,0,0,0.5)', color: '#fff', border: 'none', borderRadius: 4, cursor: 'pointer', fontSize: 20, padding: '8px 12px', lineHeight: 1 }}>▶</button>
+      </div>
       <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 8 }}>
         {images.map((_, i) => (
           <button
