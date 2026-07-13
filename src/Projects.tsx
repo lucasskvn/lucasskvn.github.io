@@ -28,6 +28,20 @@ type Project = {
 
 const projects: Project[] = [
   {
+    title: { fr: "ButterflyNet - Serveur IRC privé", en: "ButterflyNet - Private IRC Server" },
+    description: {
+      fr: "Serveur IRC privé et chiffré, accessible uniquement sur invitation. Hébergé sur mon VPS avec sécurisation renforcée.",
+      en: "Private encrypted IRC server, invite-only. Hosted on my VPS with hardened security."
+    },
+    details: {
+      fr: "ButterflyNet est un serveur IRC privé que j'ai mis en place sur mon VPS OVH. Il utilise une configuration sécurisée avec chiffrement TLS, accès restreint par invitation, et une stack légère pour des performances optimales. Conçu pour des discussions privées entre amis, sans dépendre de plateformes centralisées.",
+      en: "ButterflyNet is a private IRC server I set up on my OVH VPS. It uses a secure configuration with TLS encryption, invite-only access, and a lightweight stack for optimal performance. Designed for private conversations between friends, without relying on centralized platforms."
+    },
+    image: webpage,
+    detailImage: githubImg,
+    isPrivate: true,
+  },
+  {
     title: { fr: "Staarscreaam.wav - App musique en Rust", en: "Staarscreaam.wav - Music App in Rust" },
     description: {
       fr: "Application musicale open source personnalisable écrite en Rust. Architecture modulaire, focus performance.",
@@ -270,11 +284,7 @@ export default function Projects({ lang }: ProjectsProps) {
       />
       <h1 className="title">{lang === 'fr' ? 'Projets' : 'Projects'}</h1>
       <p className="subtitle">{lang === 'fr' ? 'Voici quelques-uns de mes projets réalisés à EPITECH et en dehors.' : 'Here are some of my projects made at EPITECH and beyond.'}</p>
-      <p style={{ textAlign: 'center', color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '0.95rem' }}>
-        {lang === 'fr'
-          ? '🦋 J\'ai aussi lancé ButterflyNet — un serveur IRC privé et chiffré, accessible uniquement sur invitation.'
-          : '🦋 I also launched ButterflyNet — a private encrypted IRC server, invite only.'}
-      </p>
+
       <div className="projects-grid">
         {projects.map((project, idx) => (
           <motion.div
