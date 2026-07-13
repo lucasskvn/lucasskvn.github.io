@@ -39,7 +39,7 @@ function MatrixRain() {
   }, []);
 
   return (
-    <canvas ref={canvasRef} style={{ width: '100%', height: 200, borderRadius: 12, display: 'block' }} />
+    <canvas ref={canvasRef} style={{ width: '100%', height: 300, borderRadius: 12, display: 'block' }} />
   );
 }
 
@@ -94,154 +94,23 @@ function Starfield() {
   }, []);
 
   return (
-    <canvas ref={canvasRef} style={{ width: '100%', height: 200, borderRadius: 12, display: 'block' }} />
+    <canvas ref={canvasRef} style={{ width: '100%', height: 300, borderRadius: 12, display: 'block' }} />
   );
 }
 
-/* ─── Color Picker ─── */
-function ColorPicker() {
-  const [hue, setHue] = useState(270);
-  const [saturation, setSaturation] = useState(100);
-  const [lightness, setLightness] = useState(50);
-
-  const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
-      <div style={{ width: '100%', height: 80, borderRadius: 10, background: color, transition: 'background 0.2s' }} />
-      <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
-        <label style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
-          Hue <span>{hue}°</span>
-        </label>
-        <input type="range" min={0} max={360} value={hue} onChange={e => setHue(+e.target.value)} style={{ width: '100%', accentColor: color }} />
-        <label style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
-          Saturation <span>{saturation}%</span>
-        </label>
-        <input type="range" min={0} max={100} value={saturation} onChange={e => setSaturation(+e.target.value)} style={{ width: '100%', accentColor: color }} />
-        <label style={{ display: 'flex', justifyContent: 'space-between', color: 'var(--text-secondary)', fontSize: '0.85rem' }}>
-          Lightness <span>{lightness}%</span>
-        </label>
-        <input type="range" min={0} max={100} value={lightness} onChange={e => setLightness(+e.target.value)} style={{ width: '100%', accentColor: color }} />
-      </div>
-      <code style={{ color: 'var(--text-muted)', fontSize: '0.8rem', textAlign: 'center' }}>{color}</code>
-    </div>
-  );
-}
-
-/* ─── Bouncy Balls ─── */
-function BouncyBalls() {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    if (!ctx) return;
-
-    canvas.width = canvas.clientWidth;
-    canvas.height = canvas.clientHeight;
-
-    const balls = Array.from({ length: 15 }, () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 4,
-      vy: (Math.random() - 0.5) * 4,
-      r: Math.random() * 12 + 6,
-      hue: Math.random() * 360,
-    }));
-
-    const draw = () => {
-      ctx.fillStyle = 'rgba(11, 15, 20, 0.1)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      for (const b of balls) {
-        b.x += b.vx;
-        b.y += b.vy;
-        if (b.x < b.r || b.x > canvas.width - b.r) b.vx *= -1;
-        if (b.y < b.r || b.y > canvas.height - b.r) b.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(b.x, b.y, b.r, 0, Math.PI * 2);
-        ctx.fillStyle = `hsl(${b.hue}, 80%, 60%)`;
-        ctx.fill();
-        b.hue = (b.hue + 1) % 360;
-      }
-    };
-
-    const interval = setInterval(draw, 30);
-    return () => clearInterval(interval);
-  }, []);
-
-  return (
-    <canvas ref={canvasRef} style={{ width: '100%', height: 200, borderRadius: 12, display: 'block' }} />
-  );
-}
-
-/* ─── ASCII Art Generator ─── */
-function AsciiArt() {
-  const [text, setText] = useState('lucasskvn');
-  const [art, setArt] = useState('');
-
-  const generate = () => {
-    if (!text) { setArt(''); return; }
-    const chars = '@%#*+=-:. ';
-    const lines: string[] = [];
-    const w = 40;
-    const h = 8;
-    for (let y = 0; y < h; y++) {
-      let line = '';
-      for (let x = 0; x < w; x++) {
-        const i = Math.floor(Math.random() * chars.length);
-        line += chars[i];
-      }
-      lines.push(line);
-    }
-    // Insert text in the middle
-    const mid = Math.floor(h / 2);
-    const start = Math.floor((w - text.length) / 2);
-    const arr = lines[mid].split('');
-    for (let i = 0; i < text.length; i++) {
-      if (start + i < w) arr[start + i] = text[i];
-    }
-    lines[mid] = arr.join('');
-    setArt(lines.join('\n'));
-  };
-
-  return (
-    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-      <div style={{ display: 'flex', gap: 8 }}>
-        <input
-          value={text}
-          onChange={e => setText(e.target.value)}
-          placeholder="Type something..."
-          style={{
-            flex: 1, padding: '0.5rem 0.75rem', borderRadius: 8, border: '1px solid var(--border)',
-            background: 'var(--bg-card)', color: 'var(--text-primary)', fontFamily: 'inherit', fontSize: '0.9rem', outline: 'none',
-          }}
-          onKeyDown={e => e.key === 'Enter' && generate()}
-        />
-        <button onClick={generate} style={{
-          padding: '0.5rem 1rem', borderRadius: 8, border: 'none', background: 'var(--accent)', color: '#fff',
-          fontWeight: 600, cursor: 'pointer', fontSize: '0.85rem',
-        }}>Go</button>
-      </div>
-      {art && (
-        <pre style={{
-          background: '#0d1117', color: '#3fb950', padding: '1rem', borderRadius: 10,
-          fontSize: '0.7rem', lineHeight: 1.2, overflow: 'auto', margin: 0, fontFamily: 'monospace',
-        }}>{art}</pre>
-      )}
-    </div>
-  );
-}
-
-/* ─── Main Page ─── */
+/* ─── Experiments ─── */
 const experiments = [
   { id: 'matrix', title: { fr: 'Pluie Matrix', en: 'Matrix Rain' }, desc: { fr: 'Katakana qui tombent façon Matrix', en: 'Falling katakana Matrix-style' }, comp: MatrixRain },
   { id: 'starfield', title: { fr: 'Champ d\'étoiles', en: 'Starfield' }, desc: { fr: 'Warp speed à travers les étoiles', en: 'Warp speed through stars' }, comp: Starfield },
-  { id: 'bounce', title: { fr: 'Balles rebondissantes', en: 'Bouncy Balls' }, desc: { fr: 'Des balles colorées qui rebondissent', en: 'Colorful bouncing balls' }, comp: BouncyBalls },
-  { id: 'color', title: { fr: 'Nuancier HSL', en: 'HSL Picker' }, desc: { fr: 'Joue avec les couleurs en temps réel', en: 'Play with colors in real-time' }, comp: ColorPicker },
-  { id: 'ascii', title: { fr: 'ASCII Art', en: 'ASCII Art' }, desc: { fr: 'Génère du texte en art ASCII', en: 'Generate ASCII text art' }, comp: AsciiArt },
+];
+
+/* ─── Sites ─── */
+const sites = [
+  {
+    title: 'Neocities',
+    url: 'https://lucasskvn.neocities.org/',
+    desc: { fr: 'Site artistique hébergé sur Neocities', en: 'Artistic site hosted on Neocities' },
+  },
 ];
 
 export default function Playground({ lang }: { lang: 'fr' | 'en' }) {
@@ -253,13 +122,14 @@ export default function Playground({ lang }: { lang: 'fr' | 'en' }) {
     <div className="page-container fade-in">
       <SEO
         title="Playground"
-        description={lang === 'fr' ? 'Bac à sable interactif — expériences CSS/JS' : 'Interactive sandbox — CSS/JS experiments'}
+        description={lang === 'fr' ? 'Bac à sable interactif — expériences et sites artistiques' : 'Interactive sandbox — experiments and artistic sites'}
         path="/playground"
       />
       <h1 className="title">Playground</h1>
-      <p className="subtitle">{lang === 'fr' ? 'Bac à sable interactif' : 'Interactive sandbox'}</p>
+      <p className="subtitle">{lang === 'fr' ? 'Expériences interactives et sites artistiques' : 'Interactive experiments and artistic sites'}</p>
 
-      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '2rem' }}>
+      {/* Experiments */}
+      <div style={{ display: 'flex', gap: '0.5rem', flexWrap: 'wrap', marginBottom: '1.5rem' }}>
         {experiments.map(exp => (
           <button
             key={exp.id}
@@ -279,11 +149,50 @@ export default function Playground({ lang }: { lang: 'fr' | 'en' }) {
 
       <div style={{
         background: 'var(--bg-card)', border: '1px solid var(--border)', borderRadius: 16,
-        padding: '1.5rem', marginBottom: '2rem',
+        padding: '1.5rem', marginBottom: '3rem',
       }}>
         <h3 style={{ margin: '0 0 0.25rem', color: 'var(--text-primary)', fontSize: '1.1rem' }}>{current.title[lang]}</h3>
         <p style={{ margin: '0 0 1rem', color: 'var(--text-muted)', fontSize: '0.85rem' }}>{current.desc[lang]}</p>
         <current.comp />
+      </div>
+
+      {/* Artistic Sites */}
+      <h2 className="section-title">{lang === 'fr' ? 'Sites artistiques' : 'Artistic Sites'}</h2>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))', gap: '1rem' }}>
+        {sites.map(site => (
+          <a
+            key={site.title}
+            href={site.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{
+              display: 'flex', flexDirection: 'column', gap: '0.3rem',
+              background: 'var(--bg-card)', border: '1px solid var(--border)',
+              borderRadius: 16, padding: '1.25rem', textDecoration: 'none',
+              transition: 'transform 0.2s, box-shadow 0.2s, border-color 0.2s',
+            }}
+            onMouseEnter={e => {
+              (e.currentTarget as HTMLElement).style.transform = 'translateY(-4px)';
+              (e.currentTarget as HTMLElement).style.boxShadow = '0 8px 32px rgba(162, 89, 255, 0.12)';
+              (e.currentTarget as HTMLElement).style.borderColor = 'color-mix(in srgb, var(--accent) 30%, var(--border))';
+            }}
+            onMouseLeave={e => {
+              (e.currentTarget as HTMLElement).style.transform = '';
+              (e.currentTarget as HTMLElement).style.boxShadow = '';
+              (e.currentTarget as HTMLElement).style.borderColor = '';
+            }}
+          >
+            <span style={{ fontSize: '1.1rem', fontWeight: 700, color: 'var(--accent)' }}>
+              {site.title} ↗
+            </span>
+            <span style={{ fontSize: '0.85rem', color: 'var(--text-muted)' }}>
+              {site.desc[lang]}
+            </span>
+            <span style={{ fontSize: '0.75rem', color: 'var(--text-muted)', fontFamily: 'monospace', marginTop: '0.25rem' }}>
+              {site.url}
+            </span>
+          </a>
+        ))}
       </div>
     </div>
   );
