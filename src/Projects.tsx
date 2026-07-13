@@ -27,7 +27,10 @@ import cartridge from './assets/projects/cartridge.png';
 import myteams from './assets/projects/myteams.png';
 import codewash from './assets/projects/codewash.png';
 import myradar from './assets/projects/myradar.svg';
-import pomodocus from './assets/projects/pomodocus.svg';
+import pomodocus from './assets/projects/pomodocus-1.webp';
+import pomodocus2 from './assets/projects/pomodocus-2.webp';
+import pomodocus3 from './assets/projects/pomodocus-3.webp';
+import pomodocus4 from './assets/projects/pomodocus-4.webp';
 import wavpy from './assets/projects/wavpy.svg';
 import armageddon from './assets/projects/armageddon.svg';
 
@@ -38,6 +41,7 @@ type Project = {
   link?: string;
   image?: string;
   detailImage?: string;
+  gallery?: string[];
   isPrivate?: boolean;
 };
 
@@ -69,6 +73,7 @@ const projects: Project[] = [
     link: "https://github.com/lucasskvn/Pomodocus",
     image: pomodocus,
     detailImage: pomodocus,
+    gallery: [pomodocus, pomodocus2, pomodocus3, pomodocus4],
   },
   {
     title: { fr: "WAV.PY - Manipulation audio en Python", en: "WAV.PY - Audio Processing in Python" },
@@ -327,6 +332,27 @@ const projects: Project[] = [
   },
 ];
 
+function Gallery({ images, alt }: { images: string[]; alt: string }) {
+  const [current, setCurrent] = useState(0);
+  return (
+    <div style={{ position: 'relative', marginBottom: 16 }}>
+      <img src={images[current]} alt={alt} className="project-image" style={{ maxWidth: '60%', display: 'block', margin: '0 auto' }} />
+      <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 8 }}>
+        {images.map((_, i) => (
+          <button
+            key={i}
+            onClick={() => setCurrent(i)}
+            style={{
+              width: 10, height: 10, borderRadius: '50%', border: 'none', cursor: 'pointer',
+              background: i === current ? '#a259ff' : '#555', padding: 0,
+            }}
+          />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 interface ProjectsProps { lang: 'fr' | 'en' }
 
 export default function Projects({ lang }: ProjectsProps) {
@@ -379,7 +405,9 @@ export default function Projects({ lang }: ProjectsProps) {
       {selectedProject && (
         <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
           <div className="modal-content" onClick={e => e.stopPropagation()}>
-            {(selectedProject.detailImage || selectedProject.image) && (
+            {selectedProject.gallery ? (
+              <Gallery images={selectedProject.gallery} alt={typeof selectedProject.title === 'string' ? selectedProject.title : selectedProject.title[lang]} />
+            ) : (selectedProject.detailImage || selectedProject.image) && (
               <img src={selectedProject.detailImage || selectedProject.image} alt={typeof selectedProject.title === 'string' ? selectedProject.title : selectedProject.title[lang]} className="project-image" style={{ maxWidth: '60%', marginBottom: 16 }} />
             )}
             <h2>{typeof selectedProject.title === 'string' ? selectedProject.title : selectedProject.title[lang]}</h2>
