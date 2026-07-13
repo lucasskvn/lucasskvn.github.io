@@ -48,6 +48,7 @@ const projects: Project[] = [
     },
     image: butterflynet,
     detailImage: butterflynet,
+    link: "https://chat.2bananas4monkeys.org/",
   },
   {
     title: { fr: "Staarscreaam.wav - App musique en Rust", en: "Staarscreaam.wav - Music App in Rust" },
