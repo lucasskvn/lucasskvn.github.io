@@ -35,7 +35,7 @@ export default defineConfig({
         maximumFileSizeToCacheInBytes: 4 * 1024 * 1024, // 4 MB for large assets
         runtimeCaching: [
           {
-            urlPattern: /^https:\/\/ws\.audioscrobbler\.com\/.*/i,
+            urlPattern: /^https:\/\/(?:ws\.audioscrobbler\.com|corsproxy\.io\/.*ws\.audioscrobbler\.com)\/.*/i,
             handler: 'NetworkFirst',
             options: {
               cacheName: 'lastfm-cache',

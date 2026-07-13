@@ -3,7 +3,8 @@ import SEO from '../components/SEO';
 
 const LASTFM_USER = 'Snow3945KKK';
 const LASTFM_API_KEY = import.meta.env.VITE_LASTFM_API_KEY;
-const LASTFM_BASE = 'https://ws.audioscrobbler.com/2.0/';
+const CORS_PROXY = 'https://corsproxy.io/?';
+const LASTFM_BASE = CORS_PROXY + 'https://ws.audioscrobbler.com/2.0/';
 interface Track {
   name: string;
   artist: string;
