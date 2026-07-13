@@ -1,5 +1,5 @@
 import SEO from './components/SEO';
-import Skills from './components/Skills';
+import Setup from './components/Setup';
 import Profile from './assets/profile.jpg';
 import DownloadIcon from './assets/download.png';
 import './About.css';
@@ -38,9 +38,9 @@ const About = ({ lang }: { lang: 'fr' | 'en' }) => (
       </div>
     </div>
     <h2 className="section-title" style={{ marginTop: '3rem', textAlign: 'center' }}>
-      {lang === 'fr' ? 'Compétences' : 'Skills'}
+      {lang === 'fr' ? 'Setup / Gear' : 'Setup / Gear'}
     </h2>
-    <Skills />
+    <Setup lang={lang} />
   </div>
 );
 
