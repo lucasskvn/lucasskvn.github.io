@@ -3,8 +3,12 @@ import SEO from '../components/SEO';
 
 const LASTFM_USER = 'Snow3945KKK';
 const LASTFM_API_KEY = import.meta.env.VITE_LASTFM_API_KEY;
-const CORS_PROXY = 'https://corsproxy.io/?';
-const LASTFM_BASE = CORS_PROXY + 'https://ws.audioscrobbler.com/2.0/';
+const CORS_PROXY = 'https://api.allorigins.win/raw?url=';
+const LASTFM_BASE = 'https://ws.audioscrobbler.com/2.0/';
+
+function proxyUrl(url: string): string {
+  return CORS_PROXY + encodeURIComponent(url);
+}
 interface Track {
   name: string;
   artist: string;
@@ -40,9 +44,9 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
     const fetchLastfm = async () => {
       try {
         // Now playing + recent
-        const recentRes = await fetch(
+        const recentRes = await fetch(proxyUrl(
           `${LASTFM_BASE}?method=user.getrecenttracks&user=${LASTFM_USER}&api_key=${LASTFM_API_KEY}&format=json&limit=10`
-        );
+        ));
         const recentData = await recentRes.json();
         const tracks = recentData?.recenttracks?.track || [];
 
@@ -60,9 +64,9 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
         setRecentTracks(mapped.filter(t => !t.nowPlaying).slice(0, 9));
 
         // Top artists — fetch real images via artist.getinfo
-        const topRes = await fetch(
+        const topRes = await fetch(proxyUrl(
           `${LASTFM_BASE}?method=user.gettopartists&user=${LASTFM_USER}&api_key=${LASTFM_API_KEY}&format=json&period=1month&limit=8`
-        );
+        ));
         const topData = await topRes.json();
         const rawArtists = topData?.topartists?.artist || [];
 
@@ -102,9 +106,9 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
         setTopArtists(artists);
 
         // Top albums
-        const albumRes = await fetch(
+        const albumRes = await fetch(proxyUrl(
           `${LASTFM_BASE}?method=user.gettopalbums&user=${LASTFM_USER}&api_key=${LASTFM_API_KEY}&format=json&period=1month&limit=8`
-        );
+        ));
         const albumData = await albumRes.json();
         const rawAlbums = albumData?.topalbums?.album || [];
 

@@ -16,6 +16,11 @@ export default function Contact({ lang }: ContactProps) {
           ? "Vous pouvez me contacter à l'adresse : lucas.sangkhavongs@epitech.eu"
           : "You can contact me at : lucas.sangkhavongs@epitech.eu"}
       </p>
+      <p style={{ textAlign: 'center', color: 'var(--text-secondary)', marginTop: '2rem', fontSize: '0.95rem' }}>
+        {lang === 'fr'
+          ? '🦋 Tu peux aussi me rejoindre sur ButterflyNet, mon serveur IRC privé — contacte-moi pour une invitation.'
+          : '🦋 You can also find me on ButterflyNet, my private IRC server — reach out for an invite.'}
+      </p>
     </div>
   );
 }

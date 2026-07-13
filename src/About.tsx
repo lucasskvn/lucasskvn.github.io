@@ -30,6 +30,10 @@ const About = ({ lang }: { lang: 'fr' | 'en' }) => (
             ? "Je m'appelle Lucas Sangkhavongs, j'ai 20 ans et je suis étudiant en deuxième année à EPITECH Lyon. Passionné d'informatique et de programmation."
             : "I'm Lucas Sangkhavongs, I'm 20 years old and a second-year EPITECH student based in Lyon, France. I'm passionate about programming and computers."}
           <br />
+          <br />
+          {lang === 'fr'
+            ? "J'ai récemment lancé 🦋 ButterflyNet, un serveur IRC privé et chiffré, accessible uniquement sur invitation."
+            : "I recently launched 🦋 ButterflyNet, a private encrypted IRC server — invite only."}
         </p>
       </div>
     </div>

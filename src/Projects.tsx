@@ -270,6 +270,11 @@ export default function Projects({ lang }: ProjectsProps) {
       />
       <h1 className="title">{lang === 'fr' ? 'Projets' : 'Projects'}</h1>
       <p className="subtitle">{lang === 'fr' ? 'Voici quelques-uns de mes projets réalisés à EPITECH et en dehors.' : 'Here are some of my projects made at EPITECH and beyond.'}</p>
+      <p style={{ textAlign: 'center', color: 'var(--text-secondary)', marginBottom: '2rem', fontSize: '0.95rem' }}>
+        {lang === 'fr'
+          ? '🦋 J\'ai aussi lancé ButterflyNet — un serveur IRC privé et chiffré, accessible uniquement sur invitation.'
+          : '🦋 I also launched ButterflyNet — a private encrypted IRC server, invite only.'}
+      </p>
       <div className="projects-grid">
         {projects.map((project, idx) => (
           <motion.div
