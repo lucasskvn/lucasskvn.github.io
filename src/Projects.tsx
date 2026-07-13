@@ -20,7 +20,7 @@ import farmermonkey from './assets/projects/farmermonkey.svg';
 import virtualangel from './assets/projects/virtualangel.svg';
 import zhouxinyu from './assets/projects/zhouxinyu.svg';
 import zappy from './assets/projects/zappy.png';
-import cartridge from './assets/projects/cartridge.svg';
+import cartridge from './assets/projects/cartridge.png';
 import myteams from './assets/projects/myteams.svg';
 import codewash from './assets/projects/codewash.png';
 import myradar from './assets/projects/myradar.svg';
