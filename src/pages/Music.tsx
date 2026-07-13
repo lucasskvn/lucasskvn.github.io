@@ -38,14 +38,20 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
   const [topArtists, setTopArtists] = useState<TopArtist[]>([]);
   const [topAlbums, setTopAlbums] = useState<TopAlbum[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
 
   useEffect(() => {
+    let retryCount = 0;
+    const maxRetries = 5;
+
     const fetchLastfm = async () => {
       try {
+        setError(false);
         // Now playing + recent
         const recentRes = await fetch(proxyUrl(
           `${LASTFM_BASE}?method=user.getrecenttracks&user=${LASTFM_USER}&api_key=${LASTFM_API_KEY}&format=json&limit=10`
         ));
+        if (!recentRes.ok) throw new Error(`HTTP ${recentRes.status}`);
         const recentData = await recentRes.json();
         const tracks = recentData?.recenttracks?.track || [];
 
@@ -62,10 +68,11 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
         setNowPlaying(playing);
         setRecentTracks(mapped.filter(t => !t.nowPlaying).slice(0, 9));
 
-        // Top artists — fetch real images via artist.getinfo
+        // Top artists
         const topRes = await fetch(proxyUrl(
           `${LASTFM_BASE}?method=user.gettopartists&user=${LASTFM_USER}&api_key=${LASTFM_API_KEY}&format=json&period=1month&limit=8`
         ));
+        if (!topRes.ok) throw new Error(`HTTP ${topRes.status}`);
         const topData = await topRes.json();
         const rawArtists = topData?.topartists?.artist || [];
 
@@ -73,7 +80,6 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
           rawArtists.map(async (a: any) => {
             let img = '';
 
-            // Try iTunes Search API for artist album artwork (free, CORS-friendly)
             try {
               const itunesRes = await fetch(
                 `https://itunes.apple.com/search?term=${encodeURIComponent(a.name)}&entity=album&limit=1`
@@ -81,12 +87,10 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
               const itunesData = await itunesRes.json();
               const itunesAlbum = itunesData?.results?.[0];
               if (itunesAlbum?.artworkUrl100) {
-                // Replace 100x100 with 600x600 for larger image
                 img = itunesAlbum.artworkUrl100.replace('100x100', '600x600');
               }
             } catch {}
 
-            // Fallback: Last.fm image if iTunes failed
             if (!img) {
               img = a.image?.find((i: any) => i.size === 'mega')?.['#text']
                 || a.image?.find((i: any) => i.size === 'extralarge')?.['#text']
@@ -108,6 +112,7 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
         const albumRes = await fetch(proxyUrl(
           `${LASTFM_BASE}?method=user.gettopalbums&user=${LASTFM_USER}&api_key=${LASTFM_API_KEY}&format=json&period=1month&limit=8`
         ));
+        if (!albumRes.ok) throw new Error(`HTTP ${albumRes.status}`);
         const albumData = await albumRes.json();
         const rawAlbums = albumData?.topalbums?.album || [];
 
@@ -121,8 +126,15 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
           url: a.url,
         }));
         setTopAlbums(albums);
+        retryCount = 0;
       } catch (e) {
         console.error('Last.fm fetch error:', e);
+        setError(true);
+        retryCount++;
+        // If we have no data at all and still retrying, keep loading state
+        if (retryCount < maxRetries && !nowPlaying && recentTracks.length === 0) {
+          return; // Don't set loading false yet
+        }
       } finally {
         setLoading(false);
       }
@@ -152,6 +164,13 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
         </div>
       ) : (
         <>
+          {error && (
+            <div style={{ textAlign: 'center', padding: '1rem', marginBottom: '1rem', background: 'rgba(255, 100, 100, 0.1)', borderRadius: '8px', border: '1px solid rgba(255, 100, 100, 0.3)' }}>
+              <p style={{ color: '#ff6b6b', margin: 0, fontSize: '0.9rem' }}>
+                {lang === 'fr' ? '🔄 Connexion à Last.fm perdue — tentative de reconnexion...' : '🔄 Last.fm connection lost — retrying...'}
+              </p>
+            </div>
+          )}
           {/* Now Playing */}
           {nowPlaying && (
             <div className="now-playing-card">
