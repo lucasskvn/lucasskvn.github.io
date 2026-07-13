@@ -365,16 +365,16 @@ export default function Projects({ lang }: ProjectsProps) {
           <motion.div
             key={idx}
             className="project-card"
-            initial={{ opacity: 0, y: 60, filter: 'blur(12px)' }}
+            initial={{ opacity: 1, y: 30, filter: 'blur(4px)' }}
             whileInView={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
-            viewport={{ once: true, amount: 0.2 }}
+            viewport={{ once: true, amount: 0.01 }}
             transition={{
               type: "spring",
               stiffness: 60,
               damping: 18,
               mass: 0.7,
-              delay: idx * 0.12,
-              filter: { duration: 0.5, ease: [0.4, 0, 0.2, 1] }
+              delay: idx * 0.06,
+              filter: { duration: 0.4, ease: [0.4, 0, 0.2, 1] }
             }}
           >
             {project.image && (
