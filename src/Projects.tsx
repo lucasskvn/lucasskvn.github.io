@@ -18,6 +18,7 @@ import staarscreaam from './assets/projects/staarscreaam.png';
 import rmrf from './assets/projects/rmrf.svg';
 import farmermonkey from './assets/projects/farmermonkey.svg';
 import virtualangel from './assets/projects/virtualangel.svg';
+import virtualangelDetail from './assets/projects/virtualangel-detail.png';
 import zhouxinyu from './assets/projects/zhouxinyu.svg';
 import zappy from './assets/projects/zappy.png';
 import cartridge from './assets/projects/cartridge.png';
@@ -161,7 +162,7 @@ const projects: Project[] = [
     },
     link: "https://github.com/lucasskvn/VirtualAngel",
     image: virtualangel,
-    detailImage: virtualangel,
+    detailImage: virtualangelDetail,
     isPrivate: true,
   },
   {
