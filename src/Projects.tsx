@@ -47,7 +47,7 @@ const projects: Project[] = [
       en: "ButterflyNet is a private IRC server I set up on my OVH VPS. It uses a secure configuration with TLS encryption, invite-only access, and a lightweight stack for optimal performance. Designed for private conversations between friends, without relying on centralized platforms."
     },
     image: butterflynet,
-    detailImage: githubImg,
+    detailImage: butterflynet,
   },
   {
     title: { fr: "Staarscreaam.wav - App musique en Rust", en: "Staarscreaam.wav - Music App in Rust" },
@@ -61,7 +61,7 @@ const projects: Project[] = [
     },
     link: "https://github.com/lucasskvn/Staarscreaam.wav",
     image: staarscreaam,
-    detailImage: githubImg,
+    detailImage: staarscreaam,
   },
   {
     title: { fr: "RMRF - Outil de backup dédupliqué", en: "RMRF - Deduplicated Backup Tool" },
@@ -75,7 +75,7 @@ const projects: Project[] = [
     },
     link: "https://github.com/lucasskvn/RMRF",
     image: rmrf,
-    detailImage: githubImg,
+    detailImage: rmrf,
   },
   {
     title: { fr: "lucasskvn.fr - Site personnel", en: "lucasskvn.fr - Personal Site" },
@@ -145,7 +145,7 @@ const projects: Project[] = [
     },
     link: "https://github.com/lucasskvn/FarmerMonkey",
     image: farmermonkey,
-    detailImage: githubImg,
+    detailImage: farmermonkey,
     isPrivate: true,
   },
   {
@@ -160,7 +160,7 @@ const projects: Project[] = [
     },
     link: "https://github.com/lucasskvn/VirtualAngel",
     image: virtualangel,
-    detailImage: githubImg,
+    detailImage: virtualangel,
     isPrivate: true,
   },
   {
@@ -175,7 +175,7 @@ const projects: Project[] = [
     },
     link: "https://github.com/lucasskvn/ZhouXinyu",
     image: zhouxinyu,
-    detailImage: githubImg,
+    detailImage: zhouxinyu,
     isPrivate: true,
   },
   {
@@ -189,7 +189,7 @@ const projects: Project[] = [
       en: "Zappy is a network game project where multiple teams compete via autonomous AI. The architecture separates a central C/CPP server, graphical clients, and Python AIs interacting in real-time."
     },
     image: zappy,
-    detailImage: githubImg,
+    detailImage: zappy,
     isPrivate: true,
   },
   {
@@ -203,7 +203,7 @@ const projects: Project[] = [
       en: "Cartridge is a project recreating a GameBoy game in C, respecting the original console's technical limitations: limited memory, constrained display, and reduced performance."
     },
     image: cartridge,
-    detailImage: githubImg,
+    detailImage: cartridge,
     isPrivate: true,
   },
   {
@@ -217,7 +217,7 @@ const projects: Project[] = [
       en: "my_teams is an instant messaging project in Rust with a client/server architecture. It implements channel management, private messages, and real-time notifications."
     },
     image: myteams,
-    detailImage: githubImg,
+    detailImage: myteams,
     isPrivate: true,
   },
   {
@@ -273,7 +273,7 @@ const projects: Project[] = [
       en: "This project is about creating an airplane trajectory and collision simulator in C with CSFML."
     },
     image: myradar,
-    detailImage: githubImg,
+    detailImage: myradar,
     isPrivate: true,
   },
 ];
