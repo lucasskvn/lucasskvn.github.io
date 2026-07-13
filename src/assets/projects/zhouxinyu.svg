@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 250">
+  <rect width="400" height="250" rx="12" fill="#0d1117"/>
+  <defs>
+    <linearGradient id="bg7" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0d1117"/>
+      <stop offset="100%" stop-color="#1a0d17"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="250" rx="12" fill="url(#bg7)"/>
+  <!-- Card back -->
+  <g transform="translate(200, 70)">
+    <rect x="-25" y="-18" width="50" height="36" rx="4" fill="none" stroke="#ff69b4" stroke-width="2" opacity="0.4"/>
+    <rect x="-20" y="-13" width="40" height="26" rx="2" fill="#ff69b4" opacity="0.08"/>
+    <!-- Star on card -->
+    <polygon points="0,-8 2,-3 7,-3 3,1 5,6 0,3 -5,6 -3,1 -7,-3 -2,-3" fill="#ff69b4" opacity="0.5"/>
+  </g>
+  <!-- Trading arrows -->
+  <g transform="translate(200, 145)" fill="none" stroke="#ff69b4" stroke-width="2" opacity="0.4">
+    <path d="M-40,0 L-20,0 L-20,-10 L0,5 L-20,20 L-20,10 L-40,10 Z"/>
+    <path d="M40,0 L20,0 L20,-10 L0,5 L20,20 L20,10 L40,10 Z"/>
+  </g>
+  <!-- Title -->
+  <text x="200" y="215" text-anchor="middle" fill="#ff69b4" font-family="monospace" font-size="12" font-weight="bold">ZhouXinyu</text>
+  <text x="200" y="233" text-anchor="middle" fill="#666" font-family="monospace" font-size="10">Trading Card Bot</text>
+</svg>

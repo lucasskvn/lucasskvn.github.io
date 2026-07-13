@@ -12,9 +12,18 @@ import nvimscreen from './assets/nvimscreen.png';
 import webpage from './assets/webpage.png';
 import minishellscreen from './assets/minishellscreen.png';
 import minishell from './assets/minishell.png';
-import c_logo from './assets/C_Logo.png';
-import csfml from './assets/csfml.png';
 import portfolio from './assets/portfoliomainpage.png';
+import butterflynet from './assets/projects/butterflynet.svg';
+import staarscreaam from './assets/projects/staarscreaam.svg';
+import rmrf from './assets/projects/rmrf.svg';
+import farmermonkey from './assets/projects/farmermonkey.svg';
+import virtualangel from './assets/projects/virtualangel.svg';
+import zhouxinyu from './assets/projects/zhouxinyu.svg';
+import zappy from './assets/projects/zappy.svg';
+import cartridge from './assets/projects/cartridge.svg';
+import myteams from './assets/projects/myteams.svg';
+import codewash from './assets/projects/codewash.svg';
+import myradar from './assets/projects/myradar.svg';
 
 type Project = {
   title: string | { fr: string; en: string };
@@ -37,9 +46,8 @@ const projects: Project[] = [
       fr: "ButterflyNet est un serveur IRC privé que j'ai mis en place sur mon VPS OVH. Il utilise une configuration sécurisée avec chiffrement TLS, accès restreint par invitation, et une stack légère pour des performances optimales. Conçu pour des discussions privées entre amis, sans dépendre de plateformes centralisées.",
       en: "ButterflyNet is a private IRC server I set up on my OVH VPS. It uses a secure configuration with TLS encryption, invite-only access, and a lightweight stack for optimal performance. Designed for private conversations between friends, without relying on centralized platforms."
     },
-    image: webpage,
+    image: butterflynet,
     detailImage: githubImg,
-    isPrivate: true,
   },
   {
     title: { fr: "Staarscreaam.wav - App musique en Rust", en: "Staarscreaam.wav - Music App in Rust" },
@@ -52,7 +60,7 @@ const projects: Project[] = [
       en: "Staarscreaam.wav is an open source music application written in Rust, designed to be highly customizable. Modular architecture, playlist management, equalizer, and multiple audio format support."
     },
     link: "https://github.com/lucasskvn/Staarscreaam.wav",
-    image: c_logo,
+    image: staarscreaam,
     detailImage: githubImg,
   },
   {
@@ -66,7 +74,7 @@ const projects: Project[] = [
       en: "RMRF (Resilient Modular Reduction Framework) is a backup tool with content-defined chunking, BLAKE3 hashing, and zstd compression. It supports automatic Proxmox VM suspension for consistent snapshots, integrity verification, garbage collection, and retention policies."
     },
     link: "https://github.com/lucasskvn/RMRF",
-    image: c_logo,
+    image: rmrf,
     detailImage: githubImg,
   },
   {
@@ -94,7 +102,7 @@ const projects: Project[] = [
       en: "This site was designed to highlight my skills, projects, and professional background. It uses React, Vite, and a responsive design."
     },
     link: "https://github.com/lucasskvn/lucasskvn.github.io/",
-    image: githubImg,
+    image: portfolio,
     detailImage: portfolio,
   },
   {
@@ -136,7 +144,7 @@ const projects: Project[] = [
       en: "FarmerMonkey is a complete Discord bot for tournament management: bracket creation, team management, statistics tracking, and elimination system. Deployed in production on multiple Discord servers."
     },
     link: "https://github.com/lucasskvn/FarmerMonkey",
-    image: githubImg,
+    image: farmermonkey,
     detailImage: githubImg,
     isPrivate: true,
   },
@@ -151,7 +159,7 @@ const projects: Project[] = [
       en: "VirtualAngel is a Discord bot using Markov chains to learn from conversations and generate contextual responses. Modular architecture with data persistence and Docker deployment."
     },
     link: "https://github.com/lucasskvn/VirtualAngel",
-    image: githubImg,
+    image: virtualangel,
     detailImage: githubImg,
     isPrivate: true,
   },
@@ -166,7 +174,7 @@ const projects: Project[] = [
       en: "ZhouXinyu is a trading card Discord bot with a complete exchange system, card collection, rarities, and user data persistence."
     },
     link: "https://github.com/lucasskvn/ZhouXinyu",
-    image: githubImg,
+    image: zhouxinyu,
     detailImage: githubImg,
     isPrivate: true,
   },
@@ -180,7 +188,7 @@ const projects: Project[] = [
       fr: "Zappy est un projet de jeu réseau où plusieurs équipes s'affrontent via une IA autonome. L'architecture sépare un serveur central en C/CPP, des clients graphiques, et des IA en Python qui interagissent en temps réel.",
       en: "Zappy is a network game project where multiple teams compete via autonomous AI. The architecture separates a central C/CPP server, graphical clients, and Python AIs interacting in real-time."
     },
-    image: csfml,
+    image: zappy,
     detailImage: githubImg,
     isPrivate: true,
   },
@@ -194,7 +202,7 @@ const projects: Project[] = [
       fr: "Cartridge est un projet qui consiste à recréer un jeu GameBoy en C, en respectant les limitations techniques de la console originale : mémoire limitée, affichage contraint, et performances réduites.",
       en: "Cartridge is a project recreating a GameBoy game in C, respecting the original console's technical limitations: limited memory, constrained display, and reduced performance."
     },
-    image: c_logo,
+    image: cartridge,
     detailImage: githubImg,
     isPrivate: true,
   },
@@ -208,7 +216,7 @@ const projects: Project[] = [
       fr: "my_teams est un projet de messagerie instantanée en Rust avec une architecture client/serveur. Il implémente la gestion de canaux, messages privés, et notifications en temps réel.",
       en: "my_teams is an instant messaging project in Rust with a client/server architecture. It implements channel management, private messages, and real-time notifications."
     },
-    image: c_logo,
+    image: myteams,
     detailImage: githubImg,
     isPrivate: true,
   },
@@ -222,7 +230,7 @@ const projects: Project[] = [
       fr: "Codewash est un projet de refactorisation complète d'une application existante, visant à améliorer la qualité du code, la maintenabilité et faciliter l'implémentation de nouvelles fonctionnalités.",
       en: "Codewash is a complete refactoring project of an existing application, aiming to improve code quality, maintainability, and ease the implementation of new features."
     },
-    image: webpage,
+    image: codewash,
     detailImage: githubImg,
     isPrivate: true,
   },
@@ -264,7 +272,7 @@ const projects: Project[] = [
       fr: "Ce projet consiste à créer un simulateur de trajectoire et collision d'avions en C avec CSFML.",
       en: "This project is about creating an airplane trajectory and collision simulator in C with CSFML."
     },
-    image: csfml,
+    image: myradar,
     detailImage: githubImg,
     isPrivate: true,
   },
