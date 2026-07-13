@@ -26,6 +26,8 @@ const gear = {
     { name: 'Git', desc: { fr: 'Gestion de versions', en: 'Version control' } },
     { name: 'Docker', desc: { fr: 'Conteneurisation', en: 'Containerization' } },
     { name: 'Tailscale', desc: { fr: 'Réseau maillé privé', en: 'Private mesh network' } },
+    { name: 'Hermes Agent', desc: { fr: 'Agent IA autonome en terminal', en: 'Autonomous terminal AI agent' }, link: 'https://github.com/NousResearch/hermes-agent' },
+    { name: 'Obsidian', desc: { fr: 'Prise de notes en markdown lié', en: 'Linked markdown note-taking' } },
     { name: 'Opencode', desc: { fr: 'Client IA pour le code en terminal', en: 'Terminal AI coding client' } },
   ],
 };
