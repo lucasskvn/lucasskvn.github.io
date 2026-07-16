@@ -14,12 +14,12 @@ Mon site personnel hébergé sur [GitHub Pages](https://lucasskvn.github.io). Un
 
 ## ✨ Fonctionnalités
 
-- 🎨 **Design moderne** — Interface élégante et responsive
-- 🚀 **Performance** — Optimisé avec Vite
-- 📱 **Responsive** — Adapté à tous les écrans
-- 🌙 **Mode sombre** — Support du thème sombre/clair
-- 🎭 **Animations** — Transitions fluides
-- 📧 **Contact** — Liens vers mes réseaux sociaux
+- 🎨 **Design moderne** - Interface élégante et responsive
+- 🚀 **Performance** - Optimisé avec Vite
+- 📱 **Responsive** - Adapté à tous les écrans
+- 🌙 **Mode sombre** - Support du thème sombre/clair
+- 🎭 **Animations** - Transitions fluides
+- 📧 **Contact** - Liens vers mes réseaux sociaux
 
 ---
 
@@ -100,17 +100,17 @@ git push origin main
 
 ## 🛠️ Technologies
 
-- **TypeScript** — Typage statique
-- **Vite** — Build tool rapide
-- **React** — Bibliothèque UI
-- **Tailwind CSS** — Framework CSS utilitaire
-- **GitHub Pages** — Hébergement
+- **TypeScript** - Typage statique
+- **Vite** - Build tool rapide
+- **React** - Bibliothèque UI
+- **Tailwind CSS** - Framework CSS utilitaire
+- **GitHub Pages** - Hébergement
 
 ---
 
 ## 👤 Auteur
 
-**Lucas Kvn** — [GitHub](https://github.com/lucasskvn) — [lucasskvn.fr](https://lucasskvn.fr)
+**Lucas Kvn** - [GitHub](https://github.com/lucasskvn) - [lucasskvn.fr](https://lucasskvn.fr)
 
 ---
 
