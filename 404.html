@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/og.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="dark" />
 
@@ -40,8 +41,32 @@
 
     <!-- Umami Analytics -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="a259ff00-0000-0000-0000-000000000000"></script>
-    <script type="module" crossorigin src="/assets/index-D3b8OA2g.js"></script>
-    <link rel="stylesheet" crossorigin href="/assets/index-CsCWtXJB.css">
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "name": "Lucas Sangkhavongs",
+          "url": "https://lucasskvn.github.io",
+          "jobTitle": "Developer",
+          "sameAs": [
+            "https://github.com/lucasskvn",
+            "https://www.linkedin.com/in/lucas-sangkhavongs/"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "name": "lucasskvn",
+          "url": "https://lucasskvn.github.io"
+        }
+      ]
+    }
+    </script>
+    <script type="module" crossorigin src="/assets/index-CqvcYrPg.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-Z54uAlur.css">
   <link rel="manifest" href="/manifest.webmanifest"><script id="vite-plugin-pwa:register-sw" src="/registerSW.js"></script></head>
   <body>
     <div id="root"></div>
