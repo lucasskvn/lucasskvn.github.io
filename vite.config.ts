@@ -16,7 +16,7 @@ export default defineConfig({
     },
     VitePWA({
       registerType: 'autoUpdate',
-      includeAssets: ['assets/ppgithub.png', 'assets/placeholder.jpg'],
+      includeAssets: ['og.png', 'assets/placeholder.jpg'],
       manifest: {
         name: 'lucasskvn — Portfolio',
         short_name: 'lucasskvn',
@@ -26,8 +26,8 @@ export default defineConfig({
         background_color: '#141412',
         theme_color: '#141412',
         icons: [
-          { src: '/assets/ppgithub.png', sizes: '192x192', type: 'image/png' },
-          { src: '/assets/ppgithub.png', sizes: '512x512', type: 'image/png' },
+          { src: '/og.png', sizes: '192x192', type: 'image/png' },
+          { src: '/og.png', sizes: '512x512', type: 'image/png' },
         ],
       },
       workbox: {

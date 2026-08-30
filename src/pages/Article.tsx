@@ -21,7 +21,7 @@ export default function Article({ lang }: { lang: 'fr' | 'en' }) {
   }
 
   return (
-    <div className="page-container fade-in">
+    <div className="page-container fade-in" data-code="07">
       <SEO
         title={article.title[lang]}
         description={article.description[lang]}

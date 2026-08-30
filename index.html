@@ -3,6 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/og.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="color-scheme" content="dark" />
 
@@ -40,6 +41,30 @@
 
     <!-- Umami Analytics -->
     <script defer src="https://cloud.umami.is/script.js" data-website-id="a259ff00-0000-0000-0000-000000000000"></script>
+
+    <!-- Structured data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "name": "Lucas Sangkhavongs",
+          "url": "https://lucasskvn.github.io",
+          "jobTitle": "Developer",
+          "sameAs": [
+            "https://github.com/lucasskvn",
+            "https://www.linkedin.com/in/lucas-sangkhavongs/"
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "name": "lucasskvn",
+          "url": "https://lucasskvn.github.io"
+        }
+      ]
+    }
+    </script>
   </head>
   <body>
     <div id="root"></div>

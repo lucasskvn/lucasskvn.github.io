@@ -6,14 +6,15 @@ import './About.css';
 const status = "EPITECH Lyon Student";
 
 const About = ({ lang }: { lang: 'fr' | 'en' }) => (
-  <div className="Rectangles-container fade-in-home">
+  <div className="Rectangles-container fade-in-home" data-code="02">
     <SEO
       title="About"
       description={lang === 'fr' ? 'À propos de Lucas Sangkhavongs — étudiant EPITECH Lyon' : 'About Lucas Sangkhavongs — EPITECH Lyon student'}
       path="/about"
+      image={Profile}
     />
     <div className="Rounded-rectangle">
-      <img src={Profile} alt="Profile" className="Profile-rectangle" />
+      <img src={Profile} alt="Profile" className="Profile-rectangle" loading="lazy" decoding="async" />
       <a href="/CV_LucasSangkhavongs.pdf" download className="CV-download-btn">
         {lang === 'fr' ? 'Télécharger le CV' : 'Download CV'}
         <span className="DownloadArrow">

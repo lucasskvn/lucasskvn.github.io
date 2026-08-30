@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import articles from '../data/articles';
@@ -6,6 +6,20 @@ import articles from '../data/articles';
 export default function Blog({ lang }: { lang: 'fr' | 'en' }) {
   const [query, setQuery] = useState('');
   const [tag, setTag] = useState<string | null>(null);
+  const searchRef = useRef<HTMLInputElement>(null);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== '/') return;
+      const tgt = e.target as HTMLElement | null;
+      const tagName = tgt?.tagName;
+      if (tagName === 'INPUT' || tagName === 'TEXTAREA') return;
+      e.preventDefault();
+      searchRef.current?.focus();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
 
   const allTags = Array.from(new Set(articles.flatMap(a => a.tags))).sort();
 
@@ -23,7 +37,7 @@ export default function Blog({ lang }: { lang: 'fr' | 'en' }) {
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 
   return (
-    <div className="page-container fade-in">
+    <div className="page-container fade-in" data-code="06">
       <SEO
         title="Blog"
         description={lang === 'fr' ? 'Blog de Lucas Sangkhavongs' : "Lucas Sangkhavongs' blog"}
@@ -36,9 +50,10 @@ export default function Blog({ lang }: { lang: 'fr' | 'en' }) {
         <div className="blog-search">
           <span className="blog-search-icon">⌕</span>
           <input
+            ref={searchRef}
             type="search"
             className="blog-search-input"
-            placeholder={lang === 'fr' ? 'Rechercher…' : 'Search…'}
+            placeholder={lang === 'fr' ? 'Rechercher… (/)' : 'Search… (/)'}
             value={query}
             onChange={e => setQuery(e.target.value)}
           />

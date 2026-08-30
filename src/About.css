@@ -30,7 +30,7 @@
 }
 
 .world-otherworld .Rounded-rectangle::before {
-  content: '— DOCUMENT / PERSONAL FILE —';
+  content: 'RECOVERED FILE ' attr(data-code);
   font-family: ui-monospace, 'Courier New', monospace;
   font-size: 0.62rem;
   letter-spacing: 0.26em;

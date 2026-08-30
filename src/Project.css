@@ -232,6 +232,13 @@
   padding: 0 0 1.5rem;
 }
 
+.ow-projects-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.25rem;
+}
+
 .ow-projects-layout {
   display: grid;
   grid-template-columns: minmax(280px, 1fr) minmax(0, 1.4fr);

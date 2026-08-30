@@ -12,7 +12,7 @@ interface ContactProps { lang: 'fr' | 'en' }
 
 export default function Contact({ lang }: ContactProps) {
   return (
-    <div className="contact-container page-container fade-in">
+    <div className="contact-container page-container fade-in" data-code="05">
       <SEO
         title="Contact"
         description={lang === 'fr' ? 'Contacter Lucas Sangkhavongs' : 'Contact Lucas Sangkhavongs'}

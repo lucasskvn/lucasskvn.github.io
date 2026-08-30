@@ -8,7 +8,7 @@ interface SEOProps {
 }
 
 const SITE_URL = 'https://lucasskvn.github.io';
-const DEFAULT_IMAGE = '/assets/ppgithub.png';
+const DEFAULT_IMAGE = '/og.png';
 
 export default function SEO({ title, description, path = '', image = DEFAULT_IMAGE }: SEOProps) {
   const fullUrl = `${SITE_URL}${path}`;

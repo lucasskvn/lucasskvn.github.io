@@ -156,7 +156,7 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
   }[lang];
 
   return (
-    <div className="page-container fade-in">
+    <div className="page-container fade-in" data-code="04">
       <SEO title="Music" description="Ce que Lucas écoute en ce moment — Last.fm integration" path="/music" />
 
       <h1 className="title">{t.title}</h1>
@@ -179,7 +179,7 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
 
           {nowPlaying && (
             <div className="now-playing-card">
-              <img src={nowPlaying.image || '/assets/placeholder.jpg'} alt={nowPlaying.album} className="now-playing-img" />
+              <img src={nowPlaying.image || '/assets/placeholder.jpg'} alt={nowPlaying.album} className="now-playing-img" loading="lazy" decoding="async" />
               <div className="now-playing-info">
                 <span className="now-playing-badge">{t.now}</span>
                 <a href={nowPlaying.url} target="_blank" rel="noopener noreferrer" className="now-playing-title">{nowPlaying.name}</a>
@@ -197,7 +197,7 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
               ) : (
                 recentTracks.map((track, i) => (
                   <a key={i} href={track.url} target="_blank" rel="noopener noreferrer" className="track-row">
-                    <img src={track.image || '/assets/placeholder.jpg'} alt={track.album} className="track-img" />
+                    <img src={track.image || '/assets/placeholder.jpg'} alt={track.album} className="track-img" loading="lazy" decoding="async" />
                     <div className="track-info">
                       <span className="track-name">{track.name}</span>
                       <span className="track-artist">{track.artist}</span>
@@ -225,7 +225,7 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
                 topArtists.map((artist, i) => (
                   <a key={i} href={artist.url} target="_blank" rel="noopener noreferrer" className="artist-card">
                     {artist.image ? (
-                      <img src={artist.image} alt={artist.name} className="artist-img" />
+                      <img src={artist.image} alt={artist.name} className="artist-img" loading="lazy" decoding="async" />
                     ) : (
                       <div className="artist-img artist-img-fallback">{artist.name.charAt(0).toUpperCase()}</div>
                     )}
@@ -246,7 +246,7 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
                 topAlbums.map((album, i) => (
                   <a key={i} href={album.url} target="_blank" rel="noopener noreferrer" className="album-card">
                     {album.image ? (
-                      <img src={album.image} alt={album.name} className="album-img" />
+                      <img src={album.image} alt={album.name} className="album-img" loading="lazy" decoding="async" />
                     ) : (
                       <div className="album-img album-img-fallback">{album.name.charAt(0).toUpperCase()}</div>
                     )}

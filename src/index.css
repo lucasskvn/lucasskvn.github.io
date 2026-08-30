@@ -62,10 +62,10 @@
   --border-strong: rgba(200, 140, 120, 0.18);
   --selection-bg: rgba(196, 30, 30, 0.45);
 
-  --fog-opacity: 0.95;
-  --vignette-alpha: 65%;
-  --grain-opacity: 0.07;
-  --scanline-opacity: 0.14;
+  --fog-opacity: 0.8;
+  --vignette-alpha: 55%;
+  --grain-opacity: 0.06;
+  --scanline-opacity: 0.11;
   --text-aberr: -2px 0 0 rgba(255, 30, 30, 0.5), 2px 0 0 rgba(30, 120, 150, 0.4);
   --title-flicker: none;
   --img-filter: grayscale(0.7) saturate(0.6);
@@ -110,33 +110,28 @@ body::after {
     rgba(150, 12, 6, 0.16);
 }
 
-/* ===== ATMOSPHÈRE : brume (statique) + pool bas ===== */
-#root::before {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 0;
-  pointer-events: none;
+/* ===== ATMOSPHÈRE : brume dans le fond (html, statique) ===== */
+html {
+  overflow-x: hidden;
   background:
     linear-gradient(to bottom, rgba(190, 186, 178, 0.1) 0%, rgba(190, 186, 178, 0) 42%),
     radial-gradient(60% 42% at 28% 30%, rgba(190, 186, 178, 0.09) 0%, rgba(190, 186, 178, 0) 70%),
     radial-gradient(55% 38% at 72% 62%, rgba(160, 156, 150, 0.07) 0%, rgba(160, 156, 150, 0) 70%),
-    linear-gradient(to top, rgba(170, 166, 158, 0.16) 0%, rgba(170, 166, 158, 0) 38%);
-  opacity: var(--fog-opacity);
+    linear-gradient(to top, rgba(170, 166, 158, 0.16) 0%, rgba(170, 166, 158, 0) 38%),
+    var(--bg-primary);
 }
 
-/* Brume rouge + pool dense (L'Autre Monde) */
-[data-horror="autre-monde"] #root::before {
+html[data-horror="autre-monde"] {
   background:
     radial-gradient(60% 42% at 28% 30%, rgba(150, 30, 20, 0.16) 0%, rgba(150, 30, 20, 0) 70%),
     radial-gradient(55% 38% at 72% 62%, rgba(120, 18, 12, 0.12) 0%, rgba(120, 18, 12, 0) 70%),
-    linear-gradient(to top, rgba(160, 25, 12, 0.5) 0%, rgba(160, 25, 12, 0) 46%);
+    linear-gradient(to top, rgba(160, 25, 12, 0.5) 0%, rgba(160, 25, 12, 0) 46%),
+    var(--bg-primary);
 }
 
 /* ===== MENU OUVERT : atténuer l'ambiance (perf) ===== */
 body:has(.menu-overlay) body::after,
-body:has(.menu-overlay) body::before,
-body:has(.menu-overlay) #root::before {
+body:has(.menu-overlay) body::before {
   opacity: 0.5;
 }
 
@@ -178,12 +173,6 @@ body {
   position: relative;
   isolation: isolate;
   color: var(--text-primary);
-}
-
-html {
-  overflow-x: hidden;
-  background: var(--bg-primary);
-  transition: background 0.4s ease;
 }
 
 * {
@@ -351,7 +340,8 @@ h1, h2, h3, h4, h5, h6 {
 .top-artists-grid,
 .top-albums-grid,
 .recent-tracks,
-.blog-list {
+.blog-list,
+.ow-projects-list {
   content-visibility: auto;
   contain-intrinsic-size: auto 320px;
 }
@@ -1079,7 +1069,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .world-otherworld .page-container::before {
-  content: '— DOCUMENT / TYPED NOTE —';
+  content: 'RECOVERED FILE ' attr(data-code);
   display: block;
   font-family: ui-monospace, 'Courier New', monospace;
   font-size: 0.62rem;

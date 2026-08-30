@@ -2,7 +2,7 @@ import SEO from '../components/SEO';
 
 export default function NotFound({ lang }: { lang: 'fr' | 'en' }) {
   return (
-    <div className="page-container fade-in">
+    <div className="page-container fade-in" data-code="00">
       <SEO title="404" description="Page not found" />
       <div className="not-found">
         <h1 className="not-found-code aberrant">404</h1>

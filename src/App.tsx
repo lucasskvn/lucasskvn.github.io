@@ -15,6 +15,7 @@ import Uses from './pages/Uses';
 import NotFound from './pages/NotFound';
 
 const github = "https://github.com/lucasskvn";
+const email = "lucas.sangkhavongs@epitech.eu";
 
 type HorrorMode = 'brouillard' | 'autre-monde';
 
@@ -111,6 +112,15 @@ function App() {
       } else if (e.key === 'Escape') {
         setNavOpen(false);
         return;
+      } else if (/^[1-9]$/.test(e.key)) {
+        e.preventDefault();
+        const idx = Number(e.key) - 1;
+        if (idx < count) {
+          menuIndexRef.current = idx;
+          setNavOpen(false);
+          navigate(navLinksRef.current[idx].path);
+        }
+        return;
       } else {
         return;
       }
@@ -119,7 +129,7 @@ function App() {
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [navOpen]);
+  }, [navOpen, navigate]);
 
   const t = {
     fr: {
@@ -265,6 +275,15 @@ function App() {
         <Route path="*" element={<NotFound lang={lang} />} />
         </Routes>
       </div>
+
+      <footer className="Site-footer">
+        <span className="footer-signal">SIGNAL 108.0 · LAT 41.38 · LON -71.90</span>
+        <span className="footer-meta">
+          © {new Date().getFullYear()} lucasskvn —{' '}
+          <a href={github} target="_blank" rel="noopener noreferrer">GitHub</a> ·{' '}
+          <a href={`mailto:${email}`}>Email</a>
+        </span>
+      </footer>
     </>
   );
 }

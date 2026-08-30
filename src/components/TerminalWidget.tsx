@@ -25,6 +25,9 @@ const commands: Record<string, string[]> = {
     '  skills    — My tech stack',
     '  projects  — List projects',
     '  music     — What I listen to',
+    '  signal    — Signal status',
+    '  da        — About the art direction',
+    '  butterflynet — Private IRC',
     '  contact   — Get in touch',
     '  clear     — Clear terminal',
     '  neofetch  — System info',
@@ -63,6 +66,21 @@ const commands: Record<string, string[]> = {
     'GitHub:   github.com/lucasskvn',
     'LinkedIn: linkedin.com/in/lucas-sangkhavongs',
     'Discord:  lucasskvn',
+  ],
+  'signal': [
+    'FREQ 108.0 MHz — carrier locked.',
+    'LAT 41.38 / LON -71.90 — coordinates found.',
+    'If you hear static, you are not alone.',
+  ],
+  'da': [
+    'Direction artistique :',
+    'Deux mondes — Le Brouillard et L\u2019Autre Monde.',
+    'Notes typewriter, brouillard, grain, signal.',
+    'Bascule avec le bouton ☁ / ☽ (persisté).',
+  ],
+  'butterflynet': [
+    'Serveur IRC privé et chiffré — invite only.',
+    'Rejoindre : chat.2bananas4monkeys.org',
   ],
   'neofetch': [
     'OS: lucasskvnOS x86_64',

@@ -29,7 +29,7 @@ export default function RadioPlayer({ lang }: RadioPlayerProps) {
   }, []);
 
   return (
-    <div className="page-container fade-in" style={{ textAlign: "center" }}>
+    <div className="page-container fade-in" data-code="08" style={{ textAlign: "center" }}>
       <SEO
         title="Webradio"
         description={lang === 'fr' ? 'Écouter la webradio en direct' : 'Listen to the webradio live'}

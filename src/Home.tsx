@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import SEO from './components/SEO';
 import TerminalWidget from './components/TerminalWidget';
 import './home.css';
@@ -13,6 +14,20 @@ const owIndex = {
 };
 
 const Home = ({ lang = 'en', world = 'brouillard' }: HomeProps) => {
+  const [revealed, setRevealed] = useState(false);
+
+  useEffect(() => {
+    if (world !== 'autre-monde') return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        setRevealed(true);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [world]);
+
   if (world === 'autre-monde') {
     return (
       <div className="Home-container Home-other fade-in-home">
@@ -31,13 +46,19 @@ const Home = ({ lang = 'en', world = 'brouillard' }: HomeProps) => {
               ? 'Développeur · homelab · systèmes. Tu es venu, le brouillard est venu.'
               : 'Developer · homelab · systems. You came, the fog came.'}
           </p>
-          <ul className="ow-index">
-            {owIndex[lang].map((item, i) => (
-              <li key={item}>
-                {String(i + 1).padStart(2, '0')} — {item}
-              </li>
-            ))}
-          </ul>
+          {!revealed ? (
+            <button className="ow-reveal" onClick={() => setRevealed(true)}>
+              {lang === 'fr' ? '— APPUYER SUR ENTRÉE —' : '— PRESS ENTER —'}
+            </button>
+          ) : (
+            <ul className="ow-index">
+              {owIndex[lang].map((item, i) => (
+                <li key={item}>
+                  {String(i + 1).padStart(2, '0')} — {item}
+                </li>
+              ))}
+            </ul>
+          )}
         </div>
       </div>
     );
