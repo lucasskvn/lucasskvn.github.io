@@ -9,8 +9,8 @@ type HomeProps = {
 };
 
 const owIndex = {
-  fr: ['Accueil', 'À propos', 'Projets', 'Musique', 'Blog', 'Contact'],
-  en: ['Home', 'About', 'Projects', 'Music', 'Blog', 'Contact'],
+  fr: ['Accueil', 'À propos', 'Projets', 'Musique', 'Contact'],
+  en: ['Home', 'About', 'Projects', 'Music', 'Contact'],
 };
 
 const Home = ({ lang = 'en', world = 'brouillard' }: HomeProps) => {

@@ -234,7 +234,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 [data-horror="autre-monde"] .project-title,
-[data-horror="autre-monde"] .blog-card-title,
 [data-horror="autre-monde"] .track-name,
 [data-horror="autre-monde"] .now-playing-title,
 [data-horror="autre-monde"] .ow-note-title,
@@ -289,7 +288,6 @@ h1, h2, h3, h4, h5, h6 {
 
 /* ===== BOUTONS / TABS / TAGS (plats) ===== */
 .period-tab,
-.blog-tag-filter-btn,
 .language-switch-btn {
   padding: 0.4rem 0.9rem;
   border: 1px solid var(--border);
@@ -305,34 +303,15 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .period-tab:hover,
-.blog-tag-filter-btn:hover,
 .language-switch-btn:hover {
   border-color: var(--border-strong);
   color: var(--text-primary);
 }
 
-.period-tab.active,
-.blog-tag-filter-btn.active {
+.period-tab.active {
   background: var(--accent);
   color: #f0e9e0;
   border-color: var(--accent);
-}
-
-.blog-tag {
-  font-size: 0.68rem;
-  font-weight: 400;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
-  padding: 0.15rem 0.55rem;
-  border-radius: 3px;
-  border: 1px solid var(--border);
-  color: var(--text-secondary);
-}
-
-.blog-card-date {
-  font-size: 0.78rem;
-  color: var(--text-muted);
-  font-family: ui-monospace, 'Courier New', monospace;
 }
 
 /* ===== PERFORMANCE SCROLL : ne pas peindre les cartes hors-écran ===== */
@@ -340,14 +319,12 @@ h1, h2, h3, h4, h5, h6 {
 .top-artists-grid,
 .top-albums-grid,
 .recent-tracks,
-.blog-list,
 .ow-projects-list {
   content-visibility: auto;
   contain-intrinsic-size: auto 320px;
 }
 
 /* ===== CARTES (plates, bordure fine) ===== */
-.blog-card,
 .project-card,
 .album-card,
 .artist-card,
@@ -359,7 +336,6 @@ h1, h2, h3, h4, h5, h6 {
   transition: transform 0.2s ease, border-color 0.2s ease, background 0.2s ease;
 }
 
-.blog-card:hover,
 .project-card:hover,
 .album-card:hover,
 .artist-card:hover,
@@ -661,232 +637,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: ui-monospace, 'Courier New', monospace;
 }
 
-/* ===== BLOG ===== */
-.blog-list {
-  display: flex;
-  flex-direction: column;
-  gap: 0.9rem;
-}
-
-.blog-card {
-  display: block;
-  padding: 1.25rem;
-  text-decoration: none;
-}
-
-.blog-card-meta {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  margin-bottom: 0.5rem;
-}
-
-.blog-card-tags {
-  display: flex;
-  gap: 0.4rem;
-  flex-wrap: wrap;
-}
-
-.blog-card-title {
-  font-size: 1.15rem;
-  font-weight: 500;
-  color: var(--text-primary);
-  margin: 0 0 0.35rem;
-}
-
-.blog-card:hover .blog-card-title {
-  color: var(--accent-soft);
-}
-
-.blog-card-desc {
-  font-size: 0.9rem;
-  color: var(--text-secondary);
-  margin: 0;
-  line-height: 1.45;
-}
-
-.blog-back {
-  display: inline-block;
-  color: var(--text-muted);
-  font-size: 0.9rem;
-  margin-bottom: 1.5rem;
-  font-family: ui-monospace, 'Courier New', monospace;
-}
-
-.blog-back:hover {
-  color: var(--accent-soft);
-}
-
-.blog-article {
-  max-width: 720px;
-}
-
-.blog-article-header {
-  margin-bottom: 2rem;
-}
-
-.blog-article-header .blog-card-tags {
-  margin: 0.5rem 0;
-}
-
-.blog-content {
-  line-height: 1.8;
-  font-size: 1.05rem;
-  color: var(--text-primary);
-}
-
-.blog-content h2 {
-  font-size: 1.5rem;
-  font-weight: 500;
-  margin: 2rem 0 0.75rem;
-}
-
-.blog-content h3 {
-  font-size: 1.2rem;
-  font-weight: 500;
-  margin: 1.5rem 0 0.5rem;
-}
-
-.blog-content p {
-  margin: 0.75rem 0;
-}
-
-.blog-content ul {
-  margin: 0.75rem 0;
-  padding-left: 1.5rem;
-}
-
-.blog-content li {
-  margin: 0.3rem 0;
-  color: var(--text-secondary);
-}
-
-.blog-content strong {
-  color: var(--text-primary);
-}
-
-.blog-content code {
-  font-family: ui-monospace, 'Courier New', monospace;
-  font-size: 0.85em;
-  background: color-mix(in srgb, var(--bg-elevated) 70%, transparent);
-  border: 1px solid var(--border);
-  border-radius: 3px;
-  padding: 0.1em 0.35em;
-}
-
-.blog-content pre {
-  background: #0c0b0a;
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  padding: 1rem;
-  overflow-x: auto;
-  margin: 1rem 0;
-}
-
-.blog-content pre code {
-  background: none;
-  border: none;
-  padding: 0;
-}
-
-.blog-content blockquote {
-  margin: 1rem 0;
-  padding: 0.4rem 1rem;
-  border-left: 2px solid var(--accent);
-  color: var(--text-secondary);
-  font-style: italic;
-}
-
-.blog-content table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 1rem 0;
-  font-size: 0.9rem;
-}
-
-.blog-content th,
-.blog-content td {
-  border: 1px solid var(--border);
-  padding: 0.4rem 0.6rem;
-  text-align: left;
-}
-
-.blog-content th {
-  background: var(--bg-elevated);
-  color: var(--text-primary);
-}
-
-.blog-content a {
-  color: var(--accent-soft);
-}
-
-.blog-content a:hover {
-  color: var(--text-primary);
-}
-
-.blog-content hr {
-  border: none;
-  border-top: 1px solid var(--border);
-  margin: 1.5rem 0;
-}
-
-.world-otherworld .blog-content pre {
-  border-radius: 0;
-  border-color: var(--border-strong);
-}
-
-.world-otherworld .blog-content blockquote {
-  border-left-color: var(--accent-soft);
-}
-
-/* ===== BLOG SEARCH & TAGS ===== */
-.blog-controls {
-  display: flex;
-  flex-direction: column;
-  gap: 0.75rem;
-  margin: 1.5rem 0;
-}
-
-.blog-search {
-  position: relative;
-  max-width: 400px;
-}
-
-.blog-search-icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-muted);
-  pointer-events: none;
-}
-
-.blog-search-input {
-  width: 100%;
-  padding: 0.55rem 0.75rem 0.55rem 2.2rem;
-  background: var(--bg-elevated);
-  border: 1px solid var(--border);
-  border-radius: 4px;
-  color: var(--text-primary);
-  font-size: 0.9rem;
-  outline: none;
-  transition: border-color 0.2s;
-  font-family: inherit;
-}
-
-.blog-search-input:focus {
-  border-color: var(--accent);
-}
-
-.blog-search-input::placeholder {
-  color: var(--text-muted);
-}
-
-.blog-tags-filter {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.4rem;
-}
 
 /* ===== HOME HERO ===== */
 .home-hero {
@@ -1114,7 +864,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .world-otherworld .project-card,
-.world-otherworld .blog-card,
 .world-otherworld .album-card,
 .world-otherworld .artist-card,
 .world-otherworld .track-row,
@@ -1127,7 +876,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .world-otherworld .project-card:hover,
-.world-otherworld .blog-card:hover,
 .world-otherworld .album-card:hover,
 .world-otherworld .artist-card:hover,
 .world-otherworld .track-row:hover,
@@ -1138,7 +886,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .world-otherworld .project-title,
-.world-otherworld .blog-card-title,
 .world-otherworld .track-name,
 .world-otherworld .artist-name,
 .world-otherworld .album-name,
@@ -1151,7 +898,6 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .world-otherworld .project-card p,
-.world-otherworld .blog-card-desc,
 .world-otherworld .track-artist,
 .world-otherworld .artist-plays,
 .world-otherworld .album-artist,
@@ -1189,40 +935,6 @@ h1, h2, h3, h4, h5, h6 {
   font-family: ui-monospace, 'Courier New', monospace;
 }
 
-.world-otherworld .blog-list {
-  gap: 0;
-}
-
-.world-otherworld .blog-card {
-  border-left: none;
-  border-right: none;
-  border-top: none;
-  border-bottom: 1px solid var(--border);
-}
-
-.world-otherworld .blog-card:last-child {
-  border-bottom: none;
-}
-
-.world-otherworld .blog-card-date,
-.world-otherworld .blog-tag {
-  font-family: ui-monospace, 'Courier New', monospace;
-  letter-spacing: 0.12em;
-}
-
-.world-otherworld .blog-content {
-  font-family: ui-monospace, 'Courier New', monospace;
-  font-size: 0.92rem;
-  line-height: 1.9;
-}
-
-.world-otherworld .blog-content h2,
-.world-otherworld .blog-content h3 {
-  font-family: ui-monospace, 'Courier New', monospace;
-  text-transform: uppercase;
-  letter-spacing: 0.14em;
-}
-
 .world-otherworld .not-found-code {
   font-family: ui-monospace, 'Courier New', monospace;
   letter-spacing: 0.24em;
@@ -1257,14 +969,6 @@ h1, h2, h3, h4, h5, h6 {
 
 .world-otherworld .top-artists-grid .artist-card:nth-child(even) {
   transform: translateX(0.6rem);
-}
-
-.world-otherworld .blog-list .blog-card:nth-child(odd) {
-  transform: translateX(-0.4rem);
-}
-
-.world-otherworld .blog-list .blog-card:nth-child(even) {
-  transform: translateX(0.4rem);
 }
 
 /* ===== RESPONSIVE ===== */

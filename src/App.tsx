@@ -9,8 +9,6 @@ import './App.css';
 import About from './About';
 import Home from './Home';
 import Music from './pages/Music';
-import Blog from './pages/Blog';
-import Article from './pages/Article';
 import Uses from './pages/Uses';
 import NotFound from './pages/NotFound';
 
@@ -138,7 +136,6 @@ function App() {
       projects: "Projets",
       music: "Musique",
       uses: "Uses",
-      blog: "Blog",
       contact: "Contact",
       switch: "FR",
       menu: "Menu",
@@ -151,7 +148,6 @@ function App() {
       projects: "Projects",
       music: "Music",
       uses: "Uses",
-      blog: "Blog",
       contact: "Contact",
       switch: "EN",
       menu: "Menu",
@@ -166,7 +162,6 @@ function App() {
     { path: '/projects', label: t[lang].projects },
     { path: '/music', label: t[lang].music },
     { path: '/uses', label: t[lang].uses },
-    { path: '/blog', label: t[lang].blog },
     { path: '/contact', label: t[lang].contact },
   ];
 
@@ -268,8 +263,6 @@ function App() {
         <Route path="/projects" element={<Projects lang={lang} />} />
         <Route path="/music" element={<Music lang={lang} />} />
         <Route path="/uses" element={<Uses lang={lang} />} />
-        <Route path="/blog" element={<Blog lang={lang} />} />
-        <Route path="/blog/:slug" element={<Article lang={lang} />} />
         <Route path="/contact" element={<Contact lang={lang} />} />
         <Route path="/radio" element={<RadioPlayer lang={lang} />} />
         <Route path="*" element={<NotFound lang={lang} />} />
