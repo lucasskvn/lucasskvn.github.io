@@ -41,13 +41,11 @@ type Project = {
   detailImage?: string;
   gallery?: string[];
   isPrivate?: boolean;
-  tags?: string[];
 };
 
 const projects: Project[] = [
   {
     title: { fr: "ButterflyNet - Serveur IRC privé", en: "ButterflyNet - Private IRC Server" },
-    tags: ['self-hosted', 'sysadmin'],
     description: {
       fr: "Serveur IRC privé et chiffré, accessible uniquement sur invitation. Hébergé sur mon VPS avec sécurisation renforcée.",
       en: "Private encrypted IRC server, invite-only. Hosted on my VPS with hardened security."
@@ -62,7 +60,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "Pomodocus - Pomodoro gamifié", en: "Pomodocus - Gamified Pomodoro" },
-    tags: ['ts', 'hackathon'],
     description: {
       fr: "Projet hackathon de 10h — app Pomodoro gamifiée avec des dinosaures collectibles. React, TypeScript, Tailwind.",
       en: "10-hour hackathon project — gamified Pomodoro app with collectible dinosaurs. React, TypeScript, Tailwind."
@@ -78,7 +75,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "WAV.PY - Selfbot Discord", en: "WAV.PY - Discord Selfbot" },
-    tags: ['python', 'discord'],
     description: {
       fr: "Selfbot Discord en Python qui permet d'exécuter des commandes de bot sur un compte personnel Discord.",
       en: "Discord selfbot in Python that runs bot commands on a personal Discord account."
@@ -94,7 +90,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "Staarscreaam.wav - App musique en Rust", en: "Staarscreaam.wav - Music App in Rust" },
-    tags: ['rust', 'audio'],
     description: {
       fr: "Application musicale open source personnalisable écrite en Rust. Architecture modulaire, focus performance.",
       en: "Open source customizable music app written in Rust. Modular architecture, performance-focused."
@@ -109,7 +104,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "RMRF - Outil de backup dédupliqué", en: "RMRF - Deduplicated Backup Tool" },
-    tags: ['rust', 'devops'],
     description: {
       fr: "Outil de backup resilient en Rust avec chunking FastCDC, BLAKE3 et compression zstd. Support Proxmox (QEMU/LXC).",
       en: "Resilient backup tool in Rust with FastCDC chunking, BLAKE3 hashing, and zstd compression. Proxmox (QEMU/LXC) support."
@@ -124,7 +118,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "lucasskvn.fr - Site personnel", en: "lucasskvn.fr - Personal Site" },
-    tags: ['web', 'self-hosted'],
     description: {
       fr: "Site statique dark theme avec esthétique terminal, hébergé sur mon VPS.",
       en: "Static dark theme site with terminal aesthetic, hosted on my VPS."
@@ -139,7 +132,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "Portfolio Website", en: "Portfolio Website" },
-    tags: ['web', 'ts'],
     description: {
       fr: "Site personnel réalisé avec React et Vite pour présenter mes projets et mon CV.",
       en: "Personal website built with React and Vite to showcase my projects and CV."
@@ -154,7 +146,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "Webradio", en: "Webradio" },
-    tags: ['audio', 'self-hosted'],
     description: {
       fr: "Écoutez la webradio en direct (Liquidsoap, Icecast). Host sur ce site",
       en: "Listen to the webradio live (Liquidsoap, Icecast). Hosted on this site"
@@ -169,7 +160,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "Dotfiles", en: "Dotfiles" },
-    tags: ['nix', 'linux'],
     description: {
       fr: "Mes configurations personnalisées pour bash, nvim, nix, etc.",
       en: "My custom configurations for bash, nvim, nix, etc."
@@ -184,7 +174,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "FarmerMonkey - Bot Discord de tournois", en: "FarmerMonkey - Tournament Discord Bot" },
-    tags: ['discord', 'python'],
     description: {
       fr: "Bot Discord de gestion de tournois avec brackets, équipes et statistiques. En production.",
       en: "Discord tournament bot with brackets, teams, and statistics. In production."
@@ -200,7 +189,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "VirtualAngel - Bot IA conversationnel", en: "VirtualAngel - Conversational AI Bot" },
-    tags: ['discord', 'ai'],
     description: {
       fr: "Bot Discord IA conversationnel avec apprentissage par chaînes de Markov. Déployé via Docker.",
       en: "Conversational AI Discord bot with Markov chain learning. Deployed via Docker."
@@ -216,7 +204,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "ZhouXinyu - Bot de cartes à collectionner", en: "ZhouXinyu - Trading Card Bot" },
-    tags: ['discord', 'python'],
     description: {
       fr: "Bot Discord de cartes à collectionner avec système d'échange et persistance.",
       en: "Trading card Discord bot with exchange system and data persistence."
@@ -232,7 +219,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "Zappy - Jeu réseau multijoueur", en: "Zappy - Multiplayer Network Game" },
-    tags: ['game', 'c', 'network'],
     description: {
       fr: "Jeu réseau multijoueur en temps réel unissant GUI, IA et serveur en C/CPP et Python.",
       en: "Real-time multiplayer network game combining GUI, AI, and server in C/CPP and Python."
@@ -247,7 +233,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "Cartridge - Recreation jeu GameBoy", en: "Cartridge - GameBoy Recreation" },
-    tags: ['game', 'c'],
     description: {
       fr: "Recréation d'un jeu GameBoy en C avec les contraintes de ressources de la console.",
       en: "GameBoy game recreation in C with the console's resource constraints."
@@ -262,7 +247,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "my_teams - Chat client/serveur", en: "my_teams - Client/Server Chat" },
-    tags: ['rust', 'network'],
     description: {
       fr: "Recreation d'un chat en Rust similaire au logiciel Teams, liant client et serveur.",
       en: "Chat recreation in Rust similar to Teams software, linking client and server."
@@ -277,7 +261,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "Codewash - Refactorisation", en: "Codewash - Refactoring" },
-    tags: ['refactor', 'ts'],
     description: {
       fr: "Refactorisation et nettoyage d'une application vibecodée pour la rendre plus fluide et maintenable.",
       en: "Refactoring and cleanup of a vibecoded application to make it smoother and maintainable."
@@ -292,7 +275,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "Wolf3D", en: "Wolf3D" },
-    tags: ['game', 'c'],
     description: {
       fr: "Un projet de jeu 3D réalisé en C et CSFML.",
       en: "A 3D game project made in C and CSFML."
@@ -307,7 +289,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "Minishell", en: "Minishell" },
-    tags: ['c', 'unix'],
     description: {
       fr: "Projet de recréation du shell Unix réalisé en C.",
       en: "Unix shell recreation project in C."
@@ -322,7 +303,6 @@ const projects: Project[] = [
   },
   {
     title: { fr: "my_radar", en: "my_radar" },
-    tags: ['c', 'game'],
     description: {
       fr: "Simulateur de trajectoire et de collision d'avions en C avec CSFML.",
       en: "Airplane trajectory and collision simulator in C with CSFML."
@@ -342,31 +322,9 @@ interface ProjectsProps { lang: 'fr' | 'en' }
 function ProjectsInventory({ lang }: { lang: 'fr' | 'en' }) {
   const [cursorIdx, setCursorIdx] = useState(0);
   const [openIdx, setOpenIdx] = useState<number | null>(null);
-  const [query, setQuery] = useState('');
-  const [tag, setTag] = useState<string | null>(null);
   const cursorRef = useRef(0);
   const pointerRef = useRef<HTMLSpanElement>(null);
   const entryRefs = useRef<(HTMLButtonElement | null)[]>([]);
-  const filteredRef = useRef<Project[]>([]);
-
-  const allTags = Array.from(new Set(projects.flatMap(p => p.tags ?? []))).sort();
-
-  const filtered = projects.filter(p => {
-    if (tag && !(p.tags ?? []).includes(tag)) return false;
-    const q = query.trim().toLowerCase();
-    if (!q) return true;
-    const title = (typeof p.title === 'string' ? p.title : p.title[lang]).toLowerCase();
-    const desc = (typeof p.description === 'string' ? p.description : p.description[lang]).toLowerCase();
-    return title.includes(q) || desc.includes(q);
-  });
-
-  filteredRef.current = filtered;
-
-  useEffect(() => {
-    cursorRef.current = 0;
-    setCursorIdx(0);
-    setOpenIdx(null);
-  }, [query, tag]);
 
   const placeCursor = (idx: number) => {
     const el = entryRefs.current[idx];
@@ -383,7 +341,7 @@ function ProjectsInventory({ lang }: { lang: 'fr' | 'en' }) {
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (document.querySelector('.menu-overlay')) return;
-      const count = filteredRef.current.length;
+      const count = projects.length;
       if (count === 0) return;
       const cur = cursorRef.current;
       if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
@@ -427,7 +385,7 @@ function ProjectsInventory({ lang }: { lang: 'fr' | 'en' }) {
     setCursorIdx(i);
   };
 
-  const open = openIdx != null ? filtered[openIdx] : null;
+  const open = openIdx != null ? projects[openIdx] : null;
 
   return (
     <div className="page-container ow-projects fade-in">
@@ -441,34 +399,10 @@ function ProjectsInventory({ lang }: { lang: 'fr' | 'en' }) {
         <h1 className="title">{lang === 'fr' ? 'Projets' : 'Projects'}</h1>
         <p className="subtitle">{lang === 'fr' ? 'Inventaire des projets.' : 'Project inventory.'}</p>
       </header>
-      <div className="ow-projects-controls">
-        <div className="blog-search">
-          <span className="blog-search-icon">⌕</span>
-          <input
-            type="search"
-            className="blog-search-input"
-            placeholder={lang === 'fr' ? 'Rechercher…' : 'Search…'}
-            value={query}
-            onChange={e => setQuery(e.target.value)}
-          />
-        </div>
-        <div className="blog-tags-filter">
-          <button className={`blog-tag-filter-btn${tag === null ? ' active' : ''}`} onClick={() => setTag(null)}>
-            {lang === 'fr' ? 'Tous' : 'All'}
-          </button>
-          {allTags.map(t => (
-            <button key={t} className={`blog-tag-filter-btn${tag === t ? ' active' : ''}`} onClick={() => setTag(tag === t ? null : t)}>
-              {t}
-            </button>
-          ))}
-        </div>
-      </div>
       <div className="ow-projects-layout">
         <div className="ow-projects-list" role="listbox" aria-label={lang === 'fr' ? 'Projets' : 'Projects'}>
           <span className="ow-pointer" ref={pointerRef} aria-hidden="true">▸</span>
-          {filtered.length === 0 ? (
-            <div className="ow-note-empty">{lang === 'fr' ? 'Aucun résultat.' : 'No results.'}</div>
-          ) : filtered.map((p, i) => (
+          {projects.map((p, i) => (
             <button
               key={i}
               type="button"
