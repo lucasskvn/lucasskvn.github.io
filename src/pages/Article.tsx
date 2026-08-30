@@ -1,4 +1,6 @@
 import { useParams, Link } from 'react-router-dom';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import SEO from '../components/SEO';
 import articles from '../data/articles';
 
@@ -17,38 +19,6 @@ export default function Article({ lang }: { lang: 'fr' | 'en' }) {
       </div>
     );
   }
-
-  // Simple markdown-like rendering (no deps needed for basic content)
-  const renderContent = (md: string) => {
-    const lines = md.split('\n');
-    const html: string[] = [];
-    let inList = false;
-
-    for (const line of lines) {
-      if (line.startsWith('## ')) {
-        if (inList) { html.push('</ul>'); inList = false; }
-        html.push(`<h2>${line.slice(3)}</h2>`);
-      } else if (line.startsWith('### ')) {
-        if (inList) { html.push('</ul>'); inList = false; }
-        html.push(`<h3>${line.slice(4)}</h3>`);
-      } else if (line.startsWith('- ')) {
-        if (!inList) { html.push('<ul>'); inList = true; }
-        html.push(`<li>${line.slice(2)}</li>`);
-      } else if (line.startsWith('**') && line.endsWith('**')) {
-        if (inList) { html.push('</ul>'); inList = false; }
-        html.push(`<p><strong>${line.slice(2, -2)}</strong></p>`);
-      } else if (line.trim() === '') {
-        if (inList) { html.push('</ul>'); inList = false; }
-      } else {
-        if (inList) { html.push('</ul>'); inList = false; }
-        // Bold inline
-        const processed = line.replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
-        html.push(`<p>${processed}</p>`);
-      }
-    }
-    if (inList) html.push('</ul>');
-    return html.join('\n');
-  };
 
   return (
     <div className="page-container fade-in">
@@ -73,10 +43,11 @@ export default function Article({ lang }: { lang: 'fr' | 'en' }) {
           <h1 className="title">{article.title[lang]}</h1>
         </header>
 
-        <div
-          className="blog-content"
-          dangerouslySetInnerHTML={{ __html: renderContent(article.content[lang]) }}
-        />
+        <div className="blog-content">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {article.content[lang]}
+          </ReactMarkdown>
+        </div>
       </article>
     </div>
   );

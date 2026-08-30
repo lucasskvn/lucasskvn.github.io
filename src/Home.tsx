@@ -4,25 +4,63 @@ import './home.css';
 
 type HomeProps = {
   lang?: 'fr' | 'en';
+  world?: 'brouillard' | 'autre-monde';
 };
 
-const Home = ({ lang = 'en' }: HomeProps) => (
-  <div className="Home-container fade-in-home">
-    <SEO
-      title="Home"
-      description={lang === 'fr' ? 'Portfolio de Lucas Sangkhavongs — développeur, projets Epitech, musique' : "Lucas Sangkhavongs' portfolio — developer, Epitech projects, music"}
-      path="/"
-    />
-    <div className="home-hero">
-      <h1>{lang === 'fr' ? 'Bienvenue !' : 'Welcome!'}</h1>
-      <p>
-        {lang === 'fr'
-          ? 'Bienvenue sur le portfolio de Lucas Sangkhavongs.'
-          : "Welcome to Lucas Sangkhavongs' portfolio."}
-      </p>
+const owIndex = {
+  fr: ['Accueil', 'À propos', 'Projets', 'Musique', 'Blog', 'Contact'],
+  en: ['Home', 'About', 'Projects', 'Music', 'Blog', 'Contact'],
+};
+
+const Home = ({ lang = 'en', world = 'brouillard' }: HomeProps) => {
+  if (world === 'autre-monde') {
+    return (
+      <div className="Home-container Home-other fade-in-home">
+        <SEO
+          title="Home"
+          description={lang === 'fr' ? 'Portfolio de Lucas Sangkhavongs — développeur, projets Epitech, musique' : "Lucas Sangkhavongs' portfolio — developer, Epitech projects, music"}
+          path="/"
+        />
+        <div className="ow-home">
+          <div className="ow-chapter">{lang === 'fr' ? 'Chapitre 01 — Signal' : 'Chapter 01 — Signal'}</div>
+          <h1 className="ow-title aberrant">
+            {lang === 'fr' ? 'Lucas Sangkhavongs' : 'Lucas Sangkhavongs'}
+          </h1>
+          <p className="ow-sub">
+            {lang === 'fr'
+              ? 'Développeur · homelab · systèmes. Tu es venu, le brouillard est venu.'
+              : 'Developer · homelab · systems. You came, the fog came.'}
+          </p>
+          <ul className="ow-index">
+            {owIndex[lang].map((item, i) => (
+              <li key={item}>
+                {String(i + 1).padStart(2, '0')} — {item}
+              </li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="Home-container fade-in-home">
+      <SEO
+        title="Home"
+        description={lang === 'fr' ? 'Portfolio de Lucas Sangkhavongs — développeur, projets Epitech, musique' : "Lucas Sangkhavongs' portfolio — developer, Epitech projects, music"}
+        path="/"
+      />
+      <div className="home-hero">
+        <h1 className="Home-title aberrant">{lang === 'fr' ? 'Lucas Sangkhavongs' : 'Lucas Sangkhavongs'}</h1>
+        <p className="Home-subtitle">
+          {lang === 'fr'
+            ? 'Développeur, homelab, systèmes. Dans le brouillard.'
+            : 'Developer, homelab, systems. In the fog.'}
+        </p>
+      </div>
+      <TerminalWidget />
     </div>
-    <TerminalWidget />
-  </div>
-);
+  );
+};
 
 export default Home;

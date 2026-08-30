@@ -14,11 +14,10 @@ Mon site personnel hébergé sur [GitHub Pages](https://lucasskvn.github.io). Un
 
 ## ✨ Fonctionnalités
 
-- 🎨 **Design moderne** - Interface élégante et responsive
-- 🚀 **Performance** - Optimisé avec Vite
+- 🎨 **Thème « Silent Hill » à deux mondes** — *Le Brouillard* (layout centré, cartes, lisible) vs *L'Autre Monde* (layout « brisé » : alignement gauche, cartes pleine largeur, Accueil « title screen »)
+- 🚀 **Performance** - Optimisé avec Vite et TypeScript ; overlays sans blur ni blend pour un scroll fluide
 - 📱 **Responsive** - Adapté à tous les écrans
-- 🌙 **Mode sombre** - Support du thème sombre/clair
-- 🎭 **Animations** - Transitions fluides
+- 🌫️ **Atmosphère** - Brume, grain, scanlines, vignette, aberration chromatique, color-grade rouge — le tout respectant `prefers-reduced-motion`
 - 📧 **Contact** - Liens vers mes réseaux sociaux
 
 ---
@@ -39,11 +38,16 @@ cd lucasskvn.github.io
 # Installer les dépendances
 npm install
 
+# Créer le .env local (clé API Last.fm, voir .env.example)
+# cp .env.example .env   # puis renseigner VITE_LASTFM_API_KEY
+
 # Lancer le serveur de développement
 npm run dev
 
 # Ouvrir http://localhost:5173
 ```
+
+> **Note Last.fm** : la page Musique a besoin de `VITE_LASTFM_API_KEY` (clé créée sur [last.fm/api](https://www.last.fm/api/account/create)). Sans elle, la connexion échoue **en local uniquement** — en production la clé est injectée via les secrets GitHub Actions.
 
 ### Production
 
@@ -103,7 +107,7 @@ git push origin main
 - **TypeScript** - Typage statique
 - **Vite** - Build tool rapide
 - **React** - Bibliothèque UI
-- **Tailwind CSS** - Framework CSS utilitaire
+- **Framer Motion** - Animations légères
 - **GitHub Pages** - Hébergement
 
 ---

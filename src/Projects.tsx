@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { motion } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
 import SEO from './components/SEO';
 import './Project.css';
 import githubImg from './assets/github.png';
@@ -318,103 +317,132 @@ const projects: Project[] = [
   },
 ];
 
-function Gallery({ images, alt }: { images: string[]; alt: string }) {
-  const [current, setCurrent] = useState(0);
-  const prev = () => setCurrent(c => (c - 1 + images.length) % images.length);
-  const next = () => setCurrent(c => (c + 1) % images.length);
-  return (
-    <div style={{ position: 'relative', marginBottom: 16 }}>
-      <div style={{ position: 'relative', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: 8 }}>
-        <button onClick={prev} style={{ background: 'rgba(0,0,0,0.5)', color: '#fff', border: 'none', borderRadius: 4, cursor: 'pointer', fontSize: 20, padding: '8px 12px', lineHeight: 1 }}>◀</button>
-        <img src={images[current]} alt={alt} className="project-image" style={{ maxWidth: '55%', display: 'block' }} />
-        <button onClick={next} style={{ background: 'rgba(0,0,0,0.5)', color: '#fff', border: 'none', borderRadius: 4, cursor: 'pointer', fontSize: 20, padding: '8px 12px', lineHeight: 1 }}>▶</button>
-      </div>
-      <div style={{ display: 'flex', justifyContent: 'center', gap: 8, marginTop: 8 }}>
-        {images.map((_, i) => (
-          <button
-            key={i}
-            onClick={() => setCurrent(i)}
-            style={{
-              width: 10, height: 10, borderRadius: '50%', border: 'none', cursor: 'pointer',
-              background: i === current ? '#a259ff' : '#555', padding: 0,
-            }}
-          />
-        ))}
-      </div>
-    </div>
-  );
-}
-
 interface ProjectsProps { lang: 'fr' | 'en' }
 
-export default function Projects({ lang }: ProjectsProps) {
-  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
+function ProjectsInventory({ lang }: { lang: 'fr' | 'en' }) {
+  const [cursorIdx, setCursorIdx] = useState(0);
+  const [openIdx, setOpenIdx] = useState<number | null>(null);
+  const cursorRef = useRef(0);
+  const pointerRef = useRef<HTMLSpanElement>(null);
+  const entryRefs = useRef<(HTMLButtonElement | null)[]>([]);
+
+  const placeCursor = (idx: number) => {
+    const el = entryRefs.current[idx];
+    const ptr = pointerRef.current;
+    if (!el || !ptr) return;
+    const top = el.offsetTop + (el.offsetHeight - ptr.offsetHeight) / 2;
+    ptr.style.transform = `translateY(${top}px)`;
+  };
+
+  useEffect(() => {
+    placeCursor(cursorIdx);
+  }, [cursorIdx]);
+
+  useEffect(() => {
+    const onKey = (e: KeyboardEvent) => {
+      if (document.querySelector('.menu-overlay')) return;
+      const cur = cursorRef.current;
+      if (e.key === 'ArrowDown' || e.key === 'ArrowRight') {
+        e.preventDefault();
+        cursorRef.current = Math.min(projects.length - 1, cur + 1);
+      } else if (e.key === 'ArrowUp' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        cursorRef.current = Math.max(0, cur - 1);
+      } else if (e.key === 'Home') {
+        e.preventDefault();
+        cursorRef.current = 0;
+      } else if (e.key === 'End') {
+        e.preventDefault();
+        cursorRef.current = projects.length - 1;
+      } else if (e.key === 'Enter') {
+        e.preventDefault();
+        setOpenIdx(cursorRef.current);
+        return;
+      } else if (e.key === 'Escape') {
+        setOpenIdx(null);
+        return;
+      } else {
+        return;
+      }
+      const idx = cursorRef.current;
+      setCursorIdx(idx);
+      entryRefs.current[idx]?.scrollIntoView({ block: 'nearest' });
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
+  const select = (i: number) => {
+    cursorRef.current = i;
+    setCursorIdx(i);
+    setOpenIdx(i);
+  };
+
+  const hover = (i: number) => {
+    cursorRef.current = i;
+    setCursorIdx(i);
+  };
+
+  const open = openIdx != null ? projects[openIdx] : null;
 
   return (
-    <div style={{ padding: "2rem", color: "#fff" }}>
+    <div className="page-container ow-projects fade-in">
       <SEO
         title="Projects"
         description={lang === 'fr' ? 'Projets de Lucas Sangkhavongs — EPITECH et open source' : "Lucas Sangkhavongs' projects — EPITECH and open source"}
         path="/projects"
       />
-      <h1 className="title">{lang === 'fr' ? 'Projets' : 'Projects'}</h1>
-      <p className="subtitle">{lang === 'fr' ? 'Voici quelques-uns de mes projets réalisés à EPITECH et en dehors.' : 'Here are some of my projects made at EPITECH and beyond.'}</p>
-
-      <div className="projects-grid">
-        {projects.map((project, idx) => (
-          <motion.div
-            key={idx}
-            className="project-card"
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.01 }}
-            transition={{
-              type: "spring",
-              stiffness: 60,
-              damping: 18,
-              mass: 0.7,
-              delay: idx * 0.06,
-            }}
-          >
-            {project.image && (
-              <img src={project.image} alt={typeof project.title === 'string' ? project.title : project.title[lang]} className="project-image" />
-            )}
-            <h2 className="project-title">{typeof project.title === 'string' ? project.title : project.title[lang]}</h2>
-            <p>{typeof project.description === 'string' ? project.description : project.description[lang]}</p>
-            <span
-              className="project-see-btn"
-              onClick={() => setSelectedProject(project)}
-              tabIndex={0}
-              role="button"
-              onKeyPress={e => { if (e.key === 'Enter' || e.key === ' ') setSelectedProject(project); }}
+      <header className="ow-projects-head">
+        <h1 className="title">{lang === 'fr' ? 'Projets' : 'Projects'}</h1>
+        <p className="subtitle">{lang === 'fr' ? 'Inventaire des projets.' : 'Project inventory.'}</p>
+      </header>
+      <div className="ow-projects-layout">
+        <div className="ow-projects-list" role="listbox" aria-label={lang === 'fr' ? 'Projets' : 'Projects'}>
+          <span className="ow-pointer" ref={pointerRef} aria-hidden="true">▸</span>
+          {projects.map((p, i) => (
+            <button
+              key={i}
+              type="button"
+              role="option"
+              aria-selected={i === openIdx}
+              className={`ow-entry${i === cursorIdx ? ' cursor' : ''}${i === openIdx ? ' active' : ''}`}
+              ref={el => { entryRefs.current[i] = el; }}
+              onClick={() => select(i)}
+              onMouseEnter={() => hover(i)}
             >
-              {lang === 'fr' ? 'Voir le projet' : 'See project'}
-            </span>
-          </motion.div>
-        ))}
-      </div>
-      {selectedProject && (
-        <div className="modal-overlay" onClick={() => setSelectedProject(null)}>
-          <div className="modal-content" onClick={e => e.stopPropagation()}>
-            {selectedProject.gallery ? (
-              <Gallery images={selectedProject.gallery} alt={typeof selectedProject.title === 'string' ? selectedProject.title : selectedProject.title[lang]} />
-            ) : (selectedProject.detailImage || selectedProject.image) && (
-              <img src={selectedProject.detailImage || selectedProject.image} alt={typeof selectedProject.title === 'string' ? selectedProject.title : selectedProject.title[lang]} className="project-image" style={{ maxWidth: '60%', marginBottom: 16 }} />
-            )}
-            <h2>{typeof selectedProject.title === 'string' ? selectedProject.title : selectedProject.title[lang]}</h2>
-            <p style={{ marginBottom: 16 }}>{typeof selectedProject.details === 'string' ? selectedProject.details : (selectedProject.details ? selectedProject.details[lang] : (typeof selectedProject.description === 'string' ? selectedProject.description : selectedProject.description[lang]))}</p>
-            {selectedProject.isPrivate ? (
-              <span style={{ color: "#888", display: "block", marginBottom: 16, fontStyle: "italic" }}>
-                {lang === 'fr' ? 'Projet Privé' : 'Private Project'}
-              </span>
-            ) : selectedProject.link && (
-              <a href={selectedProject.link} target="_blank" rel="noopener noreferrer" style={{ color: "#a259ff", display: "block", marginBottom: 16 }}>
-                {lang === 'fr' ? 'Lien du projet' : 'Project link'}
-              </a>
-            )}
-          </div>
+              <span className="ow-entry-idx">{String(i + 1).padStart(2, '0')}</span>
+              <span className="ow-entry-title">{typeof p.title === 'string' ? p.title : p.title[lang]}</span>
+            </button>
+          ))}
         </div>
-      )}
+        <div className="ow-projects-note" aria-live="polite">
+          {open ? (
+            <>
+              <div className="ow-note-head">{lang === 'fr' ? '— DOCUMENT / FICHE PROJET —' : '— DOCUMENT / PROJECT FILE —'}</div>
+              <h2 className="ow-note-title">{typeof open.title === 'string' ? open.title : open.title[lang]}</h2>
+              {(open.detailImage || open.image) && (
+                <img src={open.detailImage || open.image} alt={typeof open.title === 'string' ? open.title : open.title[lang]} className="ow-note-img" />
+              )}
+              <p className="ow-note-desc">
+                {typeof open.details === 'string' ? open.details : (open.details ? open.details[lang] : (typeof open.description === 'string' ? open.description : open.description[lang]))}
+              </p>
+              {open.isPrivate ? (
+                <span className="ow-note-private">{lang === 'fr' ? 'PROJET PRIVÉ' : 'PRIVATE PROJECT'}</span>
+              ) : open.link ? (
+                <a href={open.link} target="_blank" rel="noopener noreferrer" className="ow-note-link">
+                  {lang === 'fr' ? 'LIEN DU PROJET →' : 'PROJECT LINK →'}
+                </a>
+              ) : null}
+            </>
+          ) : (
+            <div className="ow-note-empty">{lang === 'fr' ? '— SÉLECTIONNER UNE ENTRÉE —' : '— SELECT AN ENTRY —'}</div>
+          )}
+        </div>
+      </div>
     </div>
   );
+}
+
+export default function Projects({ lang }: ProjectsProps) {
+  return <ProjectsInventory lang={lang} />;
 }

@@ -1,11 +1,11 @@
 import { useState, useEffect, useRef } from 'react';
 
 const bootLines = [
-  '[  OK  ] Started lucasskvn.service — Portfolio daemon.',
-  '[  OK  ] Mounted /home/lucasskvn/projects.',
-  '[  OK  ] Reached target Network (Last.fm, GitHub, Discord).',
-  '[  OK  ] Started rustc.service — Rust compiler ready.',
-  '[  OK  ] Listening on port 443 (HTTPS), 22 (SSH).',
+  '[  OK  ] Tuning 108.0 MHz — carrier locked.',
+  '[  OK  ] Signal path acquired — LAT 41.38 / LON -71.90.',
+  '[  OK  ] Fog layer rendered at 100%.',
+  '[ WARN ] Static burst on channel 2 — resampling…',
+  '[  OK  ] lucasskvn.service online.',
   '',
   '  ██╗       ██╗   ██╗   ██████╗   █████╗    ██████╗   ██████╗  ██╗  ██╗  ██╗   ██╗  ███╗   ██╗',
   '  ██║       ██║   ██║  ██╔════╝  ██╔══██╗  ██╔════╝  ██╔════╝  ██║ ██╔╝  ██║   ██║  ████╗  ██║',
@@ -73,7 +73,7 @@ const commands: Record<string, string[]> = {
     'DE: Custom CSS Dark Theme',
     'CPU: Your device\'s CPU (0% used by this site)',
     'GPU: Handled by your browser',
-    'Memory: Enough for this terminal 🐺',
+    'Memory: Enough for this terminal',
   ],
 };
 

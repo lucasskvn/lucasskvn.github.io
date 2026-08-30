@@ -1,5 +1,4 @@
 import SEO from './components/SEO';
-import Setup from './components/Setup';
 import Profile from './assets/profile.jpg';
 import DownloadIcon from './assets/download.png';
 import './About.css';
@@ -32,15 +31,11 @@ const About = ({ lang }: { lang: 'fr' | 'en' }) => (
           <br />
           <br />
           {lang === 'fr'
-            ? "J'ai récemment lancé 🦋 ButterflyNet, un serveur IRC privé et chiffré, accessible uniquement sur invitation."
-            : "I recently launched 🦋 ButterflyNet, a private encrypted IRC server — invite only."}
+            ? "J'ai récemment lancé ButterflyNet, un serveur IRC privé et chiffré, accessible uniquement sur invitation."
+            : "I recently launched ButterflyNet, a private encrypted IRC server — invite only."}
         </p>
       </div>
     </div>
-    <h2 className="section-title" style={{ marginTop: '3rem', textAlign: 'center' }}>
-      {lang === 'fr' ? 'Setup / Gear' : 'Setup / Gear'}
-    </h2>
-    <Setup lang={lang} />
   </div>
 );
 

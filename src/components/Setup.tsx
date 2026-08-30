@@ -33,13 +33,13 @@ const gear = {
 };
 
 const categories = [
-  { key: 'os', icon: '🖥️', label: { fr: 'Système', en: 'OS' } },
+  { key: 'os', icon: '▚', label: { fr: 'Système', en: 'OS' } },
   { key: 'shell', icon: '>_', label: { fr: 'Shell', en: 'Shell' } },
-  { key: 'wm', icon: '🪟', label: { fr: 'Window Manager', en: 'Window Manager' } },
-  { key: 'editor', icon: '✏️', label: { fr: 'Éditeur', en: 'Editor' } },
-  { key: 'terminal', icon: '📟', label: { fr: 'Terminal', en: 'Terminal' } },
-  { key: 'hardware', icon: '🔧', label: { fr: 'Matériel', en: 'Hardware' } },
-  { key: 'tools', icon: '🧰', label: { fr: 'Outils', en: 'Tools' } },
+  { key: 'wm', icon: '▦', label: { fr: 'Window Manager', en: 'Window Manager' } },
+  { key: 'editor', icon: '≡', label: { fr: 'Éditeur', en: 'Editor' } },
+  { key: 'terminal', icon: '▉', label: { fr: 'Terminal', en: 'Terminal' } },
+  { key: 'hardware', icon: '◇', label: { fr: 'Matériel', en: 'Hardware' } },
+  { key: 'tools', icon: '·', label: { fr: 'Outils', en: 'Tools' } },
 ] as const;
 
 export default function Setup({ lang }: { lang: 'fr' | 'en' }) {

@@ -23,8 +23,8 @@ export default defineConfig({
         description: 'Portfolio de Lucas Sangkhavongs — développeur, projets, musique',
         start_url: '/',
         display: 'standalone',
-        background_color: '#0b0f14',
-        theme_color: '#a259ff',
+        background_color: '#141412',
+        theme_color: '#141412',
         icons: [
           { src: '/assets/ppgithub.png', sizes: '192x192', type: 'image/png' },
           { src: '/assets/ppgithub.png', sizes: '512x512', type: 'image/png' },

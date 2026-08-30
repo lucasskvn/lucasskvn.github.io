@@ -170,16 +170,15 @@ export default function Music({ lang }: { lang: 'fr' | 'en' }) {
       ) : (
         <>
           {error && (
-            <div style={{ textAlign: 'center', padding: '1rem', marginBottom: '1rem', background: 'rgba(255, 100, 100, 0.1)', borderRadius: '8px', border: '1px solid rgba(255, 100, 100, 0.3)' }}>
-              <p style={{ color: '#ff6b6b', margin: 0, fontSize: '0.9rem' }}>
-                {lang === 'fr' ? '🔄 Connexion à Last.fm perdue — tentative de reconnexion...' : '🔄 Last.fm connection lost — retrying...'}
+            <div className="music-error">
+              <p>
+                {lang === 'fr' ? 'Connexion à Last.fm perdue — reconnexion…' : 'Last.fm connection lost — retrying…'}
               </p>
             </div>
           )}
 
           {nowPlaying && (
             <div className="now-playing-card">
-              <div className="now-playing-bar" />
               <img src={nowPlaying.image || '/assets/placeholder.jpg'} alt={nowPlaying.album} className="now-playing-img" />
               <div className="now-playing-info">
                 <span className="now-playing-badge">{t.now}</span>
