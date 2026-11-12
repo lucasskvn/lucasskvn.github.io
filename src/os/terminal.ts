@@ -8,7 +8,7 @@ export type TerminalResult = {
   cwd?: string;
   clear?: boolean;
   open?: { id: AppId; target?: string };
-  theme?: "paper" | "night";
+  theme?: "fog" | "otherworld";
 };
 export const commandNames = [
   "help",
@@ -75,7 +75,7 @@ export function runCommand(
       return { output: "" };
     case "help":
       return {
-        output: `INTERVALLE — aide\n\nls [dossier]       Lister les fichiers\ncd [dossier]       Changer de dossier (~, .., /)\ncat <fichier>      Lire un document\npwd               Afficher le chemin\ntree              Parcourir l'arborescence\nprojects          Lister les projets\nopen <app|chemin>  Ouvrir une application ou un fichier\nwhoami            Faire connaissance\nneofetch          Informations système\ntheme paper|night Changer l'apparence\nhistory           Historique des commandes\ndate              Date et heure locales\nclear             Nettoyer le terminal\n\n↑ ↓ : historique · Tab : complétion · Ctrl+L : nettoyer\n\nEssayez : cd projets/pomodocus puis cat README.md\nOu : open fanzine pomodocus`,
+        output: `INTERVALLE — aide\n\nls [dossier]       Lister les fichiers\ncd [dossier]       Changer de dossier (~, .., /)\ncat <fichier>      Lire un document\npwd               Afficher le chemin\ntree              Parcourir l'arborescence\nprojects          Lister les projets\nopen <app|chemin>  Ouvrir une application ou un fichier\nwhoami            Faire connaissance\nneofetch          Informations système\ntheme fog|otherworld Changer l'apparence\nhistory           Historique des commandes\ndate              Date et heure locales\nclear             Nettoyer le terminal\n\n↑ ↓ : historique · Tab : complétion · Ctrl+L : nettoyer\n\nEssayez : cd projets/pomodocus puis cat README.md\nOu : open fanzine pomodocus`,
       };
     case "pwd":
       return { output: cwd };
@@ -149,10 +149,20 @@ export function runCommand(
       };
     case "clear":
       return { output: "", clear: true };
-    case "theme":
-      return args[0] === "paper" || args[0] === "night"
-        ? { output: `Apparence : ${args[0]}`, theme: args[0] }
-        : { output: "Usage : theme paper | night" };
+    case "theme": {
+      const theme =
+        args[0] === "fog" || args[0] === "paper"
+          ? "fog"
+          : args[0] === "otherworld" || args[0] === "night"
+            ? "otherworld"
+            : undefined;
+      return theme
+        ? {
+            output: `Apparence : ${theme === "fog" ? "Brouillard" : "Autre Monde"}`,
+            theme,
+          }
+        : { output: "Usage : theme fog | otherworld" };
+    }
     case "date":
       return { output: new Date().toLocaleString("fr-FR") };
     case "tree":

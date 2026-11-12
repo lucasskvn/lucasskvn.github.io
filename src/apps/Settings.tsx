@@ -10,9 +10,9 @@ export function Settings() {
         <span className="eyebrow">FAITES COMME CHEZ VOUS</span>
         <h1>À votre rythme.</h1>
         <section className="settings-section">
-          <h2>Apparence</h2>
+          <h2>Deux mondes, un même bureau.</h2>
           <div className="theme-options">
-            {(["paper", "night"] as const).map((theme) => (
+            {(["fog", "otherworld"] as const).map((theme) => (
               <button
                 key={theme}
                 className={`theme-choice theme-sample-${theme}`}
@@ -25,7 +25,7 @@ export function Settings() {
                   <b />
                 </span>
                 <span>
-                  {theme === "paper" ? "Papier" : "Après minuit"}
+                  {theme === "fog" ? "Brouillard" : "Autre Monde"}
                   {preferences.theme === theme && (
                     <Icon name="check" size={16} />
                   )}
@@ -41,8 +41,8 @@ export function Settings() {
             <div className="accent-options">
               {(
                 [
-                  { id: "vermilion", name: "Vermillon" },
-                  { id: "blue", name: "Encre bleue" },
+                  { id: "world", name: "Rouille / Sang" },
+                  { id: "ash", name: "Cendre" },
                   { id: "moss", name: "Mousse" },
                 ] as const
               ).map((accent) => (
@@ -63,8 +63,8 @@ export function Settings() {
           </div>
           <label className="setting-row">
             <span>
-              <strong>Trame du bureau</strong>
-              <small>Un quadrillage discret pour se repérer.</small>
+              <strong>Grain & brume</strong>
+              <small>Les textures du portfolio d’origine.</small>
             </span>
             <input
               type="checkbox"

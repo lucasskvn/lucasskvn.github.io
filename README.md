@@ -4,6 +4,8 @@ Le portfolio de **Lucas Sangkhavongs**, étudiant à EPITECH Lyon, sous la forme
 
 React 19 · TypeScript · Vite · GitHub Pages
 
+La direction artistique reprend les deux mondes du portfolio d’origine : noirs chauds, accents rouille/sang, EB Garamond et IM Fell English SC, grain statique et brume légère. Le bouton de la barre supérieure bascule entre Brouillard et Autre Monde. Les textures peuvent être désactivées dans Réglages. Les captures restent les fichiers originaux ; seul l’aperçu de couverture reçoit un léger traitement visuel.
+
 ## Explorer
 
 - **Folio / Fanzine** : couverture éditoriale, sommaire des 19 projets, recherche, catégories, articles, captures originales, galeries et marque-pages.
@@ -12,7 +14,7 @@ React 19 · TypeScript · Vite · GitHub Pages
 - **Terminal** : `help`, `ls`, `cd`, `cat`, `pwd`, `tree`, `whoami`, `projects`, `open`, `neofetch`, `history`, `date`, `theme`, `clear`. Historique avec ↑/↓, complétion avec Tab.
 - **Profil** : présentation, outils du quotidien, CV original et contact.
 - **Carnet** : notes personnelles enregistrées dans le navigateur, export en texte.
-- **Réglages** : apparences Papier / Après minuit, trois accents, trame, réduction des mouvements, rangement des fenêtres.
+- **Réglages** : ambiances Brouillard / Autre Monde, accents rouille ou sang, cendre et mousse, grain et brume, réduction des mouvements, rangement des fenêtres.
 
 Les fenêtres se déplacent par leur titre, se redimensionnent par leur coin inférieur droit, se réduisent et se ferment. Un double-clic sur le titre agrandit la fenêtre. Sur mobile, une seule application est affichée à la fois ; les autres restent ouvertes dans la barre inférieure.
 

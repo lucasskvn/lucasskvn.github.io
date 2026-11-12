@@ -23,8 +23,8 @@ export default defineConfig({
         description: "Un espace personnel pour le code et le reste.",
         start_url: "/",
         display: "standalone",
-        background_color: "#e8e9e1",
-        theme_color: "#e8e9e1",
+        background_color: "#141412",
+        theme_color: "#141412",
         icons: [
           {
             src: "/favicon.svg",

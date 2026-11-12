@@ -46,6 +46,7 @@ function Desktop() {
     dispatch,
     openApp,
     preferences,
+    setPreferences,
     launcher,
     setLauncher,
     toast,
@@ -66,7 +67,7 @@ function Desktop() {
       : "INTERVALLE — Lucas Sangkhavongs";
   }, [active]);
   return (
-    <div className={`os-desktop${preferences.grid ? " has-grid" : ""}`}>
+    <div className={`os-desktop${preferences.grid ? " has-atmosphere" : ""}`}>
       <a className="skip-link" href="#desktop-apps">
         Aller aux applications
       </a>
@@ -85,6 +86,32 @@ function Desktop() {
           L’ESPACE PERSONNEL DE <strong>LUCAS SANGKHAVONGS</strong>
         </span>
         <div className="system-right">
+          <button
+            className="world-switch"
+            aria-label={
+              preferences.theme === "fog"
+                ? "Passer dans l’Autre Monde"
+                : "Revenir au Brouillard"
+            }
+            title={
+              preferences.theme === "fog"
+                ? "Passer dans l’Autre Monde"
+                : "Revenir au Brouillard"
+            }
+            onClick={() =>
+              setPreferences({
+                theme: preferences.theme === "fog" ? "otherworld" : "fog",
+              })
+            }
+          >
+            <Icon
+              name={preferences.theme === "fog" ? "moon" : "sun"}
+              size={15}
+            />
+            <span>
+              {preferences.theme === "fog" ? "Brouillard" : "Autre Monde"}
+            </span>
+          </button>
           <button
             className="system-search"
             aria-label="Ouvrir le lanceur"

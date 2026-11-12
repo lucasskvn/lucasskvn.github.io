@@ -1,58 +1,58 @@
-@import url("https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:ital,wght@0,400;0,450;0,500;0,550;0,600;0,650;0,700;0,750;0,800;1,400;1,500&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=IM+Fell+English+SC&display=swap");
 
+/* The two worlds of the original portfolio, adapted to the shared OS. */
 :root {
-  font-family: "DM Sans", Arial, sans-serif;
-  color: #242722;
-  background: #e8e9e1;
+  font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+  color: #d8d5cc;
+  background: #141412;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  --desktop: #e8e9e1;
-  --paper: #faf9f4;
-  --surface: #efefe8;
-  --ink: #242722;
-  --muted: #697066;
-  --line: #d3d5ca;
-  --line-strong: #a6ac9f;
-  --accent: #be462e;
-  --accent-soft: #f0d7ce;
-  --accent-ink: #fffaf4;
-  --mono: "DM Mono", Consolas, monospace;
-  --shadow: 5px 6px 0 #24272214, 0 14px 42px #24272218;
+  --desktop: #141412;
+  --paper: #1b1a17;
+  --surface: #211f1b;
+  --ink: #d8d5cc;
+  --muted: #a69b8d;
+  --line: #38342d;
+  --line-strong: #5e5345;
+  --accent: #c48b61;
+  --accent-solid: #9a5a36;
+  --accent-soft: #35251b;
+  --accent-ink: #f3e8d9;
+  --mono: "Courier New", Consolas, monospace;
+  --serif: "EB Garamond", Georgia, serif;
+  --display: "IM Fell English SC", "EB Garamond", Georgia, serif;
+  --shadow: 0 18px 55px #0008, 0 0 0 1px #0005;
+  --fog: #bebaaa;
+  --grain-opacity: 0.035;
   --rail: 86px;
   --bar: 44px;
   --footer: 34px;
-  color-scheme: light;
-}
-:root[data-theme="night"] {
-  --desktop: #20241f;
-  --paper: #2a2f28;
-  --surface: #252a23;
-  --ink: #e8eadf;
-  --muted: #a3ac9b;
-  --line: #424b3d;
-  --line-strong: #65715c;
-  --accent: #f38a6b;
-  --accent-soft: #4b342b;
-  --accent-ink: #201e18;
-  --shadow: 5px 6px 0 #0002, 0 14px 42px #0004;
   color-scheme: dark;
 }
-:root[data-accent="blue"] {
-  --accent: #315bba;
-  --accent-soft: #dbe3f4;
+:root[data-theme="otherworld"] {
+  --desktop: #120605;
+  --paper: #1a0c0a;
+  --surface: #24100d;
+  --ink: #e3d6c4;
+  --muted: #b39786;
+  --line: #442720;
+  --line-strong: #754537;
+  --accent: #e27662;
+  --accent-solid: #a32e24;
+  --accent-soft: #421b16;
+  --fog: #a12a19;
+  --grain-opacity: 0.045;
+}
+:root[data-accent="ash"] {
+  --accent: #c5beb0;
+  --accent-solid: #666055;
+  --accent-soft: #38342e;
 }
 :root[data-accent="moss"] {
-  --accent: #416d47;
-  --accent-soft: #dbe7d5;
-}
-:root[data-theme="night"][data-accent="blue"] {
-  --accent: #8baaf1;
-  --accent-soft: #293c59;
-}
-:root[data-theme="night"][data-accent="moss"] {
-  --accent: #a6c987;
-  --accent-soft: #34452b;
+  --accent: #b0bc93;
+  --accent-solid: #566344;
+  --accent-soft: #283023;
 }
 * {
   box-sizing: border-box;

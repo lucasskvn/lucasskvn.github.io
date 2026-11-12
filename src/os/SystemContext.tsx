@@ -18,14 +18,14 @@ import type { Viewport, WindowAction, WindowState } from "./model";
 import { readStored, saveStored } from "./storage";
 
 export type Preferences = {
-  theme: "paper" | "night";
-  accent: "vermilion" | "blue" | "moss";
+  theme: "fog" | "otherworld";
+  accent: "world" | "ash" | "moss";
   reducedMotion: boolean;
   grid: boolean;
 };
 const defaults: Preferences = {
-  theme: "paper",
-  accent: "vermilion",
+  theme: "fog",
+  accent: "world",
   reducedMotion: false,
   grid: true,
 };
@@ -34,10 +34,11 @@ function initialPreferences(): Preferences {
     readStored<Partial<Preferences> | null>("preferences", defaults) ??
     defaults;
   return {
-    theme: stored.theme === "night" ? "night" : "paper",
-    accent: ["vermilion", "blue", "moss"].includes(stored.accent ?? "")
+    // Older light/green preferences fall back to the original fog palette.
+    theme: stored.theme === "otherworld" ? "otherworld" : "fog",
+    accent: ["world", "ash", "moss"].includes(stored.accent ?? "")
       ? stored.accent!
-      : "vermilion",
+      : "world",
     reducedMotion: stored.reducedMotion === true,
     grid: stored.grid !== false,
   };
