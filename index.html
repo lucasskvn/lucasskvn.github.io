@@ -1,73 +1,71 @@
 <!doctype html>
-<html lang="en" data-theme="dark" data-horror="brouillard">
+<html lang="fr" data-theme="fog" data-accent="world">
   <head>
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#141412" />
+    <meta name="color-scheme" content="dark" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="apple-touch-icon" href="/og.png" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="color-scheme" content="dark" />
-
-    <!-- SEO -->
-    <title>lucasskvn - Portfolio</title>
-    <meta name="description" content="Portfolio de Lucas Sangkhavongs - développeur, projets Epitech, musique et créations open source." />
+    <link rel="canonical" href="https://lucasskvn.github.io/" />
+    <title>INTERVALLE — Lucas Sangkhavongs</title>
+    <meta
+      name="description"
+      content="L’espace personnel de Lucas Sangkhavongs, étudiant à EPITECH Lyon. Un bureau interactif pour explorer mes projets, mon univers musical et les outils que je fabrique."
+    />
     <meta name="author" content="Lucas Sangkhavongs" />
-    <meta name="keywords" content="lucasskvn, Lucas Sangkhavongs, Epitech, développeur, portfolio, Rust, C, Python" />
-
-    <!-- Open Graph -->
-    <meta property="og:title" content="lucasskvn - Portfolio" />
-    <meta property="og:description" content="Portfolio de Lucas Sangkhavongs - développeur, projets Epitech, musique et créations open source." />
-    <meta property="og:url" content="https://lucasskvn.github.io" />
-    <meta property="og:image" content="https://lucasskvn.github.io/assets/ppgithub.png" />
+    <meta property="og:title" content="INTERVALLE — Lucas Sangkhavongs" />
+    <meta
+      property="og:description"
+      content="Un système fictif. De vrais projets. Explorez le portfolio de Lucas à travers un fanzine, un terminal et une radio personnelle."
+    />
+    <meta property="og:url" content="https://lucasskvn.github.io/" />
+    <meta property="og:image" content="https://lucasskvn.github.io/og.png" />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="lucasskvn" />
-
-    <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="lucasskvn - Portfolio" />
-    <meta name="twitter:description" content="Portfolio de Lucas Sangkhavongs - développeur, projets Epitech, musique et créations open source." />
-    <meta name="twitter:image" content="https://lucasskvn.github.io/assets/ppgithub.png" />
-
-    <!-- PWA -->
-    <link rel="manifest" href="/manifest.json" />
-    <meta name="theme-color" content="#141412" />
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    <meta name="apple-mobile-web-app-title" content="lucasskvn" />
-
-    <!-- Fonts -->
+    <meta name="twitter:title" content="INTERVALLE — Lucas Sangkhavongs" />
+    <meta
+      name="twitter:description"
+      content="Un espace personnel pour le code et le reste."
+    />
+    <meta name="twitter:image" content="https://lucasskvn.github.io/og.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=IM+Fell+English+SC&display=swap" rel="stylesheet" />
-
-    <!-- Umami Analytics -->
-    <script defer src="https://cloud.umami.is/script.js" data-website-id="a259ff00-0000-0000-0000-000000000000"></script>
-
-    <!-- Structured data -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "Person",
-          "name": "Lucas Sangkhavongs",
-          "url": "https://lucasskvn.github.io",
-          "jobTitle": "Developer",
-          "sameAs": [
-            "https://github.com/lucasskvn",
-            "https://www.linkedin.com/in/lucas-sangkhavongs/"
-          ]
-        },
-        {
-          "@type": "WebSite",
-          "name": "lucasskvn",
-          "url": "https://lucasskvn.github.io"
-        }
-      ]
-    }
+      {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Lucas Sangkhavongs",
+        "url": "https://lucasskvn.github.io/",
+        "jobTitle": "Développeur · étudiant à EPITECH Lyon",
+        "sameAs": [
+          "https://github.com/lucasskvn",
+          "https://www.linkedin.com/in/lucas-sangkhavongs/"
+        ]
+      }
     </script>
   </head>
   <body>
     <div id="root"></div>
+    <noscript
+      ><main
+        style="padding: 32px; max-width: 650px; font-family: Arial, sans-serif"
+      >
+        <h1>Lucas Sangkhavongs</h1>
+        <p>
+          Étudiant à EPITECH Lyon, développeur et passionné de Linux, de musique
+          et d’open source.
+        </p>
+        <p>INTERVALLE est un bureau interactif qui nécessite JavaScript.</p>
+        <p>
+          <a href="https://github.com/lucasskvn"
+            >Explorer mes projets sur GitHub</a
+          >
+          · <a href="/CV_LucasSangkhavongs.pdf">Consulter mon CV</a> ·
+          <a href="mailto:lucas.sangkhavongs@epitech.eu">Me contacter</a>
+        </p>
+      </main></noscript
+    >
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

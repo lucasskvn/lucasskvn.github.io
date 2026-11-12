@@ -1,123 +1,86 @@
-# 🌐 lucasskvn.github.io
+# INTERVALLE
 
-<div align="center">
-  <img src="https://img.shields.io/badge/GitHub-Pages-blue?style=for-the-badge&logo=github&logoColor=white" alt="GitHub Pages">
-  <img src="https://img.shields.io/badge/TypeScript-5-blue?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript">
-  <img src="https://img.shields.io/badge/Vite-5-purple?style=for-the-badge&logo=vite&logoColor=white" alt="Vite">
-</div>
+Le portfolio de **Lucas Sangkhavongs**, étudiant à EPITECH Lyon, sous la forme d’un système d’exploitation personnel dans le navigateur.
 
-<br>
+React 19 · TypeScript · Vite · GitHub Pages
 
-Mon site personnel hébergé sur [GitHub Pages](https://lucasskvn.github.io). Un portfolio moderne et interactif développé avec **TypeScript** et **Vite**.
+La direction artistique reprend les deux mondes du portfolio d’origine : noirs chauds, accents rouille/sang, EB Garamond et IM Fell English SC, grain statique et brume légère. Le bouton de la barre supérieure bascule entre Brouillard et Autre Monde. Les textures peuvent être désactivées dans Réglages. Les captures restent les fichiers originaux ; seul l’aperçu de couverture reçoit un léger traitement visuel.
 
----
+## Explorer
 
-## ✨ Fonctionnalités
+- **Folio / Fanzine** : couverture éditoriale, sommaire des 19 projets, recherche, catégories, articles, captures originales, galeries et marque-pages.
+- **Musique** : webradio Icecast / Liquidsoap persistante entre les applications ; écoutes récentes, albums et artistes Last.fm.
+- **Fichiers** : arborescence virtuelle, historique des dossiers, recherche locale, aperçus des README et images, CV et ouverture des articles.
+- **Terminal** : `help`, `ls`, `cd`, `cat`, `pwd`, `tree`, `whoami`, `projects`, `open`, `neofetch`, `history`, `date`, `theme`, `clear`. Historique avec ↑/↓, complétion avec Tab.
+- **Profil** : présentation, outils du quotidien, CV original et contact.
+- **Carnet** : notes personnelles enregistrées dans le navigateur, export en texte.
+- **Réglages** : ambiances Brouillard / Autre Monde, accents rouille ou sang, cendre et mousse, grain et brume, réduction des mouvements, rangement des fenêtres.
 
-- 🎨 **Thème « Silent Hill » à deux mondes** — *Le Brouillard* (layout centré, cartes, lisible) vs *L'Autre Monde* (layout « brisé » : alignement gauche, cartes pleine largeur, Accueil « title screen »)
-- 🚀 **Performance** - Optimisé avec Vite et TypeScript ; overlays sans blur ni blend pour un scroll fluide
-- 📱 **Responsive** - Adapté à tous les écrans
-- 🌫️ **Atmosphère** - Brume, grain, scanlines, vignette, aberration chromatique, color-grade rouge — le tout respectant `prefers-reduced-motion`
-- 📧 **Contact** - Liens vers mes réseaux sociaux
+Les fenêtres se déplacent par leur titre, se redimensionnent par leur coin inférieur droit, se réduisent et se ferment. Un double-clic sur le titre agrandit la fenêtre. Sur mobile, une seule application est affichée à la fois ; les autres restent ouvertes dans la barre inférieure.
 
----
+## Développer
 
-## 🚀 Installation
+Node.js **22.12 minimum**, **24 LTS recommandé**.
 
-### Prérequis
-
-- Node.js 18 ou supérieur
-
-### Développement
-
-```bash
-# Cloner le repository
-git clone https://github.com/lucasskvn/lucasskvn.github.io.git
-cd lucasskvn.github.io
-
-# Installer les dépendances
-npm install
-
-# Créer le .env local (clé API Last.fm, voir .env.example)
-# cp .env.example .env   # puis renseigner VITE_LASTFM_API_KEY
-
-# Lancer le serveur de développement
+```sh
+npm ci
 npm run dev
-
-# Ouvrir http://localhost:5173
-```
-
-> **Note Last.fm** : la page Musique a besoin de `VITE_LASTFM_API_KEY` (clé créée sur [last.fm/api](https://www.last.fm/api/account/create)). Sans elle, la connexion échoue **en local uniquement** — en production la clé est injectée via les secrets GitHub Actions.
-
-### Production
-
-```bash
-# Build pour la production
+npm test
 npm run build
-
-# Preview du build
 npm run preview
 ```
 
----
+Le build produit `dist/`, avec une copie `404.html` pour les anciennes URL GitHub Pages. Les chemins `/projects`, `/about`, `/contact`, `/music`, `/radio` et `/uses` restent reconnus. Les liens directs vers les applications utilisent des fragments, par exemple `/#/fanzine/pomodocus`.
 
-## 📁 Structure
+## Musique
 
-```
-lucasskvn.github.io/
-├── src/
-│   ├── components/        # Composants
-│   ├── styles/            # Styles
-│   ├── App.tsx            # Composant principal
-│   └── main.tsx           # Point d'entrée
-├── public/
-│   └── assets/            # Images, icônes
-├── index.html
-├── package.json
-├── tsconfig.json
-└── vite.config.ts
-```
+Le profil Last.fm est `Snow3945KKK`. Copiez `.env.example` vers `.env` et renseignez `VITE_LASTFM_API_KEY` pour activer les écoutes en local. Le workflow existant conserve l’injection de `secrets.VITE_LASTFM_API_KEY` lors du build GitHub Actions. Une variable Vite est intégrée au JavaScript public : ne renseignez jamais de secret partagé Last.fm ni de jeton utilisateur dans cette variable.
 
----
+Sans clé, ou si le service ne répond pas, l’application affiche une indisponibilité explicite et un lien vers Last.fm. Aucune écoute de démonstration n’est présentée comme une vraie écoute. Les réponses API sont validées, les requêtes annulées au changement d’onglet et les erreurs réessayables. Les écoutes sont actualisées toutes les 60 secondes, les classements toutes les 5 minutes, lorsque l’onglet du navigateur est visible.
 
-## 📦 Déploiement
+La radio conserve les adresses d’origine : `https://webradio.lucasskvn.duckdns.org/stream.mp3` et `/status-json.xsl`. Elle démarre uniquement après un clic. Sa disponibilité et l’accès CORS dépendent du serveur externe. Fermer l’application Musique laisse la radio jouer ; la rouvrir permet de l’arrêter. Le chargement échoue proprement après 15 secondes sans lecture.
 
-Le site est automatiquement déployé sur [GitHub Pages](https://lucasskvn.github.io) via GitHub Actions.
+## Architecture
 
-### Déploiement automatique
-
-Le site se redéploie automatiquement à chaque push sur la branche `main`.
-
-### Déploiement manuel
-
-```bash
-# Build
-npm run build
-
-# Pousser sur GitHub
-git add .
-git commit -m "Update site"
-git push origin main
+```text
+src/
+  apps/           Les sept applications
+  components/     Fenêtre, lanceur, icônes et gestion des erreurs
+  data/           Projets et matériel repris du portfolio d’origine
+  os/
+    model.ts      Réducteur pur de gestion des fenêtres
+    registry.ts   Applications et associations
+    filesystem.ts Arborescence partagée par Fichiers et Terminal
+    terminal.ts   Interpréteur de commandes virtuel, sans eval ni shell système
+    lastfm.ts     Normalisation et accès à l’API
+    *Context.tsx  État partagé du système et lecture audio persistante
+    storage.ts    Stockage local tolérant aux erreurs
+  assets/         Ressources originales conservées
+tests/            Tests du système, des chemins, du terminal et de Last.fm
 ```
 
----
+Les descriptions, les 19 projets, les captures, le portrait, le CV et les coordonnées viennent du dépôt d’origine. Les projets privés restent signalés comme tels. Aucun visuel de projet n’a été remplacé par une image générée.
 
-## 🛠️ Technologies
+Préférences, marque-pages, volume et notes utilisent des clés `intervalle:*` dans le stockage local. Aucun compte n’est nécessaire. Le carnet appartient au visiteur et reste sur son appareil. Les fenêtres et l’historique du terminal vivent pendant la session.
 
-- **TypeScript** - Typage statique
-- **Vite** - Build tool rapide
-- **React** - Bibliothèque UI
-- **Framer Motion** - Animations légères
-- **GitHub Pages** - Hébergement
+## Clavier et accessibilité
 
----
+| Action                              | Raccourci                       |
+| ----------------------------------- | ------------------------------- |
+| Recherche d’applications et projets | Ctrl/Cmd + K                    |
+| Ouvrir les applications             | Alt + 1 à 7                     |
+| Afficher le bureau                  | Alt + Échap                     |
+| Application suivante                | Alt + `                         |
+| Fermer le lanceur                   | Échap                           |
+| Redimensionner une fenêtre          | Tab jusqu’au coin, puis flèches |
+| Nettoyer le terminal                | Ctrl + L                        |
 
-## 👤 Auteur
+La navigation Tab reste native. Le lanceur est un dialogue modal avec retour du focus ; les fenêtres masquées sont retirées de la navigation clavier. Les animations respectent `prefers-reduced-motion`. Les applications s’adaptent à la largeur de leur fenêtre avec des container queries. Sans JavaScript, les liens GitHub, CV et contact restent accessibles.
 
-**Lucas Kvn** - [GitHub](https://github.com/lucasskvn) - [lucasskvn.fr](https://lucasskvn.fr)
+## Vérification et publication
 
----
+`npm test` vérifie les transitions des fenêtres, leurs limites, les ouvertures répétées, les chemins et associations de fichiers, les commandes et la complétion, ainsi que les formes de réponses Last.fm. Un contrôle vérifie aussi la présence de toutes les images importées et du CV. `npm run build` vérifie les types et produit les fichiers statiques et le service worker.
 
-<div align="center">
-  <sub>🌐 Fait avec TypeScript et ☕</sub>
-</div>
+Les pull requests exécutent les tests et le build. Seul un push sur `main` publie sur GitHub Pages via le workflow existant. `dist/` est un résultat de build, pas une source à modifier.
+
+Les tests unitaires ne remplacent pas un essai navigateur : tester le déplacement et le redimensionnement, l’ouverture Fanzine → Fichiers → Fanzine, le terminal, la persistance des réglages et du carnet, les vues mobiles et les états réseau de Musique avant publication.
