@@ -1,0 +1,522 @@
+import githubImg from "../assets/github.png";
+import wolf3dscreen from "../assets/wolf3dscreen.png";
+import wolf3d from "../assets/wolf3d.png";
+import icecast from "../assets/icecast_logo.svg";
+import webradioscreen from "../assets/webradioscreen.png";
+import nixos from "../assets/nixos.png";
+import nvimscreen from "../assets/nvimscreen.png";
+import webpage from "../assets/webpage.png";
+import minishellscreen from "../assets/minishellscreen.png";
+import minishell from "../assets/minishell.webp";
+import portfolio from "../assets/portfoliomainpage.png";
+import butterflynet from "../assets/projects/butterflynet.png";
+import staarscreaam from "../assets/projects/staarscreaam.png";
+import rmrf from "../assets/projects/rmrf.svg";
+import farmermonkey from "../assets/projects/farmermonkey.svg";
+import farmermonkeyDetail from "../assets/projects/farmermonkey-detail.png";
+import virtualangel from "../assets/projects/virtualangel.svg";
+import virtualangelDetail from "../assets/projects/virtualangel-detail.png";
+import zhouxinyu from "../assets/projects/zhouxinyu.svg";
+import zhouxinyuDetail from "../assets/projects/zhouxinyu-detail.png";
+import zappy from "../assets/projects/zappy.png";
+import cartridge from "../assets/projects/cartridge.png";
+import myteams from "../assets/projects/myteams.png";
+import codewash from "../assets/projects/codewash.webp";
+import myradar from "../assets/projects/myradar.svg";
+import pomodocus from "../assets/projects/pomodocus-1.webp";
+import pomodocus2 from "../assets/projects/pomodocus-2.webp";
+import pomodocus3 from "../assets/projects/pomodocus-3.webp";
+import pomodocus4 from "../assets/projects/pomodocus-4.webp";
+import wavpy from "../assets/projects/wavpy.svg";
+
+type Project = {
+  title: string | { fr: string; en: string };
+  description: string | { fr: string; en: string };
+  details?: string | { fr: string; en: string };
+  link?: string;
+  image?: string;
+  detailImage?: string;
+  gallery?: string[];
+  isPrivate?: boolean;
+};
+
+const originalProjects: Project[] = [
+  {
+    title: {
+      fr: "ButterflyNet - Serveur IRC privé",
+      en: "ButterflyNet - Private IRC Server",
+    },
+    description: {
+      fr: "Serveur IRC privé et chiffré, accessible uniquement sur invitation. Hébergé sur mon VPS avec sécurisation renforcée.",
+      en: "Private encrypted IRC server, invite-only. Hosted on my VPS with hardened security.",
+    },
+    details: {
+      fr: "ButterflyNet est un serveur IRC privé que j'ai mis en place sur mon VPS OVH. Il utilise une configuration sécurisée avec chiffrement TLS, accès restreint par invitation, et une stack légère pour des performances optimales. Conçu pour des discussions privées entre amis, sans dépendre de plateformes centralisées.",
+      en: "ButterflyNet is a private IRC server I set up on my OVH VPS. It uses a secure configuration with TLS encryption, invite-only access, and a lightweight stack for optimal performance. Designed for private conversations between friends, without relying on centralized platforms.",
+    },
+    image: butterflynet,
+    detailImage: butterflynet,
+    link: "https://chat.2bananas4monkeys.org/",
+  },
+  {
+    title: {
+      fr: "Pomodocus - Pomodoro gamifié",
+      en: "Pomodocus - Gamified Pomodoro",
+    },
+    description: {
+      fr: "Projet hackathon de 10h — app Pomodoro gamifiée avec des dinosaures collectibles. React, TypeScript, Tailwind.",
+      en: "10-hour hackathon project — gamified Pomodoro app with collectible dinosaurs. React, TypeScript, Tailwind.",
+    },
+    details: {
+      fr: "Pomodocus est un projet réalisé en 10 heures lors d'un hackathon. Application Pomodoro gamifiée qui transforme la productivité en jeu : collectionnez des dinosaures en complétant des sessions de travail, suivez vos statistiques, et personnalisez l'apparence. Données persistantes dans le localStorage.",
+      en: "Pomodocus is a 10-hour hackathon project. A gamified Pomodoro app that turns productivity into a game: collect dinosaurs by completing work sessions, track your stats, and customize the appearance. Data persisted in localStorage.",
+    },
+    link: "https://github.com/lucasskvn/Pomodocus",
+    image: pomodocus,
+    detailImage: pomodocus,
+    gallery: [pomodocus, pomodocus2, pomodocus3, pomodocus4],
+  },
+  {
+    title: { fr: "WAV.PY - Selfbot Discord", en: "WAV.PY - Discord Selfbot" },
+    description: {
+      fr: "Selfbot Discord en Python qui permet d'exécuter des commandes de bot sur un compte personnel Discord.",
+      en: "Discord selfbot in Python that runs bot commands on a personal Discord account.",
+    },
+    details: {
+      fr: "WAV.PY est un selfbot Discord écrit en Python. Contrairement à un bot classique qui utilise un token bot, un selfbot permet d'avoir des commandes automatisées directement sur un compte utilisateur Discord personnel. Attention : les selfbots sont contraires aux ToS de Discord, à utiliser avec précaution.",
+      en: "WAV.PY is a Discord selfbot written in Python. Unlike a regular bot that uses a bot token, a selfbot allows automated commands directly on a personal Discord user account. Note: selfbots violate Discord's ToS, use with caution.",
+    },
+    link: "https://github.com/lucasskvn/WAV.PY",
+    image: wavpy,
+    detailImage: wavpy,
+    isPrivate: true,
+  },
+  {
+    title: {
+      fr: "Staarscreaam.wav - App musique en Rust",
+      en: "Staarscreaam.wav - Music App in Rust",
+    },
+    description: {
+      fr: "Application musicale open source personnalisable écrite en Rust. Architecture modulaire, focus performance.",
+      en: "Open source customizable music app written in Rust. Modular architecture, performance-focused.",
+    },
+    details: {
+      fr: "Staarscreaam.wav est une application musicale open source écrite en Rust, conçue pour être hautement personnalisable. Architecture modulaire, gestion de playlists, égaliseur, et support de multiples formats audio.",
+      en: "Staarscreaam.wav is an open source music application written in Rust, designed to be highly customizable. Modular architecture, playlist management, equalizer, and multiple audio format support.",
+    },
+    link: "https://github.com/lucasskvn/Staarscreaam.wav",
+    image: staarscreaam,
+    detailImage: staarscreaam,
+  },
+  {
+    title: {
+      fr: "RMRF - Outil de backup dédupliqué",
+      en: "RMRF - Deduplicated Backup Tool",
+    },
+    description: {
+      fr: "Outil de backup resilient en Rust avec chunking FastCDC, BLAKE3 et compression zstd. Support Proxmox (QEMU/LXC).",
+      en: "Resilient backup tool in Rust with FastCDC chunking, BLAKE3 hashing, and zstd compression. Proxmox (QEMU/LXC) support.",
+    },
+    details: {
+      fr: "RMRF (Resilient Modular Reduction Framework) est un outil de backup avec déduplication par chunking, hachage BLAKE3 et compression zstd. Il supporte la suspension automatique des VMs Proxmox pour des snapshots cohérents, la vérification d'intégrité, le garbage collection, et une politique de rétention.",
+      en: "RMRF (Resilient Modular Reduction Framework) is a backup tool with content-defined chunking, BLAKE3 hashing, and zstd compression. It supports automatic Proxmox VM suspension for consistent snapshots, integrity verification, garbage collection, and retention policies.",
+    },
+    link: "https://github.com/lucasskvn/RMRF",
+    image: rmrf,
+    detailImage: rmrf,
+  },
+  {
+    title: {
+      fr: "lucasskvn.fr - Site personnel",
+      en: "lucasskvn.fr - Personal Site",
+    },
+    description: {
+      fr: "Site statique dark theme avec esthétique terminal, hébergé sur mon VPS.",
+      en: "Static dark theme site with terminal aesthetic, hosted on my VPS.",
+    },
+    details: {
+      fr: "Site personnel statique avec un design dark theme, typographie Garamond, et une esthétique terminal. Déployé automatiquement via GitHub Actions sur mon VPS OVH avec Caddy.",
+      en: "Personal static site with dark theme design, Garamond typography, and terminal aesthetic. Auto-deployed via GitHub Actions on my OVH VPS with Caddy.",
+    },
+    link: "https://lucasskvn.fr",
+    image: webpage,
+    detailImage: githubImg,
+  },
+  {
+    title: { fr: "Portfolio Website", en: "Portfolio Website" },
+    description: {
+      fr: "Site personnel réalisé avec React et Vite pour présenter mes projets et mon CV.",
+      en: "Personal website built with React and Vite to showcase my projects and CV.",
+    },
+    details: {
+      fr: "Ce site a été conçu pour mettre en avant mes compétences, mes projets et mon parcours professionnel. Il utilise React, Vite et un design responsive.",
+      en: "This site was designed to highlight my skills, projects, and professional background. It uses React, Vite, and a responsive design.",
+    },
+    link: "https://github.com/lucasskvn/lucasskvn.github.io/",
+    image: portfolio,
+    detailImage: portfolio,
+  },
+  {
+    title: { fr: "Webradio", en: "Webradio" },
+    description: {
+      fr: "Écoutez la webradio en direct (Liquidsoap, Icecast). Host sur ce site",
+      en: "Listen to the webradio live (Liquidsoap, Icecast). Hosted on this site",
+    },
+    details: {
+      fr: "Player audio en ligne, utilisant Liquidsoap et Icecast pour la diffusion. Permet d'écouter la radio en direct et d'afficher le titre du morceau en cours.",
+      en: "Online audio player, using Liquidsoap and Icecast for streaming. Lets you listen live and shows the current track title.",
+    },
+    link: "/radio",
+    image: icecast,
+    detailImage: webradioscreen,
+  },
+  {
+    title: { fr: "Dotfiles", en: "Dotfiles" },
+    description: {
+      fr: "Mes configurations personnalisées pour bash, nvim, nix, etc.",
+      en: "My custom configurations for bash, nvim, nix, etc.",
+    },
+    details: {
+      fr: "Ce dépôt contient toutes mes configurations personnelles pour différents outils de développement, facilitant la portabilité de mon environnement.",
+      en: "This repo contains all my personal configs for various dev tools, making my environment portable.",
+    },
+    link: "https://github.com/lucasskvn/NixOS-config",
+    image: nixos,
+    detailImage: nvimscreen,
+  },
+  {
+    title: {
+      fr: "FarmerMonkey - Bot Discord de tournois",
+      en: "FarmerMonkey - Tournament Discord Bot",
+    },
+    description: {
+      fr: "Bot Discord de gestion de tournois avec brackets, équipes et statistiques. En production.",
+      en: "Discord tournament bot with brackets, teams, and statistics. In production.",
+    },
+    details: {
+      fr: "FarmerMonkey est un bot Discord complet pour la gestion de tournois : création de brackets, gestion d'équipes, suivi des statistiques, et système d'élimination. Déployé en production sur plusieurs serveurs Discord.",
+      en: "FarmerMonkey is a complete Discord bot for tournament management: bracket creation, team management, statistics tracking, and elimination system. Deployed in production on multiple Discord servers.",
+    },
+    link: "https://github.com/lucasskvn/FarmerMonkey",
+    image: farmermonkey,
+    detailImage: farmermonkeyDetail,
+    isPrivate: true,
+  },
+  {
+    title: {
+      fr: "VirtualAngel - Bot IA conversationnel",
+      en: "VirtualAngel - Conversational AI Bot",
+    },
+    description: {
+      fr: "Bot Discord IA conversationnel avec apprentissage par chaînes de Markov. Déployé via Docker.",
+      en: "Conversational AI Discord bot with Markov chain learning. Deployed via Docker.",
+    },
+    details: {
+      fr: "VirtualAngel est un bot Discord utilisant des chaînes de Markov pour apprendre des conversations et générer des réponses contextuelles. Architecture modulaire avec persistance des données et déploiement Docker.",
+      en: "VirtualAngel is a Discord bot using Markov chains to learn from conversations and generate contextual responses. Modular architecture with data persistence and Docker deployment.",
+    },
+    link: "https://github.com/lucasskvn/VirtualAngel",
+    image: virtualangel,
+    detailImage: virtualangelDetail,
+    isPrivate: true,
+  },
+  {
+    title: {
+      fr: "ZhouXinyu - Bot de cartes à collectionner",
+      en: "ZhouXinyu - Trading Card Bot",
+    },
+    description: {
+      fr: "Bot Discord de cartes à collectionner avec système d'échange et persistance.",
+      en: "Trading card Discord bot with exchange system and data persistence.",
+    },
+    details: {
+      fr: "ZhouXinyu est un bot Discord de cartes à collectionner avec un système d'échange complet, collection de cartes, raretés, et persistance des données des utilisateurs.",
+      en: "ZhouXinyu is a trading card Discord bot with a complete exchange system, card collection, rarities, and user data persistence.",
+    },
+    link: "https://github.com/lucasskvn/ZhouXinyu",
+    image: zhouxinyu,
+    detailImage: zhouxinyuDetail,
+    isPrivate: true,
+  },
+  {
+    title: {
+      fr: "Zappy - Jeu réseau multijoueur",
+      en: "Zappy - Multiplayer Network Game",
+    },
+    description: {
+      fr: "Jeu réseau multijoueur en temps réel unissant GUI, IA et serveur en C/CPP et Python.",
+      en: "Real-time multiplayer network game combining GUI, AI, and server in C/CPP and Python.",
+    },
+    details: {
+      fr: "Zappy est un projet de jeu réseau où plusieurs équipes s'affrontent via une IA autonome. L'architecture sépare un serveur central en C/CPP, des clients graphiques, et des IA en Python qui interagissent en temps réel.",
+      en: "Zappy is a network game project where multiple teams compete via autonomous AI. The architecture separates a central C/CPP server, graphical clients, and Python AIs interacting in real-time.",
+    },
+    image: zappy,
+    detailImage: zappy,
+    isPrivate: true,
+  },
+  {
+    title: {
+      fr: "Cartridge - Recreation jeu GameBoy",
+      en: "Cartridge - GameBoy Recreation",
+    },
+    description: {
+      fr: "Recréation d'un jeu GameBoy en C avec les contraintes de ressources de la console.",
+      en: "GameBoy game recreation in C with the console's resource constraints.",
+    },
+    details: {
+      fr: "Cartridge est un projet qui consiste à recréer un jeu GameBoy en C, en respectant les limitations techniques de la console originale : mémoire limitée, affichage contraint, et performances réduites.",
+      en: "Cartridge is a project recreating a GameBoy game in C, respecting the original console's technical limitations: limited memory, constrained display, and reduced performance.",
+    },
+    image: cartridge,
+    detailImage: cartridge,
+    isPrivate: true,
+  },
+  {
+    title: {
+      fr: "my_teams - Chat client/serveur",
+      en: "my_teams - Client/Server Chat",
+    },
+    description: {
+      fr: "Recreation d'un chat en Rust similaire au logiciel Teams, liant client et serveur.",
+      en: "Chat recreation in Rust similar to Teams software, linking client and server.",
+    },
+    details: {
+      fr: "my_teams est un projet de messagerie instantanée en Rust avec une architecture client/serveur. Il implémente la gestion de canaux, messages privés, et notifications en temps réel.",
+      en: "my_teams is an instant messaging project in Rust with a client/server architecture. It implements channel management, private messages, and real-time notifications.",
+    },
+    image: myteams,
+    detailImage: myteams,
+    isPrivate: true,
+  },
+  {
+    title: { fr: "Codewash - Refactorisation", en: "Codewash - Refactoring" },
+    description: {
+      fr: "Refactorisation et nettoyage d'une application vibecodée pour la rendre plus fluide et maintenable.",
+      en: "Refactoring and cleanup of a vibecoded application to make it smoother and maintainable.",
+    },
+    details: {
+      fr: "Codewash est un projet de refactorisation complète d'une application existante, visant à améliorer la qualité du code, la maintenabilité et faciliter l'implémentation de nouvelles fonctionnalités.",
+      en: "Codewash is a complete refactoring project of an existing application, aiming to improve code quality, maintainability, and ease the implementation of new features.",
+    },
+    image: codewash,
+    detailImage: codewash,
+    isPrivate: true,
+  },
+  {
+    title: { fr: "Wolf3D", en: "Wolf3D" },
+    description: {
+      fr: "Un projet de jeu 3D réalisé en C et CSFML.",
+      en: "A 3D game project made in C and CSFML.",
+    },
+    details: {
+      fr: "Wolf3D est un jeu inspiré du célèbre Wolfenstein 3D, programmé en C avec la librairie CSFML pour l'affichage graphique.",
+      en: "Wolf3D is a game inspired by the famous Wolfenstein 3D, coded in C with CSFML for graphics.",
+    },
+    link: "https://github.com/lucasskvn/Wolf3D",
+    image: wolf3d,
+    detailImage: wolf3dscreen,
+  },
+  {
+    title: { fr: "Minishell", en: "Minishell" },
+    description: {
+      fr: "Projet de recréation du shell Unix réalisé en C.",
+      en: "Unix shell recreation project in C.",
+    },
+    details: {
+      fr: "Minishell est une implémentation simplifiée d'un shell Unix, permettant de manipuler des commandes et des processus.",
+      en: "Minishell is a simplified Unix shell implementation, allowing command and process management.",
+    },
+    link: "https://github.com/lucasskvn/Minishell",
+    image: minishell,
+    detailImage: minishellscreen,
+  },
+  {
+    title: { fr: "my_radar", en: "my_radar" },
+    description: {
+      fr: "Simulateur de trajectoire et de collision d'avions en C avec CSFML.",
+      en: "Airplane trajectory and collision simulator in C with CSFML.",
+    },
+    details: {
+      fr: "Ce projet consiste à créer un simulateur de trajectoire et collision d'avions en C avec CSFML.",
+      en: "This project is about creating an airplane trajectory and collision simulator in C with CSFML.",
+    },
+    image: myradar,
+    detailImage: myradar,
+    isPrivate: true,
+  },
+];
+
+const metadata = [
+  [
+    "butterflynet",
+    "ButterflyNet",
+    "Réseaux",
+    ["IRC", "TLS", "VPS"],
+    "Un endroit à nous.",
+  ],
+  [
+    "pomodocus",
+    "Pomodocus",
+    "Interfaces",
+    ["React", "TypeScript", "Tailwind"],
+    "Du temps. Des dinosaures.",
+  ],
+  [
+    "wavpy",
+    "WAV.PY",
+    "Outils",
+    ["Python", "Discord"],
+    "Le terminal rencontre Discord.",
+  ],
+  [
+    "staarscreaam",
+    "Staarscreaam.wav",
+    "Musique",
+    ["Rust", "Audio", "Open source"],
+    "La musique, à ma façon.",
+  ],
+  [
+    "rmrf",
+    "RMRF",
+    "Systèmes",
+    ["Rust", "BLAKE3", "FastCDC", "zstd"],
+    "Sauvegarder moins. Garder tout.",
+  ],
+  [
+    "site-personnel",
+    "lucasskvn.fr",
+    "Interfaces",
+    ["HTML", "Caddy", "GitHub Actions"],
+    "Un petit coin du web.",
+  ],
+  [
+    "portfolio",
+    "Portfolio",
+    "Interfaces",
+    ["React", "TypeScript", "Vite"],
+    "Une autre façon de se présenter.",
+  ],
+  [
+    "webradio",
+    "Webradio",
+    "Musique",
+    ["Icecast", "Liquidsoap"],
+    "Une fréquence personnelle.",
+  ],
+  [
+    "dotfiles",
+    "Dotfiles",
+    "Systèmes",
+    ["Nix", "Neovim", "Bash"],
+    "Habiter son environnement.",
+  ],
+  [
+    "farmermonkey",
+    "FarmerMonkey",
+    "Outils",
+    ["Discord", "Tournois"],
+    "Organiser le jeu.",
+  ],
+  [
+    "virtualangel",
+    "VirtualAngel",
+    "Outils",
+    ["Markov", "Docker", "Discord"],
+    "Des conversations qui se répondent.",
+  ],
+  [
+    "zhouxinyu",
+    "ZhouXinyu",
+    "Outils",
+    ["Discord", "Collections"],
+    "Collectionner, échanger, recommencer.",
+  ],
+  [
+    "zappy",
+    "Zappy",
+    "Jeux",
+    ["C", "C++", "Python", "Réseau"],
+    "Des mondes en réseau.",
+  ],
+  [
+    "cartridge",
+    "Cartridge",
+    "Jeux",
+    ["C", "GameBoy"],
+    "Créer avec des limites.",
+  ],
+  [
+    "myteams",
+    "my_teams",
+    "Systèmes",
+    ["Rust", "Client / serveur"],
+    "Relier les conversations.",
+  ],
+  [
+    "codewash",
+    "Codewash",
+    "Outils",
+    ["Refactorisation", "Architecture"],
+    "Faire de la place dans le code.",
+  ],
+  ["wolf3d", "Wolf3D", "Jeux", ["C", "CSFML"], "Une autre perspective."],
+  [
+    "minishell",
+    "Minishell",
+    "Systèmes",
+    ["C", "Unix", "Processus"],
+    "Derrière une ligne de commande.",
+  ],
+  [
+    "myradar",
+    "my_radar",
+    "Jeux",
+    ["C", "CSFML", "Simulation"],
+    "Quand les trajectoires se croisent.",
+  ],
+] as const;
+
+export type PortfolioProject = {
+  id: string;
+  name: string;
+  category: string;
+  technologies: readonly string[];
+  headline: string;
+  description: string;
+  details: string;
+  image: string;
+  gallery: string[];
+  url?: string;
+  private: boolean;
+};
+const french = (value: Project["title"] | undefined) =>
+  typeof value === "string" ? value : (value?.fr ?? "");
+export const projects: PortfolioProject[] = originalProjects.map(
+  (project, index) => {
+    const [id, name, category, technologies, headline] = metadata[index];
+    return {
+      id,
+      name,
+      category,
+      technologies,
+      headline,
+      description: french(project.description),
+      details: french(project.details),
+      image: project.detailImage ?? project.image ?? "",
+      gallery: project.gallery ?? [project.detailImage ?? project.image ?? ""],
+      url: project.link,
+      private: project.isPrivate ?? false,
+    };
+  },
+);
+export const projectById = (id: string) =>
+  projects.find((project) => project.id === id);
+export const featuredIds = [
+  "pomodocus",
+  "rmrf",
+  "wolf3d",
+  "butterflynet",
+  "staarscreaam",
+  "dotfiles",
+];
